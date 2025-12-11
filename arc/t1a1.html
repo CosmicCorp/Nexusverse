@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Arc I — La Chute du Soleil</title>
+  <link rel="icon" type="image/svg+xml" href="../../icons/N.svg" />
+  <link rel="stylesheet" href="../../style2.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins&display=swap" rel="stylesheet">
+
+  <style>
+    /* ——— Styles complémentaires (compatibles avec ton style2.css) ——— */
+    .breadcrumbs{max-width:1200px;margin:0 auto 10px;padding:10px 20px;color:#88ffffa6;font-family:'Poppins',sans-serif}
+    .breadcrumbs a{color:#00ffff;text-decoration:none}
+    .arc-header{max-width:1200px;margin:20px auto 30px;padding:0 20px;text-align:center}
+    .arc-subtitle{color:#cfeff0;margin-top:-10px;opacity:.9}
+    .meta-row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+    .meta-chip{border:1px solid #00ffff44;border-radius:999px;padding:6px 12px;font-size:.9rem;color:#a8ffff;background:#0f1416}
+    .two-col{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.6fr .9fr;gap:28px;padding:0 20px}
+    @media (max-width:900px){.two-col{grid-template-columns:1fr}}
+
+    /* Spoiler toggle */
+    details.spoiler{background:#101416;border:1px solid #00ffff33;border-radius:12px;padding:14px 16px}
+    details.spoiler summary{cursor:pointer;font-weight:700;color:#00ffff;font-family:'Orbitron',sans-serif}
+    details.spoiler[open]{box-shadow:0 0 18px #00ffff33}
+
+    /* Sous-chapitres */
+    .subchapters{background:#111;border:1px solid #00ffff22;border-radius:12px;padding:16px}
+    .subchapters ol{margin:0 0 0 20px}
+    .subchapters a{color:#ffa3b1;text-decoration:none}
+
+    /* Timeline simple */
+    .timeline{border-left:3px solid #00ffff44;margin-left:8px;padding-left:16px}
+    .timeline .event{margin:14px 0}
+    .timeline .event h4{margin:0;color:#00ffff}
+    .timeline .event p{margin:6px 0 0}
+
+    /* Listes de lieux & factions */
+    .card-list article{background:#141414;border:1px solid #00ffff22;border-radius:12px;padding:14px}
+    .card-list h3{margin:0 0 6px;color:#ffa3b1}
+
+    /* Grille personnages (réutilise .character-grid/.character-card-small) */
+    .legend{display:flex;gap:8px;justify-content:center;margin-bottom:8px;color:#cfeff0;font-size:.95rem}
+    .legend .dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:6px;background:#00ffff}
+    .legend .protagonistes .dot{background:#26e8ff}
+    .legend .antagonistes .dot{background:#ff6b81}
+    .legend .secondaires .dot{background:#ffd166}
+
+    /* Anecdotes d’écriture */
+    .anecdotes{max-width:1000px;margin:30px auto 0;padding:0 20px}
+    .anecdote{background:#0f1316;border:1px dashed #00ffff55;border-radius:12px;padding:14px;margin-bottom:12px}
+    .anecdote h4{margin:0 0 6px;color:#00ffff}
+    .anecdote small{opacity:.75}
+    .links{max-width:1200px;margin:30px auto 20px;text-align:center}
+    .links a{color:#00ffff;text-decoration:none;margin:0 6px}
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">
+      <a href="../../index.html">
+        <img src="../../icons/logo.png" alt="NexusVerse">
+      </a>
+    </div>
+    <button class="burger" aria-label="Menu">&#9776;</button>
+    <div class="nav-container">
+      <ul class="nav-links">
+        <li><a href="../../index.html">Personnages</a></li>
+        <li><a href="../../selector.html">Chapitres</a></li>
+        <li><a href="../../news.html">Actus</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Fil d'Ariane -->
+  <div class="breadcrumbs">
+    <a href="../../selector.html">Chapitres</a> ·
+    <a href="../s1.html">Chapitre 1</a> ·
+    <span>Arc I — La Chute du Soleil</span>
+  </div>
+
+  <main>
+    <!-- En-tête arc -->
+    <header class="arc-header">
+      <h1>Arc I — La Chute du Soleil</h1>
+      <p class="arc-subtitle">Période couverte : Chapitre 1 (1.1 → 1.5)</p>
+      <div class="meta-row">
+        <span class="meta-chip">Thèmes : survie, fraternité, exil</span>
+        <span class="meta-chip">Lieu majeur : Réalité Zéro</span>
+        <span class="meta-chip">Antagonistes : Institut Onirique</span>
+      </div>
+    </header>
+
+    <!-- Résumé & Sous-chapitres -->
+    <section class="two-col">
+      <div>
+        <h2>Résumé de l’arc</h2>
+        <p>
+          Au lendemain de l’effondrement, les survivants se rassemblent autour d’un foyer fragile. Scarlet, Barret et Raptor
+          cherchent des repères dans une île bouleversée, tandis qu’une organisation mystérieuse étend son influence.
+        </p>
+
+        <details class="spoiler">
+          <summary>Afficher le résumé détaillé (spoilers)</summary>
+          <p>
+            La prise de contrôle des avant-postes par l’Institut force le Clan du Soleil à l’exode. La perte de Tilted laisse
+            une cicatrice chez Scarlet ; Barret s’impose comme pivot entre les survivants et Raptor. L’arc s’achève sur
+            l’assaut de la Forteresse du Soleil et l’ombre croissante du Néant.
+          </p>
+        </details>
+      </div>
+
+      <aside>
+        <h2>Sous-chapitres (roman)</h2>
+        <div class="subchapters">
+          <ol>
+            <li><a href="#">1.1 — Cendres et balises</a></li>
+            <li><a href="#">1.2 — Les routes brisées</a></li>
+            <li><a href="#">1.3 — Lignes de faille</a></li>
+            <li><a href="#">1.4 — L’ultimatum</a></li>
+            <li><a href="#">1.5 — Forteresse du Soleil</a></li>
+          </ol>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Personnages majeurs -->
+    <section style="max-width:1200px;margin:40px auto 0;padding:0 20px;text-align:center;">
+      <h2>Personnages majeurs dans l’arc</h2>
+      <div class="legend">
+        <span class="protagonistes"><span class="dot"></span>Protagonistes</span>
+        <span class="antagonistes"><span class="dot"></span>Antagonistes</span>
+        <span class="secondaires"><span class="dot"></span>Secondaires</span>
+      </div>
+      <div class="character-grid">
+        <a href="../../barret.html" class="character-icon character-card-small">
+          <img src="../../icons/small/barret.png" alt="Barret">
+          <span>Barret — de survivant à meneur</span>
+        </a>
+        <a href="../../raider.html" class="character-icon character-card-small">
+          <img src="../../icons/small/raider.png" alt="Scarlet">
+          <span>Scarlet — affronter la perte</span>
+        </a>
+        <a href="../../raptor.html" class="character-icon character-card-small">
+          <img src="../../icons/small/raptor.png" alt="Raptor">
+          <span>Raptor — loyauté en feu croisé</span>
+        </a>
+        <a href="../../slone.html" class="character-icon character-card-small">
+          <img src="../../icons/small/slone.png" alt="Slone">
+          <span>Slone — poigne de l’Institut</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Événements majeurs -->
+    <section style="max-width:1200px;margin:40px auto 0;padding:0 20px;">
+      <h2>Événements majeurs</h2>
+      <div class="timeline">
+        <div class="event">
+          <h4>An 0 — Ruine de Tilted</h4>
+          <p>La capitale s’effondre, dispersant les clans et brisant les routes.</p>
+        </div>
+        <div class="event">
+          <h4>An 1 — Exode du Clan du Soleil</h4>
+          <p>Scarlet, Barret et Raptor organisent le départ vers l’intérieur de l’île.</p>
+        </div>
+        <div class="event">
+          <h4>An 1 — Ultimatum de l’Institut</h4>
+          <p>Slone impose des quotas et contrôle les balises de transport.</p>
+        </div>
+        <div class="event">
+          <h4>An 2 — Forteresse du Soleil</h4>
+          <p>Première contre-attaque coordonnée ; rumeurs du Néant.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lieux & Factions -->
+    <section style="max-width:1200px;margin:40px auto 0;padding:0 20px;">
+      <h2>Lieux & Factions au cœur de l’arc</h2>
+      <div class="two-col" style="margin-top:16px">
+        <div class="card-list">
+          <article>
+            <h3>Forêt des Murmures</h3>
+            <p>Zone instable où la réalité plie ; premières anomalies liées au Néant.</p>
+          </article>
+          <article>
+            <h3>Forteresse du Soleil</h3>
+            <p>Bastion improvisé dans les ruines ; symbole d’unité et de résistance.</p>
+          </article>
+        </div>
+        <div class="card-list">
+          <article>
+            <h3>Clan du Soleil</h3>
+            <p>Coalition de survivants autour de valeurs de protection et d’entraide.</p>
+          </article>
+          <article>
+            <h3>Institut Onirique</h3>
+            <p>Organisation technocratique : contrôle, extraction, expérimentation.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Anecdotes d’écriture -->
+    <section class="anecdotes">
+      <h2>Anecdotes d’écriture</h2>
+      <div class="anecdote">
+        <h4>Barret n’était pas prévu au départ</h4>
+        <p>Le personnage a émergé pour contrebalancer le cynisme ambiant et apporter un regard fraternel.</p>
+        <small>Note de l’auteur — v0.7 du synopsis</small>
+      </div>
+      <div class="anecdote">
+        <h4>La Forteresse du Soleil : nom trouvé tard</h4>
+        <p>Le lieu s’appelait “Avant-poste 12”. Le changement a clarifié le symbole d’espoir.</p>
+        <small>Journal — itération des lieux, semaine 3</small>
+      </div>
+      <div class="anecdote">
+        <h4>Premier jet du final réécrit</h4>
+        <p>Le climax montrait une défaite totale ; la version finale garde une victoire amère.</p>
+        <small>Draft — révisions S1E5</small>
+      </div>
+    </section>
+
+    <!-- Liens croisés -->
+    <div class="links">
+      <a href="../s1.html">⟵ Retour au Chapitre 1</a> ·
+      <a href="../../index.html">Personnages</a> ·
+      <a href="../../selector.html">Tous les chapitres</a>
+    </div>
+  </main>
+
+  <!-- Burger script (comme index.html) -->
+  <script>
+    const burger = document.querySelector('.burger');
+    const navLinks = document.querySelector('.nav-links');
+    burger?.addEventListener('click', () => navLinks.classList.toggle('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('active')));
+  </script>
+</body>
+</html>

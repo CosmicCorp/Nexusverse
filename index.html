@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Bibliothèque</title>
+  <link rel="icon" type="image/svg+xml" href="icons/N.svg">
+  <link rel="stylesheet" href="style2.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    .library-wrapper {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 0 16px;
+    }
+
+    .category {
+      background: rgba(0,0,0,0.25);
+      border: 1px solid #00ffff33;
+      box-shadow: 0 0 14px #00ffff11;
+      border-radius: 14px;
+      margin-bottom: 28px;
+      overflow: hidden;
+    }
+
+    .category-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 18px;
+      cursor: pointer;
+      background: linear-gradient(90deg, rgba(0,255,255,0.15), rgba(0,0,0,0));
+    }
+
+    .category-header h2 {
+      margin: 0;
+      font-size: 1.3rem;
+      border: none;
+    }
+
+    .category-toggle {
+      color: #00ffff;
+      font-size: 1.6rem;
+      user-select: none;
+    }
+
+    .tomes-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      padding: 16px 18px 20px;
+    }
+
+    .tome-card {
+      width: 180px;
+      background: radial-gradient(circle at top, #111 0%, #0b0b0b 75%);
+      border: 1px solid #00ffff33;
+      border-radius: 14px;
+      padding: 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, border .2s ease;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .tome-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 18px #00ffff55;
+      border: 1px solid #00ffff77;
+    }
+
+    .tome-cover {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      background: #222;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .tome-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .tome-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      color: #00ffff;
+    }
+
+    .tome-sub {
+      font-size: 0.7rem;
+      color: #cccccc;
+      opacity: .7;
+    }
+.legal-footer {
+  margin-top: 40px;
+  padding: 14px 0;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #00ffffaa;
+  background: rgba(0, 0, 0, 0.25);
+  border-top: 1px solid #00ffff33;
+  backdrop-filter: blur(6px);
+}
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .tomes-grid {
+        justify-content: center;
+      }
+      .tome-card {
+        width: 42vw;
+        max-width: 210px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <nav>
+  <div class="logo">
+    
+    <a href="index.html">
+      <img src="icons/logo.png" alt="NEXUS LOGO">
+    </a>
+  </div>
+  <button class="burger" aria-label="Menu">
+  &#9776;
+</button>
+
+  <div class="nav-container">
+  <ul class="nav-links">
+    <!--li><a href="index.html">Personnages</a></li-->
+    <li><a href="index.html">Bibliothèque</a></li>
+    <!--li><a href="tcg/index.php">Card Game</a></li-->
+    <li><a href="news.html">Actus</a></li>
+    <!--li><a href="updates.html">Calendrier</a></li-->
+    
+  </ul>
+</div>
+  <div class="language-switch">
+    <a href="../news.html">
+      <img src="" alt="">
+      <span></span>
+    </a>
+  </div>
+
+  </nav>
+
+  <main>
+    <div class="library-wrapper">
+      <h1>Bibliothèque</h1>
+      <p style="opacity:.6;">Choisis un tome à lire :</p>
+
+      <!-- Série principale -->
+      <section class="category">
+        <div class="category-header" data-target="main-series">
+          <h2>Série principale</h2>
+          <span class="category-toggle">▼</span>
+        </div>
+        <div class="tomes-grid" id="main-series">
+          <!-- Exemple de tomes -->
+          <a class="tome-card" href="tome1.html">
+            <div class="tome-cover">
+              <img src="covers/1.png" alt="Tome 1">
+            </div>
+            <div class="tome-title">Tome 1 – Le Clan du Soleil</div>
+            <div class="tome-sub">Le commencement</div>
+          </a>
+
+          <!--a class="tome-card" href="lecture.html?tome=2">
+            <div class="tome-cover">
+              <img src="covers/2.png" alt="Tome 2">
+            </div>
+            <div class="tome-title">Tome 2 – Nouveau Monde</div>
+            <div class="tome-sub">Réalité reformée</div>
+          </a>
+
+          <a class="tome-card" href="lecture.html?tome=3">
+            <div class="tome-cover">
+              <img src="covers/3.png" alt="Tome 3">
+            </div>
+            <div class="tome-title">Tome 3 – Archipel Ultime</div>
+            <div class="tome-sub">Le mystère des îles</div>
+          </a>
+
+          <a class="tome-card" href="lecture.html?tome=3">
+            <div class="tome-cover">
+              <img src="covers/4.png" alt="Tome 3">
+            </div>
+            <div class="tome-title">Tome 4 – Revers</div>
+            <div class="tome-sub">L'autre côté</div>
+          </a>
+
+          <a class="tome-card" href="lecture.html?tome=3">
+            <div class="tome-cover">
+              <img src="covers/5.png" alt="Tome 3">
+            </div>
+            <div class="tome-title">Tome 5 – Reforgé</div>
+            <div class="tome-sub">Convergence de réalités</div>
+          </a>
+
+          <a class="tome-card" href="lecture.html?tome=3">
+            <div class="tome-cover">
+              <img src="covers/6.png" alt="Tome 3">
+            </div>
+            <div class="tome-title">Tome 6 – Archipel Eternel</div>
+            <div class="tome-sub">Les égarés</div>
+          </a>
+
+          <a class="tome-card" href="lecture.html?tome=3">
+            <div class="tome-cover">
+              <img src="covers/7.png" alt="Tome 3">
+            </div>
+            <div class="tome-title">Tome 7 – Ile Prairie</div>
+            <div class="tome-sub">Nouveau clan ?</div>
+          </a>
+
+          <a class="tome-card" href="lecture.html?tome=3">
+            <div class="tome-cover">
+              <img src="covers/8.png" alt="Tome 3">
+            </div>
+            <div class="tome-title">Tome 8 – Mondes Croisés</div>
+            <div class="tome-sub">Le choc des mondes</div>
+          </a>
+
+          <a class="tome-card" href="lecture.html?tome=3">
+            <div class="tome-cover">
+              <img src="covers/9.png" alt="Tome 3">
+            </div>
+            <div class="tome-title">Tome 9 – Vigilance Zero</div>
+            <div class="tome-sub">Quand la vigilance faiblit , le chaos surgit</div>
+          </a>
+
+          <a class="tome-card" href="lecture.html?tome=3">
+            <div class="tome-cover">
+              <img src="covers/10.png" alt="Tome 3">
+            </div>
+            <div class="tome-title">Tome X – Etat Zero</div>
+            <div class="tome-sub">Quand le Néant réclame son dû</div>
+          </a-->
+
+          <a class="tome-card" href="">
+            <div class="tome-cover">
+              <img src="covers/soon.png" alt="Harper Story">
+            </div>
+            <div class="tome-title">Bientôt</div>
+            <div class="tome-sub">Tome en écriture !</div>
+          </a>
+          <!-- ajoute autant de tomes que tu veux -->
+        </div>
+      </section>
+
+      <!-- Spin-off -->
+      <section class="category">
+        <div class="category-header" data-target="spinoff-series">
+          <h2>Spin-off</h2>
+          <span class="category-toggle">▼</span>
+        </div>
+        <div class="tomes-grid hidden" id="spinoff-series">
+
+           <!--a class="tome-card" href="lecture.html?tome=harper">
+            <div class="tome-cover">
+              <img src="covers/og.png" alt="">
+            </div>
+            <div class="tome-title">OG : Corruption Zero</div>
+            <div class="tome-sub">Quelque chose cloche</div>
+          </a>
+
+          <a class="tome-card" href="lecture.html?tome=harper">
+            <div class="tome-cover">
+              <img src="covers/blood.png" alt="">
+            </div>
+            <div class="tome-title">Blood Eclipse</div>
+            <div class="tome-sub">Chasse aux vampires</div>
+          </a-->
+
+          <a class="tome-card" href="">
+            <div class="tome-cover">
+              <img src="covers/soon.png" alt="Harper Story">
+            </div>
+            <div class="tome-title">Bientôt</div>
+            <div class="tome-sub">Tome en écriture !</div>
+          </a>
+
+          
+        </div>
+      </section>
+
+      <!-- Préquels / Interludes -->
+      <!--section class="category">
+        <div class="category-header" data-target="prequel-series">
+          <h2>Préquels & Interludes</h2>
+          <span class="category-toggle">▼</span>
+        </div>
+        <div class="tomes-grid hidden" id="prequel-series">
+          <a class="tome-card" href="lecture.html?tome=prelude">
+            <div class="tome-cover">
+              <img src="covers/prelude.jpg" alt="Prelude">
+            </div>
+            <div class="tome-title">Nexus – Prélude</div>
+            <div class="tome-sub">avant Tome 1</div>
+          </a>
+
+          <a class="tome-card" href="lecture.html?tome=erebus-lore">
+            <div class="tome-cover">
+              <img src="covers/erebus-lore.jpg" alt="Erebus Lore">
+            </div>
+            <div class="tome-title">Erebus Prime – Dossiers</div>
+            <div class="tome-sub">Lore / univers</div>
+          </a>
+        </div>
+      </section-->
+    </div>
+    <footer class="legal-footer">
+  <p>Tout droit réservé · Epic Games · Fortnite — Ce site est un projet non officiel et n’est pas affilié à Epic Games.</p>
+</footer>
+
+  </main>
+
+  <script>
+    // ouverture/fermeture des catégories
+    document.querySelectorAll('.category-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const targetId = header.getAttribute('data-target');
+        const grid = document.getElementById(targetId);
+        const toggle = header.querySelector('.category-toggle');
+        const isHidden = grid.classList.contains('hidden');
+        if (isHidden) {
+          grid.classList.remove('hidden');
+          toggle.textContent = '▲';
+        } else {
+          grid.classList.add('hidden');
+          toggle.textContent = '▼';
+        }
+      });
+    });
+  </script>
+  <script>
+  const burger = document.querySelector('.burger');
+  const navLinks = document.querySelector('.nav-links');
+
+  burger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+</script>
+</body>
+</html>

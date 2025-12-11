@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Arc I — Les Ferrailleurs & l’Amulette</title>
+  <link rel="icon" type="image/svg+xml" href="../../icons/N.svg" />
+  <link rel="stylesheet" href="../../style2.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins&display=swap" rel="stylesheet">
+
+  <style>
+    /* ——— Styles complémentaires (compatibles avec style2.css) ——— */
+    .breadcrumbs{max-width:1200px;margin:0 auto 10px;padding:10px 20px;color:#88ffffa6;font-family:'Poppins',sans-serif}
+    .breadcrumbs a{color:#00ffff;text-decoration:none}
+    .arc-header{max-width:1200px;margin:20px auto 30px;padding:0 20px;text-align:center}
+    .arc-subtitle{color:#cfeff0;margin-top:-10px;opacity:.9}
+    .meta-row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+    .meta-chip{border:1px solid #00ffff44;border-radius:999px;padding:6px 12px;font-size:.9rem;color:#a8ffff;background:#0f1416}
+    .two-col{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.6fr .9fr;gap:28px;padding:0 20px}
+    @media (max-width:900px){.two-col{grid-template-columns:1fr}}
+
+    /* Spoiler toggle */
+    details.spoiler{background:#101416;border:1px solid #00ffff33;border-radius:12px;padding:14px 16px}
+    details.spoiler summary{cursor:pointer;font-weight:700;color:#00ffff;font-family:'Orbitron',sans-serif}
+    details.spoiler[open]{box-shadow:0 0 18px #00ffff33}
+
+    /* Sous-chapitres */
+    .subchapters{background:#111;border:1px solid #00ffff22;border-radius:12px;padding:16px}
+    .subchapters ol{margin:0 0 0 20px}
+    .subchapters a{color:#ffa3b1;text-decoration:none}
+
+    /* Timeline simple */
+    .timeline{border-left:3px solid #00ffff44;margin-left:8px;padding-left:16px}
+    .timeline .event{margin:14px 0}
+    .timeline .event h4{margin:0;color:#00ffff}
+    .timeline .event p{margin:6px 0 0}
+
+    /* Listes de lieux & factions */
+    .card-list article{background:#141414;border:1px solid #00ffff22;border-radius:12px;padding:14px}
+    .card-list h3{margin:0 0 6px;color:#ffa3b1}
+
+    /* Grille personnages (réutilise .character-grid/.character-card-small) */
+    .legend{display:flex;gap:8px;justify-content:center;margin-bottom:8px;color:#cfeff0;font-size:.95rem}
+    .legend .dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:6px;background:#00ffff}
+    .legend .protagonistes .dot{background:#26e8ff}
+    .legend .antagonistes .dot{background:#ff6b81}
+    .legend .secondaires .dot{background:#ffd166}
+
+    /* Anecdotes d’écriture */
+    .anecdotes{max-width:1000px;margin:30px auto 0;padding:0 20px}
+    .anecdote{background:#0f1316;border:1px dashed #00ffff55;border-radius:12px;padding:14px;margin-bottom:12px}
+    .anecdote h4{margin:0 0 6px;color:#00ffff}
+    .anecdote small{opacity:.75}
+    .links{max-width:1200px;margin:30px auto 20px;text-align:center}
+    .links a{color:#00ffff;text-decoration:none;margin:0 6px}
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">
+      <a href="../../index.html">
+        <img src="../../icons/logo.png" alt="NexusVerse">
+      </a>
+    </div>
+    <button class="burger" aria-label="Menu">&#9776;</button>
+    <div class="nav-container">
+      <ul class="nav-links">
+        <li><a href="../../index.html">Personnages</a></li>
+        <li><a href="../../selector.html">Chapitres</a></li>
+        <li><a href="../../news.html">Actus</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Fil d'Ariane -->
+  <div class="breadcrumbs">
+    <a href="../../selector.html">Chapitres</a> ·
+    <a href="../s1.html">Chapitre 1</a> ·
+    <span>Arc I — Les Ferrailleurs & l’Amulette</span>
+  </div>
+
+  <main>
+    <!-- En-tête arc -->
+    <header class="arc-header">
+      <h1>Arc I — Les Ferrailleurs & l’Amulette</h1>
+      <p class="arc-subtitle">Période couverte : Chapitre 1 — 1.1 → 1.3</p>
+      <div class="meta-row">
+        <span class="meta-chip">Thèmes : survie · fraternité · mystère</span>
+        <span class="meta-chip">Lieu majeur : Plaines d’Orion & Lac Indigo</span>
+        <span class="meta-chip">Antagonistes en filigrane : Institut Onirique, Chaos</span>
+      </div>
+    </header>
+
+    <!-- Résumé & Sous-chapitres -->
+    <section class="two-col">
+      <div>
+        <h2>Résumé de l’arc</h2>
+        <p>
+          Dans les plaines d’Orion, Scarlet et Barret vivent de ferraille et d’entraide. La découverte d’une
+          amulette-boussole réveille un passé enfoui et pointe vers une source d’énergie mythique : le Point Zéro.
+          Avec l’aide de Raptor, un vétéran à l’humour sec, ils démêlent les premiers fils d’un mystère trop vaste pour eux.
+        </p>
+
+        <details class="spoiler">
+          <summary>Afficher le résumé détaillé (spoilers)</summary>
+          <p>
+            L’amulette réagit étrangement, semblant « vivante ». Raptor révèle avoir vu un dispositif similaire lors d’une
+            opération contre un groupe lié à Chaos. Scarlet confie leur exil forcé par une tempête dimensionnelle et la
+            dispersion de leurs amis. Harper, une fermière rusée, s’impose au trio après les avoir surpris : elle confirme
+            l’existence locale d’une « énergie éternelle ». L’arc se clôt sur l’émergence d’un immense iceberg surmonté
+            d’une forteresse noire — promesse d’une menace à venir.
+          </p>
+        </details>
+      </div>
+
+      <aside>
+        <h2>Sous-chapitres (roman)</h2>
+        <div class="subchapters">
+          <ol>
+            <li><a href="#">1.1 — Les ferrailleurs</a></li>
+            <li><a href="#">1.2 — L’amulette</a></li>
+            <li><a href="#">1.3 — L’espionne</a></li>
+          </ol>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Personnages majeurs -->
+    <section style="max-width:1200px;margin:40px auto 0;padding:0 20px;text-align:center;">
+      <h2>Personnages majeurs dans l’arc</h2>
+      <div class="legend">
+        <span class="protagonistes"><span class="dot"></span>Protagonistes</span>
+        <span class="antagonistes"><span class="dot"></span>Antagonistes</span>
+        <span class="secondaires"><span class="dot"></span>Secondaires</span>
+      </div>
+      <div class="character-grid">
+        <a href="../../barret.html" class="character-icon character-card-small">
+          <img src="../../icons/small/barret.png" alt="Barret">
+          <span>Barret — curiosité obstinée</span>
+        </a>
+        <a href="../../raider.html" class="character-icon character-card-small">
+          <img src="../../icons/small/raider.png" alt="Scarlet">
+          <span>Scarlet — courage & loyauté</span>
+        </a>
+        <a href="../../raptor.html" class="character-icon character-card-small">
+          <img src="../../icons/small/raptor.png" alt="Raptor">
+          <span>Raptor — passé militaire trouble</span>
+        </a>
+        <a href="../../harper.html" class="character-icon character-card-small">
+          <img src="../../icons/small/harper.png" alt="Harper">
+          <span>Harper — gardienne de secrets</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Événements majeurs -->
+    <section style="max-width:1200px;margin:40px auto 0;padding:0 20px;">
+      <h2>Événements majeurs</h2>
+      <div class="timeline">
+        <div class="event">
+          <h4>Jour 0 — Rouge d’Orion</h4>
+          <p>Le ciel écarlate et la décharge : quotidien de Scarlet, révélateur de ton et d’ambiance.</p>
+        </div>
+        <div class="event">
+          <h4>Jour 0 — La boussole vivante</h4>
+          <p>Barret découvre l’amulette ; l’aiguille s’affole comme guidée par une force inconnue.</p>
+        </div>
+        <div class="event">
+          <h4>Aube J+1 — Confrontation & aveux</h4>
+          <p>Raptor évoque Chaos et l’unité E.G.O ; Scarlet révèle l’exil inter-réalités.</p>
+        </div>
+        <div class="event">
+          <h4>J+1 — Harper entre en scène</h4>
+          <p>La fermière les surprend, parle d’« énergie éternelle » et demande à rejoindre le groupe.</p>
+        </div>
+        <div class="event">
+          <h4>J+1 — La forteresse noire</h4>
+          <p>Un iceberg jaillit au loin ; une silhouette observe depuis une forteresse glacée.</p>
+        </div>
+      </div>
+    </section>
+
+    
+    <!-- Lieux & Factions -->
+<section style="max-width:1200px;margin:40px auto 0;padding:0 20px;">
+  <h2>Lieux & Factions au cœur de l’arc</h2>
+  <div class="two-col" style="margin-top:16px">
+    
+    <!-- Lieux -->
+    <div class="card-list">
+      <article>
+        <img src="images/places/décharge.png" alt="Plaines d’Orion" style="width:100%;border-radius:8px;margin-bottom:8px;">
+        <h3>Plaines d’Orion & Décharge</h3>
+        <p>Mer de carcasses et poussière noire ; terrain d’endurance où Scarlet façonne sa réputation.</p>
+      </article>
+      <article>
+        <img src="images/places/house.png" alt="Lac Indigo" style="width:100%;border-radius:8px;margin-bottom:8px;">
+        <h3>Maison de Raptor</h3>
+        <p>Taudi rafistolé servant de demeure à Raptor.</p>
+      </article>
+      <article>
+        <img src="images/places/qg.png" alt="Lac Indigo" style="width:100%;border-radius:8px;margin-bottom:8px;">
+        <h3>QG près du Lac Indigo</h3>
+        <p>Maison abandonnée devenue base ; l’amulette y vibre comme un métronome cosmique.</p>
+      </article>
+      <article>
+        <img src="images/places/farm.png" alt="Ferme de Harper" style="width:100%;border-radius:8px;margin-bottom:8px;">
+        <h3>Ferme de Harper</h3>
+        <p>Au nord du lac, grenier rempli des notes du grand-père ; indices sur l’« énergie éternelle ».</p>
+      </article>
+      
+    </div>
+    
+    <!-- Factions -->
+    <div class="card-list">
+      <article>
+        <img src="../../images/factions/clan-soleil.jpg" alt="Clan du Soleil" style="width:100%;border-radius:8px;margin-bottom:8px;">
+        <h3>Clan du Soleil (naissant)</h3>
+        <p>Noyau de survivants unis par la protection et l’entraide, encore informel.</p>
+      </article>
+      <article>
+        <img src="../../images/factions/institut.jpg" alt="Institut Onirique" style="width:100%;border-radius:8px;margin-bottom:8px;">
+        <h3>Institut Onirique</h3>
+        <p>Ombre technocratique : extraction et contrôle ; traque potentielle du Point Zéro.</p>
+      </article>
+      <article>
+        <img src="../../images/factions/chaos.jpg" alt="Réseau de Chaos" style="width:100%;border-radius:8px;margin-bottom:8px;">
+        <h3>Réseau de Chaos (évoqué)</h3>
+        <p>Groupuscule terroriste lié à une boussole similaire ; connexions inter-réalités.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Anecdotes d’écriture -->
+    <section class="anecdotes">
+      <h2>Anecdotes d’écriture</h2>
+      <div class="anecdote">
+        <h4>Le ton rouge d’ouverture</h4>
+        <p>L’image du ciel écarlate d’Orion a servi de boussole esthétique : chaleur, poussière, métal.</p>
+        <small>Journal — palette & ambiance</small>
+      </div>
+      <div class="anecdote">
+        <h4>Scarlet, langue bien pendue</h4>
+        <p>Le contraste entre sa dureté et son humour a été pensé pour humaniser la survie quotidienne.</p>
+        <small>Notes de caractérisation</small>
+      </div>
+      <div class="anecdote">
+        <h4>Harper « boucles rouges »</h4>
+        <p>Le surnom est resté après un dialogue improvisé ; il ancre la complicité du trio.</p>
+        <small>Atelier — répliques spontanées</small>
+      </div>
+      <div class="anecdote">
+        <h4>La forteresse sur l’iceberg</h4>
+        <p>Ajout tardif pour matérialiser la menace et donner un cliffhanger visuel fort.</p>
+        <small>Révision — fin d’arc</small>
+      </div>
+    </section>
+
+    <!-- Liens croisés -->
+    <div class="links">
+      <a href="../s1.html">⟵ Retour au Chapitre 1</a> ·
+      <a href="../../index.html">Personnages</a> ·
+      <a href="../../selector.html">Tous les chapitres</a>
+    </div>
+  </main>
+
+  <!-- Burger script (comme index.html) -->
+  <script>
+    const burger = document.querySelector('.burger');
+    const navLinks = document.querySelector('.nav-links');
+    if (burger && navLinks) {
+      burger.addEventListener('click', () => navLinks.classList.toggle('active'));
+      document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('active')));
+    }
+  </script>
+</body>
+</html>

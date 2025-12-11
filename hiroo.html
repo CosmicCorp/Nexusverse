@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Hiro</title>
+  <link rel="icon" type="image/svg+xml" href="icons/N.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    .character-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("icons/backgrouds/hiro.png");
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.25);
+  z-index: -1;
+  border-radius: 15px;
+}
+</style>
+<body>
+
+  <nav>
+    <div class="logo">
+      <a href="index.html">
+        <img src="icons/logo.png" alt="Logo Univers Nexus">
+      </a>
+    </div>
+  </nav>
+
+  <main>
+  <div class="character-card">
+    <div class="character-image">
+      <img src="icons/big/hiro.png" alt="Personnage 1">
+    </div>
+    <div class="character-info">
+      <h2>HIRO</h2>
+      <p class="allegeance">Allégeance : Aucune</p>
+      <p class="status">Status : Vagabondant</p>
+      
+      <p>
+      La vie de Hiro a été bouleversée depuis l'ouverture de la faille. Sa famille a été corrompue et a succombé sous ses yeux. Marqué à vie, il s'est joint à la lutte contre les carcasses et a rencontré Loper et son groupe, enquêtant sur l'origine de cette mystérieuse faille maudite.
+      </p>
+      
+    </div>
+  </div>
+  <section class="evolution-section">
+  <h2>Tenues</h2>
+  <div class="evolution-gallery">
+    
+    
+    <div class="evolution-item">
+      <img src="icons/outfits/hiro/229.png" alt="Survivant">
+      <span>Survivant</span>
+    </div>
+    
+  
+    
+    
+     
+    
+    
+  </div>
+</section>
+
+</main>
+
+<div id="imageModal" class="modal">
+  <span class="close">&times;</span>
+  <span class="nav left">&#10094;</span>
+  <img class="modal-content" id="modalImg">
+  <span class="nav right">&#10095;</span>
+  <div id="caption"></div>
+</div>
+<script>
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImg");
+  const captionText = document.getElementById("caption");
+  const closeBtn = document.querySelector(".modal .close");
+  const navLeft = document.querySelector(".modal .nav.left");
+  const navRight = document.querySelector(".modal .nav.right");
+
+  const images = Array.from(document.querySelectorAll(".evolution-item img"));
+  let currentIndex = 0;
+
+  function showImage(index) {
+    const img = images[index];
+    modalImg.src = img.src;
+    captionText.textContent = img.alt;
+  }
+
+  images.forEach((img, index) => {
+    img.addEventListener("click", () => {
+      currentIndex = index;
+      showImage(currentIndex);
+      modal.style.display = "block";
+    });
+  });
+
+  closeBtn.onclick = () => modal.style.display = "none";
+
+  window.onclick = (event) => {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  };
+
+  navLeft.onclick = () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage(currentIndex);
+  };
+
+  navRight.onclick = () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage(currentIndex);
+  };
+
+  // Support clavier (flèches)
+  window.addEventListener("keydown", (e) => {
+    if (modal.style.display === "block") {
+      if (e.key === "ArrowLeft") navLeft.click();
+      else if (e.key === "ArrowRight") navRight.click();
+      else if (e.key === "Escape") closeBtn.click();
+    }
+  });
+</script>
+</body>
+</html>

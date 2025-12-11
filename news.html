@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Actus</title>
+  <link rel="icon" type="image/svg+xml" href="icons/N.svg">
+  <link rel="stylesheet" href="style3.css">
+  <link rel="stylesheet" href="style2.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+  <nav>
+  <div class="logo">
+    
+    <a href="index.html">
+      <img src="icons/logo.png" alt="NEXUS LOGO">
+    </a>
+  </div>
+  <button class="burger" aria-label="Menu">
+  &#9776;
+</button>
+
+  <div class="nav-container">
+  <ul class="nav-links">
+    <!--li><a href="index.html">Personnages</a></li-->
+    <li><a href="index.html">Bibliothèque</a></li>
+    <!--li><a href="tcg/index.php">Card Game</a></li-->
+    <li><a href="news.html">Actus</a></li>
+    <!--li><a href="updates.html">Calendrier</a></li-->
+    
+  </ul>
+</div>
+  <div class="language-switch">
+    <a href="../news.html">
+      <img src="" alt="">
+      <span></span>
+    </a>
+  </div>
+
+  </nav>
+
+  <main>
+    <h1>Actus</h1>
+
+    <section class="news-section">
+      <div class="news-card">
+        <img src="news/tome1.png" alt="Nouvelle 2">
+        <div class="news-content">
+          <h2>Tome 1 disponible !</h2>
+          <p>L'aventure du Clan du Soleil débute dans le tome 1 de Nexus ! 
+            Découvriront ils les mystèrent que cachent l'île d'Orion ?
+           </p>
+          <span class="news-date">11 Décembre 2025</span>
+        </div>
+      </div>
+      
+      </div>
+      
+    </section>
+  </main>
+<script>
+  const burger = document.querySelector('.burger');
+  const navLinks = document.querySelector('.nav-links');
+
+  burger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Origin</title>
+  <link rel="icon" type="image/svg+xml" href="icons/N.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    .character-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("icons/backgrouds/seven.png");
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.25);
+  z-index: -1;
+  border-radius: 15px;
+}
+</style>
+<body>
+
+  <nav>
+    <div class="logo">
+      <a href="index.html">
+        <img src="icons/logo.png" alt="Logo Univers Nexus">
+      </a>
+    </div>
+  </nav>
+
+  <main>
+  <div class="character-card">
+    <div class="character-image">
+      <img src="icons/big/origin.png" alt="Personnage 1">
+    </div>
+    <div class="character-info">
+      <h2>ORIGINE</h2>
+      <p class="allegeance">Allegiance : Les Sept , Equipage Interspacial</p>
+      <p class="status">Status : Vivant</p>
+      
+      <p>
+        Ancien roi des cubes de l'Ultime Réalité, Origin a vu d'innombrables réalités disparaître dans le néant et a finalement développé une conscience, s'est rebellé et s'est enfui de son monde. Il a ensuite été capturé par l'IO et sauvé par les guerriers de la réalité, rejoignant leur cause avec un respect infini. Ils sont désormais connus sous le nom des Septs.
+      </p>
+    </div>
+  </div>
+  <section class="evolution-section">
+  <h2>Tenues</h2>
+  <div class="evolution-gallery">
+    
+    
+    <div class="evolution-item">
+      <img src="icons/outfits/origin/14.png" alt="Armure des septs">
+      <span>Armure des septs</span>
+    </div>
+    <div class="evolution-item">
+      <img src="icons/outfits/origin/73.png" alt="Armure des septs (Sans casque)">
+      <span>Armure des septs (Sans casque)</span>
+    </div>
+     <div class="evolution-item">
+      <img src="icons/outfits/origin/15.png" alt="Exilé">
+      <span>Exilé</span>
+    </div>
+    <div class="evolution-item">
+      <img src="icons/outfits/origin/16.png" alt="Equipage Interspacial">
+      <span>Equipage Interspacial</span>
+    </div>
+    
+    
+  </div>
+</section>
+
+</main>
+
+<div id="imageModal" class="modal">
+  <span class="close">&times;</span>
+  <span class="nav left">&#10094;</span>
+  <img class="modal-content" id="modalImg">
+  <span class="nav right">&#10095;</span>
+  <div id="caption"></div>
+</div>
+
+<script>
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImg");
+  const captionText = document.getElementById("caption");
+  const closeBtn = document.querySelector(".modal .close");
+  const navLeft = document.querySelector(".modal .nav.left");
+  const navRight = document.querySelector(".modal .nav.right");
+
+  const images = Array.from(document.querySelectorAll(".evolution-item img"));
+  let currentIndex = 0;
+
+  function showImage(index) {
+    const img = images[index];
+    modalImg.src = img.src;
+    captionText.textContent = img.alt;
+  }
+
+  images.forEach((img, index) => {
+    img.addEventListener("click", () => {
+      currentIndex = index;
+      showImage(currentIndex);
+      modal.style.display = "block";
+    });
+  });
+
+  closeBtn.onclick = () => modal.style.display = "none";
+
+  window.onclick = (event) => {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  };
+
+  navLeft.onclick = () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage(currentIndex);
+  };
+
+  navRight.onclick = () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage(currentIndex);
+  };
+
+  // Support clavier (flèches)
+  window.addEventListener("keydown", (e) => {
+    if (modal.style.display === "block") {
+      if (e.key === "ArrowLeft") navLeft.click();
+      else if (e.key === "ArrowRight") navRight.click();
+      else if (e.key === "Escape") closeBtn.click();
+    }
+  });
+</script>
+</body>
+</html>

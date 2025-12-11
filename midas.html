@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Midas</title>
+  <link rel="icon" type="image/svg+xml" href="icons/N.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    .character-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("icons/backgrouds/midas.png");
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.25);
+  z-index: -1;
+  border-radius: 15px;
+}
+</style>
+<body>
+
+  <nav>
+    <div class="logo">
+      <a href="index.html">
+        <img src="icons/logo.png" alt="Logo Univers Nexus">
+      </a>
+    </div>
+  </nav>
+
+  <main>
+  <div class="character-card">
+    <div class="character-image">
+      <img src="icons/big/midas.png" alt="Personnage 1">
+    </div>
+    <div class="character-info">
+      <h2>MIDAS</h2>
+      <p class="allegeance">Allegiance : IO, Pantheon Divin, Hors La Loi</p>
+      <p class="status">Status : Dans une réalité inconnue</p>
+      
+      <p>
+   Agent à la solde de l'Ordre imaginaire, Midas était initialement à la tête de la section Ghost chargée de superviser l'archipel ultime, mais il a été vaincu par une rébellion orchestrée par sa propre fille, Julie. Il a combattu aux côtés de l'IO dans la guerre contre les Sept, puis a enquêté sur un membre dissident qui s'est avéré travailler avec l'Ultime Réalité.
+      </p>
+      <p>
+   Après le chaos engendré par The Last Reality et la fusion Zero, Midas choisit de rejoindre le panthéon divin en tant qu'héritier lointain de la divinité de l'or. Mais il devra une nouvelle fois faire face à la chute du groupe auquel il appartient. Il échappe de justesse à l'emprise du Dr Doom, préférant fuir plutôt que de le combattre, et erre sans but pendant un certain temps.
+      </p>
+      <p>
+    Après s'être installé et avoir erré, Midas est contacté par un vieil ami, Fletcher Kane, qui souhaite former un groupe de voyous pour devenir les rois du crime. Midas, qui avait établi l'ordre et rejoint un panthéon divin, mène désormais une vie d'anarchie et de crime. Mais cela ne dure que peu de temps, car il doit affronter le seigneur suprême doré, Oro, qui apporte avec lui son âge d'or.
+      </p>
+    </div>
+  </div>
+  <section class="evolution-section">
+  <h2>Tenues</h2>
+  <div class="evolution-gallery">
+    
+    
+    <div class="evolution-item">
+      <img src="icons/outfits/midas/83.png" alt="Ghost">
+      <span>Ghost</span>
+    </div>
+    <div class="evolution-item">
+      <img src="icons/outfits/midas/84.png" alt="Agent de l'IO">
+      <span>Agent de l'IO</span>
+    </div>
+    <div class="evolution-item">
+      <img src="icons/outfits/midas/85.png" alt="Ascendant">
+      <span>Ascendant</span>
+    </div>
+    <div class="evolution-item">
+      <img src="icons/outfits/midas/86.png" alt="Hors la loi">
+      <span>Hors la loi</span>
+    </div>
+    
+   
+  </div>
+</section>
+
+</main>
+
+<div id="imageModal" class="modal">
+  <span class="close">&times;</span>
+  <span class="nav left">&#10094;</span>
+  <img class="modal-content" id="modalImg">
+  <span class="nav right">&#10095;</span>
+  <div id="caption"></div>
+</div>
+
+<script>
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImg");
+  const captionText = document.getElementById("caption");
+  const closeBtn = document.querySelector(".modal .close");
+  const navLeft = document.querySelector(".modal .nav.left");
+  const navRight = document.querySelector(".modal .nav.right");
+
+  const images = Array.from(document.querySelectorAll(".evolution-item img"));
+  let currentIndex = 0;
+
+  function showImage(index) {
+    const img = images[index];
+    modalImg.src = img.src;
+    captionText.textContent = img.alt;
+  }
+
+  images.forEach((img, index) => {
+    img.addEventListener("click", () => {
+      currentIndex = index;
+      showImage(currentIndex);
+      modal.style.display = "block";
+    });
+  });
+
+  closeBtn.onclick = () => modal.style.display = "none";
+
+  window.onclick = (event) => {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  };
+
+  navLeft.onclick = () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage(currentIndex);
+  };
+
+  navRight.onclick = () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage(currentIndex);
+  };
+
+  // Support clavier (flèches)
+  window.addEventListener("keydown", (e) => {
+    if (modal.style.display === "block") {
+      if (e.key === "ArrowLeft") navLeft.click();
+      else if (e.key === "ArrowRight") navRight.click();
+      else if (e.key === "Escape") closeBtn.click();
+    }
+  });
+</script>
+</body>
+</html>

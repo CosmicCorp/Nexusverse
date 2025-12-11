@@ -1,0 +1,1124 @@
+/* ======= BASE ======= */
+body {
+  background-color: #0d0d0d;
+  color: #e0e0e0;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.spacer {
+  height: 20px;
+}
+
+/* ======= NAVIGATION ======= */
+nav {
+  background: rgba(0, 0, 0, 0.85);
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 0 10px #00ffff55;
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  flex-wrap: wrap;
+}
+
+.logo img {
+  height: 80px;
+  width: auto;
+  transition: transform 0.3s;
+}
+
+.logo img:hover {
+  transform: scale(1.05);
+}
+
+.burger {
+  display: none;
+  font-size: 30px;
+  background: none;
+  border: none;
+  color: #00ffff;
+  cursor: pointer;
+}
+.burger:focus {
+  outline: 2px solid #00ffff;
+}
+
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #00ffff;
+  font-weight: bold;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 16px;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.nav-links li a:hover,
+.nav-links li a:focus {
+  color: #ffffff;
+  text-shadow: 0 0 10px #00ffff;
+  outline: none;
+}
+
+/* ======= MAIN ======= */
+main {
+  padding: 50px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1, h2 {
+  font-family: 'Orbitron', sans-serif;
+  color: #00ffff;
+  text-shadow: 0 0 6px #00ffff88;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #00ffff44;
+  padding-bottom: 10px;
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-top: 60px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #00ffff33;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+/* ======= SECTION NAV ======= */
+.section-nav {
+  margin: 30px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.section-nav a {
+  background: #111;
+  color: #00ffff;
+  padding: 8px 14px;
+  border-radius: 20px;
+  text-decoration: none;
+  border: 1px solid #00ffff44;
+  transition: background 0.3s, box-shadow 0.3s;
+  font-weight: bold;
+}
+
+.section-nav a:hover {
+  background: #00ffff22;
+  box-shadow: 0 0 10px #00ffff66;
+}
+
+/* ======= CHARACTER GRID ======= */
+.character-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.character-icon {
+  background-color: #1a1a1a;
+  border: 2px solid #00ffff33;
+  border-radius: 16px;
+  padding: 16px;
+  width: 180px;
+  text-align: center;
+  box-shadow: 0 0 12px #00ffff33;
+  text-decoration: none;
+  color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  animation: fadeIn 0.8s ease;
+}
+
+.character-icon:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #00ffff99;
+}
+
+.character-icon img {
+  width: 100%;
+  height: auto;
+  max-height: 180px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.character-icon span {
+  display: block;
+  font-weight: bold;
+  color: #ffa3b1;
+  font-size: 1rem;
+}
+
+/* ======= RESPONSIVE ======= */
+@media (max-width: 768px) {
+  main {
+    padding: 20px;
+  }
+
+  .burger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+    background: rgba(0, 0, 0, 0.9);
+    border-top: 1px solid #00ffff55;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links li a {
+    display: block;
+    padding: 12px 20px;
+    border-bottom: 1px solid #00ffff22;
+    text-align: left;
+  }
+
+  .character-grid {
+    gap: 20px;
+  }
+
+  .character-icon {
+    width: 140px;
+    padding: 12px;
+  }
+
+  .character-icon img {
+    max-height: 120px;
+  }
+
+  .character-icon span {
+    font-size: 0.9em;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ======= ANIMATIONS ======= */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.language-switch {
+  display: flex;
+  flex-direction: column; /* texte sous l'image */
+  align-items: center;
+  margin-left: 20px;
+}
+
+.language-switch a {
+  display: flex;
+  flex-direction: column; /* force le texte sous l'image */
+  align-items: center;
+  text-decoration: none; 
+  color: #00ffff; 
+  font-family: 'Orbitron', sans-serif;
+  font-weight: bold;
+  text-align: center;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.language-switch a:hover {
+  color: #ffffff;
+  text-shadow: 0 0 10px #00ffff;
+}
+
+.language-switch img {
+  width: 50px;  
+  height: auto;
+  border-radius: 50%;
+  margin-bottom: 5px; /* espace entre image et texte */
+}
+
+.language-switch span {
+  font-size: 0.9rem;
+}
+
+.info-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  text-align: center;
+}
+
+.info-message h1 {
+  font-family: 'Orbitron', sans-serif;
+  color: #00ffff;
+  text-shadow: 0 0 8px #00ffff88;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.info-button {
+  background: #111;
+  color: #00ffff;
+  border: 2px solid #00ffff55;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+
+.info-button:hover {
+  background: #00ffff22;
+  box-shadow: 0 0 15px #00ffff;
+  transform: scale(1.05);
+}
+
+/* === Thème doux néon pour les cartes personnages === */
+:root{
+  --cyan:#66e0e0;           /* cyan doux (reposant) */
+  --cyan-strong:#00ffff;    /* cyan accent */
+  --panel:#141718;          /* fond carte */
+  --rose-soft:#ff9aa7;      /* rose atténué */
+}
+
+/* Grille : un peu plus d'air */
+.character-grid{
+  gap:34px;
+}
+
+/* Carte */
+.character-icon{
+  background: radial-gradient(120% 120% at 50% 0%, #0f1113 0%, var(--panel) 65%);
+  border: 1.5px solid color-mix(in srgb, var(--cyan) 35%, transparent);
+  border-radius: 18px;
+  padding: 18px 18px 16px;
+  width: 210px;                           /* +large par défaut */
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,.4) inset,
+    0 10px 28px rgba(0,0,0,.45),
+    0 0 22px color-mix(in srgb, var(--cyan) 20%, transparent);
+  transform: translateY(0);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Liseré néon doux autour de la carte */
+.character-icon::before{
+  content:"";
+  position:absolute; inset:-2px;
+  border-radius:20px;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--cyan) 25%, transparent) inset,
+             0 0 32px color-mix(in srgb, var(--cyan) 18%, transparent);
+  pointer-events:none;
+  opacity:.75;
+}
+
+/* Hover/focus : légère élévation + glow */
+.character-icon:hover,
+.character-icon:focus-visible{
+  transform: translateY(-6px) scale(1.02);
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,.4) inset,
+    0 14px 36px rgba(0,0,0,.55),
+    0 0 38px color-mix(in srgb, var(--cyan-strong) 22%, transparent);
+  border-color: color-mix(in srgb, var(--cyan-strong) 40%, transparent);
+  outline: none;
+}
+
+/* Image : plus grande, mieux contenue, avec cadre subtil */
+.character-icon img{
+  display:block;
+  width:100%;
+  max-height: 220px;        /* ↑ (180px → 220px) */
+  object-fit: contain;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #0e1012, #121416);
+  padding: 6px;
+  box-shadow: 0 0 14px color-mix(in srgb, var(--cyan) 30%, transparent);
+  transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+}
+
+/* Micro zoom au survol */
+.character-icon:hover img{
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 0 22px color-mix(in srgb, var(--cyan-strong) 28%, transparent);
+  filter: saturate(1.03) contrast(1.02);
+}
+
+/* Nom : Orbitron, cyan doux, glow discret */
+.character-icon span{
+  margin-top: 12px;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  letter-spacing: .5px;
+  text-transform: none;
+  font-size: 1.02rem;
+  color: var(--cyan);
+  text-shadow: 0 0 6px color-mix(in srgb, var(--cyan) 40%, transparent),
+               0 0 14px color-mix(in srgb, var(--cyan) 20%, transparent);
+  transition: color .25s ease, text-shadow .25s ease;
+}
+
+/* Accent au hover */
+.character-icon:hover span{
+  color: color-mix(in srgb, var(--cyan) 70%, white 30%);
+  text-shadow: 0 0 10px color-mix(in srgb, var(--cyan-strong) 45%, transparent),
+               0 0 22px color-mix(in srgb, var(--cyan) 30%, transparent);
+}
+
+/* Petite barre lumineuse sous le nom */
+.character-icon span::after{
+  content:"";
+  display:block;
+  width:58px; height:3px;
+  margin:8px auto 0;
+  border-radius:3px;
+  background: linear-gradient(90deg, var(--cyan), transparent);
+  opacity:.6;
+}
+
+/* Responsive : on garde l’équilibre visuel */
+@media (max-width: 768px){
+  .character-icon{ width:160px; padding:14px; }
+  .character-icon img{ max-height:150px; }
+  .character-icon span{ font-size:.95rem; }
+}
+.character-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;  /* ✅ garde l'image en haut */
+  text-align: center;
+  box-sizing: border-box;
+  padding: 14px 12px;
+  width: 240px;                 /* 📐 carte légèrement élargie */
+  min-height: 340px;           /* 📐 hauteur mieux équilibrée */
+}
+
+.character-icon img {
+  display: block;
+  max-width: 95%;              /* ✅ image plus large */
+  max-height: 280px;           /* ✅ image plus grande */
+  object-fit: contain;
+  margin: 0 auto;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #0e1012, #121416);
+  padding: 6px;
+  box-shadow: 0 0 14px color-mix(in srgb, #66e0e0 30%, transparent);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+.character-icon:hover img {
+  transform: translateY(-2px) scale(1.05); /* 🌟 zoom doux */
+  box-shadow: 0 0 24px color-mix(in srgb, #00ffff 30%, transparent);
+  filter: saturate(1.05) contrast(1.04);
+}
+
+.character-icon span {
+  margin-top: 10px;            /* 🧭 moins d'espace sous l'image */
+  font-size: 1.05rem;
+  font-family: 'Orbitron', sans-serif;
+  color: #66e0e0;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 6px #66e0e055, 0 0 12px #66e0e033;
+}
+
+.character-icon span::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  margin: 6px auto 0;         /* ✨ réduit l’espace sous le nom */
+  border-radius: 3px;
+  background: linear-gradient(90deg, #66e0e0, transparent);
+  opacity: 0.6;
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .character-icon {
+    width: 180px;
+    min-height: 270px;
+  }
+
+  .character-icon img {
+    max-height: 200px;
+  }
+}
+.character-icon img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1150 / 1350;     /* ✅ impose un rectangle uniforme */
+  object-fit: contain;           /* ✅ garde les proportions originales */
+  background: linear-gradient(180deg, #0e1012, #121416);
+  padding: 6px;
+  border-radius: 12px;
+  margin: 0 auto;
+  box-shadow: 0 0 14px color-mix(in srgb, #66e0e0 30%, transparent);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+.character-icon {
+  width: 260px;                  /* 📐 largeur de la carte adaptée */
+  min-height: 380px;             /* 📐 hauteur adaptée au nouveau format */
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.character-icon:hover img {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 0 22px color-mix(in srgb, #00ffff 28%, transparent);
+  filter: saturate(1.05) contrast(1.03);
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .character-icon {
+    width: 200px;
+    min-height: 300px;
+  }
+
+  .character-icon img {
+    aspect-ratio: 1150 / 1350;   /* ✅ ratio conservé sur mobile */
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+  }
+
+  /* Bouton burger centré */
+  .burger {
+    display: block;
+    font-size: 34px;
+    background: none;
+    border: 2px solid #66e0e0;
+    padding: 6px 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    color: #66e0e0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .burger:hover {
+    background: rgba(102, 224, 224, 0.1);
+    box-shadow: 0 0 12px #66e0e099;
+  }
+
+  /* Conteneur des liens */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: center;              /* ✅ centre les liens */
+    width: auto;                      /* ❌ plus besoin du 100% */
+    background: rgba(0, 0, 0, 0.85);
+    border: 1px solid #66e0e022;
+    border-radius: 12px;
+    margin-top: 15px;
+    box-shadow: 0 0 20px #66e0e055;
+    padding: 12px 20px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+    margin: 8px 0;
+  }
+
+  .nav-links li a {
+    padding: 8px 0;
+    color: #66e0e0;
+    font-size: 18px;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #66e0e022;
+    text-decoration: none;
+    transition: color 0.3s, text-shadow 0.3s;
+  }
+
+  .nav-links li:last-child a {
+    border-bottom: none;
+  }
+
+  .nav-links li a:hover {
+    color: #a8ffff;
+    text-shadow: 0 0 10px #66e0e0aa;
+  }
+
+  /* Drapeau + traduction */
+  .language-switch {
+    margin-top: 15px;
+    text-align: center;
+  }
+
+  .language-switch img {
+    width: 45px;
+    box-shadow: 0 0 12px #66e0e055;
+  }
+
+  .language-switch span {
+    font-size: 0.9rem;
+    color: #66e0e0;
+  }
+}
+/* --- Fix centrage parfait du menu mobile --- */
+@media (max-width: 768px) {
+
+  /* Le conteneur du <ul> centre vraiment son contenu */
+  .nav-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;   /* centre horizontalement le <ul> */
+  }
+
+  /* Le <ul> a une largeur bornée et est centré */
+  .nav-links{
+    display: none;             /* reste contrôlé par .active */
+    flex-direction: column;
+    align-items: stretch;
+    margin: 0 auto;            /* ⬅️ centre dans .nav-container */
+    padding: 12px 20px;
+    width: min(86vw, 420px);   /* largeur fixe et centrée */
+    background: rgba(0,0,0,.85);
+    border: 1px solid #66e0e022;
+    border-radius: 14px;
+    box-shadow: 0 0 20px #66e0e055;
+  }
+  .nav-links.active{ display:flex; }
+
+  .nav-links li{ width:100%; }
+  .nav-links li a{
+    display:block;
+    padding: 14px 6px;
+    text-align: left;
+    border-bottom: 1px solid #66e0e022;
+  }
+  .nav-links li:last-child a{ border-bottom: 0; }
+
+  /* Aligne aussi les autres éléments au centre */
+  nav{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 18px 0;
+  }
+  .logo{ margin: 0 auto; }
+  .burger{ margin: 4px auto 0; }
+
+  .language-switch{
+    margin: 12px auto 0;       /* centre sous le menu */
+    align-items: center;
+  }
+}
+@media (max-width: 768px) {
+  .nav-links li a {
+    display: block;
+    padding: 14px 0;              /* 🔸 enlevé le padding gauche */
+    text-align: center;           /* ✅ centre le texte dans le bloc */
+    border-bottom: 1px solid #66e0e022;
+    color: #66e0e0;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 18px;
+    letter-spacing: 1px;
+    transition: color 0.3s, text-shadow 0.3s;
+  }
+
+  .nav-links li:last-child a {
+    border-bottom: none;
+  }
+}
+@media (max-width: 768px) {
+
+  /* 🍔 Burger compact */
+  .burger {
+    font-size: 20px;           /* ↓ icône plus petite */
+    padding: 2px 6px;          /* ↓ moins de padding autour */
+    border: 1px solid #66e0e0;
+    border-radius: 6px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+
+  /* 📐 Réduction espace vertical dans la navbar */
+  nav {
+    padding: 6px 0;
+    gap: 6px;
+  }
+
+  /* 🧭 Menu mobile */
+  .nav-links {
+    width: min(80vw, 350px);
+    padding: 8px 14px;
+    border-radius: 10px;
+  }
+
+  /* 📏 Hauteur égale pour toutes les cellules */
+  .nav-links li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;   /* ✅ texte centré horizontalement */
+    height: 45px;              /* ✅ hauteur fixe pour toutes les lignes */
+    font-size: 16px;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+    color: #66e0e0;
+    border-bottom: 1px solid #66e0e022;
+    transition: color 0.3s, text-shadow 0.3s;
+  }
+
+  .nav-links li:last-child a {
+    border-bottom: none;
+  }
+
+  .nav-links li a:hover {
+    color: #a8ffff;
+    text-shadow: 0 0 10px #66e0e0aa;
+  }
+
+  /* 🌐 Langue */
+  .language-switch img {
+    width: 28px;               /* ↓ encore plus petit */
+  }
+
+  .language-switch span {
+    font-size: 0.7rem;
+  }
+}
+/* === Mobile: burger compact + cellules égales & centrées === */
+@media (max-width: 768px){
+
+  /* Navbar + logo + burger vraiment compacts */
+  nav{ padding:4px 0 !important; gap:4px !important; }
+  .logo img{ height:40px !important; width:auto !important; }
+  .burger{
+    font-size:18px !important;
+    padding:2px 6px !important;
+    border:1px solid #66e0e0 !important;
+    border-radius:6px !important;
+    margin:4px 0 !important;
+  }
+
+  /* Le conteneur centre le panneau */
+  .nav-container{
+    width:100% !important;
+    display:flex !important;
+    justify-content:center !important;
+  }
+
+  /* Panneau du menu: largeur bornée + padding réduit */
+  .nav-container .nav-links{
+    width:min(84vw, 360px) !important;
+    padding:6px 12px !important;
+    border-radius:12px !important;
+    row-gap:0 !important;
+  }
+
+  /* Chaque ligne a EXACTEMENT la même hauteur */
+  .nav-container .nav-links li{ margin:0 !important; }
+  .nav-container .nav-links li a{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    height:48px !important;          /* ← hauteur uniforme */
+    padding:0 !important;             /* supprime la variation de padding */
+    line-height:1 !important;
+    font-size:16px !important;
+    border-bottom:1px solid rgba(102,224,224,.15) !important;
+    text-align:center !important;
+  }
+  .nav-container .nav-links li:last-child a{
+    border-bottom:none !important;
+  }
+
+  /* Switch de langue plus discret */
+  .language-switch img{ width:26px !important; }
+  .language-switch span{ font-size:.72rem !important; }
+}
+/* ===== NAVBAR DESKTOP RÉAFFINÉE ===== */
+@media (min-width: 769px){
+
+  /* Barre + glow subtil + ligne de séparation douce */
+  nav{
+    padding: 10px 28px;
+    background: rgba(8, 10, 12, 0.75);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(102,224,224,.15);
+    box-shadow:
+      0 2px 18px rgba(0,0,0,.55),
+      0 0 22px rgba(102,224,224,.10) inset;
+  }
+
+  /* Logo un peu plus compact et net */
+  .logo img{
+    height: 64px;
+    filter: drop-shadow(0 0 6px rgba(102,224,224,.35));
+    transition: transform .3s ease, filter .3s ease;
+  }
+  .logo img:hover{
+    transform: translateY(-1px) scale(1.02);
+    filter: drop-shadow(0 0 10px rgba(102,224,224,.6));
+  }
+
+  /* Liens centrés visuellement, espacement respirant */
+  .nav-links{
+    gap: 28px;
+    align-items: center;
+  }
+
+  /* Lien : état normal, focus et hover chic */
+  .nav-links li a{
+    position: relative;
+    color: #7de8d2;                /* cyan doux */
+    font-weight: 700;
+    letter-spacing: .6px;
+    text-shadow: 0 0 6px rgba(102,224,224,.3);
+    padding: 6px 4px;
+    border-radius: 6px;
+    outline: none;
+  }
+
+  /* Soulignement néon animé (hover/focus) */
+  .nav-links li a::after{
+    content:"";
+    position: absolute;
+    left: 50%;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #66e0e0, transparent);
+    box-shadow: 0 0 10px rgba(102,224,224,.55);
+    border-radius: 2px;
+    transform: translateX(-50%);
+    transition: width .25s ease;
+  }
+  .nav-links li a:hover::after,
+  .nav-links li a:focus-visible::after{
+    width: 48px;
+  }
+
+  /* État actif (page courante) via .active ou [aria-current="page"] */
+  .nav-links li a.active,
+  .nav-links li a[aria-current="page"]{
+    color: #bffaf1;
+    text-shadow:
+      0 0 10px rgba(102,224,224,.7),
+      0 0 20px rgba(102,224,224,.25);
+  }
+  .nav-links li a.active::after,
+  .nav-links li a[aria-current="page"]::after{
+    width: 58px;
+  }
+
+  /* Switch de langue à droite, aligné visuellement */
+  .language-switch{
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin-left: 18px;
+  }
+  .language-switch img{
+    width: 28px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(102,224,224,.35);
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .language-switch img:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 0 14px rgba(102,224,224,.55);
+  }
+  .language-switch a{
+    color: #7de8d2;
+    font-weight: 700;
+    letter-spacing: .4px;
+  }
+  .language-switch a:hover{
+    color: #bffaf1;
+    text-shadow: 0 0 10px rgba(102,224,224,.6);
+  }
+
+  /* Accessibilité : focus visible propre */
+  .nav-links li a:focus-visible{
+    box-shadow: 0 0 0 2px rgba(102,224,224,.35);
+    border-radius: 8px;
+  }
+}
+/* ===== NAVBAR MOBILE (<=768px) AFFINÉE ===== */
+@media (max-width: 768px){
+
+  /* Barre compacte + glow discret */
+  nav{
+    background: rgba(8,10,12,.8);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(102,224,224,.14);
+    box-shadow: 0 2px 16px rgba(0,0,0,.55);
+    padding: 8px 0;
+    gap: 8px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Logo réduit */
+  .logo img{
+    height: 44px;
+    width: auto;
+    filter: drop-shadow(0 0 6px rgba(102,224,224,.35));
+  }
+
+  /* Burger compact + survol doux */
+  .burger{
+    font-size: 18px;
+    line-height: 1;
+    padding: 2px 8px;
+    border: 1px solid #66e0e0;
+    border-radius: 6px;
+    color: #66e0e0;
+    background: transparent;
+    transition: box-shadow .2s ease, transform .2s ease, color .2s ease;
+  }
+  .burger:hover{ 
+    color: #bffaf1;
+    box-shadow: 0 0 12px rgba(102,224,224,.45);
+    transform: translateY(-1px);
+  }
+
+  /* Conteneur qui centre le panneau */
+  .nav-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Panneau du menu : largeur bornée + animation d’ouverture */
+  .nav-links{
+    /* structure */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    /* centrage/taille */
+    width: clamp(260px, 82vw, 360px);
+    margin: 0 auto;
+    padding: 10px 14px;
+    border-radius: 12px;
+
+    /* style */
+    background: rgba(0,0,0,.86);
+    border: 1px solid rgba(102,224,224,.14);
+    box-shadow: 0 10px 28px rgba(0,0,0,.45),
+                0 0 24px rgba(102,224,224,.12);
+
+    /* animation (panel fermé par défaut : caché via JS en retirant .active) */
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-6px) scale(.98);
+    transition: opacity .22s ease, transform .22s ease;
+  }
+  .nav-links.active{
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+  }
+
+  /* Lignes de menu : même hauteur + texte centré */
+  .nav-links li{ margin: 0; }
+  .nav-links li + li{ border-top: 1px solid rgba(102,224,224,.12); }
+
+  .nav-links li a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;                 /* ← même hauteur pour toutes les cellules */
+    padding: 0;
+    text-align: center;
+
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    letter-spacing: .6px;
+    font-size: 16px;
+
+    color: #7de8d2;               /* cyan doux */
+    text-decoration: none;
+    text-shadow: 0 0 6px rgba(102,224,224,.28);
+    transition: color .2s ease, text-shadow .2s ease;
+  }
+  .nav-links li a:hover,
+  .nav-links li a:focus-visible{
+    color: #bffaf1;
+    text-shadow: 0 0 10px rgba(102,224,224,.55);
+    outline: none;
+  }
+
+  /* État actif (page courante) */
+  .nav-links li a.active,
+  .nav-links li a[aria-current="page"]{
+    color: #bffaf1;
+    text-shadow: 0 0 10px rgba(102,224,224,.7), 0 0 20px rgba(102,224,224,.25);
+  }
+
+  /* Sélecteur de langue compact, centré */
+  .language-switch{
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .language-switch img{
+    width: 28px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(102,224,224,.35);
+  }
+  .language-switch span{
+    font-size: .78rem;
+    color: #7de8d2;
+    font-weight: 700;
+    letter-spacing: .4px;
+  }
+}
+@media (max-width: 768px) {
+
+  /* Style de base du menu */
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: clamp(260px, 82vw, 360px);
+    margin: 0 auto;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.86);
+    border: 1px solid rgba(102,224,224,.14);
+    box-shadow: 0 10px 28px rgba(0,0,0,.45), 0 0 24px rgba(102,224,224,.12);
+
+    /* ✅ Menu fermé par défaut */
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+  }
+
+  /* ✅ Menu ouvert */
+  .nav-links.active {
+    max-height: 300px; /* ← Ajuste selon le nombre d’éléments */
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .nav-links li {
+    margin: 0;
+  }
+
+  .nav-links li + li {
+    border-top: 1px solid rgba(102,224,224,.12);
+  }
+
+  .nav-links li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.6px;
+    color: #7de8d2;
+    text-decoration: none;
+    text-shadow: 0 0 6px rgba(102,224,224,.28);
+    transition: color 0.2s ease, text-shadow 0.2s ease;
+  }
+
+  .nav-links li a:hover {
+    color: #bffaf1;
+    text-shadow: 0 0 10px rgba(102,224,224,.55);
+  }
+
+  /* Burger compact */
+  .burger {
+    font-size: 18px;
+    line-height: 1;
+    padding: 2px 8px;
+    border: 1px solid #66e0e0;
+    border-radius: 6px;
+    color: #66e0e0;
+    background: transparent;
+    cursor: pointer;
+    transition: box-shadow .2s ease, transform .2s ease, color .2s ease;
+  }
+
+  .burger:hover {
+    color: #bffaf1;
+    box-shadow: 0 0 12px rgba(102,224,224,.45);
+    transform: translateY(-1px);
+  }
+
+  .language-switch img {
+    width: 28px;
+  }
+
+  .language-switch span {
+    font-size: .78rem;
+  }
+}
+
+
+

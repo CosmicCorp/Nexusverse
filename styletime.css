@@ -1,0 +1,128 @@
+/* ======== BASE ======== */
+body {
+  background-color: #0d0d0d;
+  color: #e0e0e0;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  color: #00ffff;
+  margin-bottom: 60px;
+}
+
+/* ======== NAVBAR ======== */
+nav {
+  background: rgba(0, 0, 0, 0.85);
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 10px #00ffff55;
+  backdrop-filter: blur(6px);
+}
+
+.logo img {
+  height: 80px;
+  width: auto;
+}
+
+/* ======== TIMELINE ======== */
+.timeline {
+  position: relative;
+  padding: 20px 0;
+  margin: 0 auto;
+  border-left: 2px solid #00ffff44;
+}
+
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 20px 40px;
+  box-sizing: border-box;
+}
+
+.timeline-item .content {
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid #00ffff33;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px #00ffff44;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.timeline-item .content:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 25px #00ffff88;
+}
+
+.timeline-item.left {
+  left: 0;
+}
+
+.timeline-item.right {
+  left: 50%;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  top: 30px;
+  width: 20px;
+  height: 20px;
+  background: #ff003c;
+  border-radius: 50%;
+  border: 3px solid #00ffffaa;
+  z-index: 1;
+}
+
+.timeline-item.left::before {
+  right: -10px;
+}
+
+.timeline-item.right::before {
+  left: -10px;
+}
+
+/* ======== TITRES ======== */
+.timeline-item h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 24px;
+  color: #00ffff;
+  margin-bottom: 10px;
+}
+
+.timeline-item p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #e0e0e0;
+}
+
+/* ======== RESPONSIVE ======== */
+@media (max-width: 768px) {
+  .timeline {
+    border: none;
+  }
+
+  .timeline-item {
+    width: 100%;
+    padding: 20px 20px;
+  }
+
+  .timeline-item.left,
+  .timeline-item.right {
+    left: 0;
+  }
+
+  .timeline-item::before {
+    left: calc(50% - 10px);
+  }
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>NexusVerse</title>
+  <link rel="icon" type="image/svg+xml" href="icons/N.svg">
+  <link rel="stylesheet" href="style2.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <a href="index.html">
+        <img src="icons/logo.png" alt="NEXUS LOGO">
+      </a>
+    </div>
+    <button class="burger" aria-label="Menu">&#9776;</button>
+
+    <div class="nav-container">
+      <ul class="nav-links">
+        <li><a href="index.html">Personnages</a></li>
+        <li><a href="infos.html">Saisons</a></li>
+        
+        <li><a href="news.html">Actus</a></li>
+        <li><a href="updates.html">Calendrier</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <div class="info-message">
+      <h1>Cette section n'est pas disponible en français pour l'instant , revenez plus tard !</h1>
+      <a href="index.html" class="info-button">Retourner au menu</a>
+    </div>
+  </main>
+
+  <script>
+    const burger = document.querySelector('.burger');
+    const navLinks = document.querySelector('.nav-links');
+
+    burger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cosmic Corp — À propos</title>
+  <link rel="icon" type="image/png" href="logo cosmic.png" />
+  <link rel="stylesheet" href="style2.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    /* Petits compléments légers pour la page À propos (en gardant le thème existant) */
+    .hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px 10px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 30px;
+      align-items: center;
+    }
+    .hero h1 { margin-bottom: 10px; }
+    .hero p { margin: 0; font-size: 1.05rem; opacity: .95; }
+    .hero .brand-mark {
+      display: flex; justify-content: center; align-items: center;
+      background: #111; border: 2px solid #00ffff55; border-radius: 18px;
+      padding: 20px; box-shadow: 0 0 12px #00ffff33;
+    }
+    .hero .brand-mark img { width: 100%; height: auto; max-width: 420px; }
+
+    .about-section { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
+    .about-lead { font-size: 1.05rem; opacity: .95; }
+
+    .pill {
+      display:inline-block; padding:6px 12px; border:1px solid #00ffff44; border-radius:999px;
+      color:#00ffff; text-decoration:none; font-weight:700; font-family:'Orbitron', sans-serif;
+    }
+
+    .grid-2 { display:grid; grid-template-columns: repeat(2, 1fr); gap:20px; }
+    .cta-box { background:#111; border:2px solid #00ffff55; border-radius:20px; padding:20px; text-align:center; }
+    .cta-box p { margin-bottom:14px; }
+
+    @media (max-width: 900px){ .hero{ grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav>
+  <div class="logo">
+    
+    <a href="index.html">
+      <img src="icons/logo.png" alt="NEXUS LOGO">
+    </a>
+  </div>
+  <button class="burger" aria-label="Menu">
+  &#9776;
+</button>
+
+  <div class="nav-container">
+  <ul class="nav-links">
+    <li><a href="index.html">Personnages</a></li>
+    <li><a href="infos.html">Saisons</a></li>
+    <!--li><a href="tcg/index.php">Card Game</a></li-->
+    <li><a href="news.html">Actus</a></li>
+  </ul>
+</div>
+  
+
+  </nav>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <h1>À propos de <span style="color:#00ffff">nous</span></h1>
+        <p class="about-lead">
+          Nous sommes un studio créatif & technologique qui fusionne design futuriste, narration immersive et innovation numérique pour donner vie à des univers interactifs.
+
+🌐 Nous ne créons pas de simples sites web.
+Nous ouvrons des portails vers des mondes vivants.
+        </p>
+        <p class="about-lead">
+          
+        </p>
+        <div class="spacer"></div>
+        
+      </div>
+      <div class="brand-mark">
+        <img src="icons/logo cosmic.png" alt="Emblème Cosmic Corp" />
+      </div>
+    </section>
+
+    <!-- MISSION -->
+    
+    <!-- ÉQUIPE -->
+    <!--section id="equipe" class="about-section">
+      <h2>Équipe</h2>
+      <p class="about-lead">Structure agile — profils créatifs et techniques, selon les besoins du projet.</p>
+      <div class="character-grid">
+        <div class="character-icon">
+          <img src="https://dummyimage.com/600x600/1a1a1a/ffffff&text=AM" alt="Profil" />
+          <span>Direction Créative</span>
+          <small>Direction artistique, branding, narration.</small>
+        </div>
+        <div class="character-icon">
+          <img src="https://dummyimage.com/600x600/1a1a1a/ffffff&text=FD" alt="Profil" />
+          <span>Dév. Full‑Stack</span>
+          <small>Architecture PHP/MySQL, intégrations & sécurité.</small>
+        </div>
+        <div class="character-icon">
+          <img src="https://dummyimage.com/600x600/1a1a1a/ffffff&text=UX" alt="Profil" />
+          <span>UI/UX</span>
+          <small>Prototypage, accessibilité, responsive.</small>
+        </div>
+      </div>
+    </section-->
+
+    <!-- CONTACT / CTA -->
+    <section id="contact" class="about-section">
+      <h2>Contact</h2>
+      <div class="grid-2">
+        <div class="cta-box">
+          <p>Vous avez une idée, un univers à mettre en scène, ou besoin d'un site performant ?</p>
+          <a class="info-button" href="mailto:contact@cosmiccorp.example">contact@cosmiccorp.example</a>
+        </div>
+        <div class="cta-box">
+          <p>Préférez un brief rapide ?</p>
+          <a class="pill" href="#" onclick="alert('Formulaire bientôt disponible.');return false;">Ouvrir le mini‑brief</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Burger menu (repris de votre page)
+    const burger = document.querySelector('.burger');
+    const navLinks = document.querySelector('.nav-links');
+    burger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('active'));
+    });
+  </script>
+</body>
+</html>
