@@ -12,7 +12,7 @@ const pages = [
     "art1/51.png", "art1/52.png", "art1/53.png", "art1/54.png", "art1/55.png",
     "art1/56.png", "art1/57.png", "art1/58.png", "art1/59.png", "art1/60.png",
     "art1/61.png", "art1/62.png", "art1/63.png", "art1/64.png", "art1/65.png",
-    "art1/66.png", "art1/67.png", "art1/68.png", "art1/69.png"
+    "art1/66.png", "art1/67.png", "art1/68.png", "art1/69.png","art1/70.png","art1/71.png"
 ];
 
 let currentIndex = 0;
