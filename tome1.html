@@ -315,6 +315,7 @@ body, html {
 /* ======= RESPONSIVE ======= */
 @media (max-width: 1050px) {
     .spread-container {
+        /* On commence à passer en colonne, mais le leftFrame est encore là */
         flex-direction: column;
     }
     .page-frame {
@@ -327,18 +328,26 @@ body, html {
     }
 }
 
+/* POINT DE RUPTURE MOBILE : Masquer la page de gauche et forcer l'affichage simple */
 @media (max-width: 900px) {
+    /* *** CORRECTION: Assurer que leftFrame est masqué sur mobile *** */
     #leftFrame {
         display: none !important;
     }
+    
+    /* Assurer que le conteneur est en colonne */
     .spread-container {
         flex-direction: column !important;
     }
+    
+    /* Ajuster la taille de la page unique pour le mobile */
     .page-frame {
         height: 78vh !important;
         width: 92vw !important;
         max-width: 92vw !important;
     }
+    
+    /* Retirer le séparateur central s'il restait */
     .spread-container.has-two::after {
         display: none !important;
     }
@@ -400,18 +409,16 @@ body, html {
       
 <div class="spacer"></div>
 
-<div class="page-indicator" id="pageIndicator">Page 1 / 55</div>
-    <!-- Flèches navigation -->
+<div class="page-indicator" id="pageIndicator">Page 1 / 103</div>
     <div class="arrow-nav">
         <button id="prevPage" class="arrow-btn">◄</button>
         <button id="nextPage" class="arrow-btn">►</button>
 
     </div>
 <div class="book-nav">
-    <!-- Barre : Aller à une page -->
- <div class="goto-page">
+    <div class="goto-page">
     <div class="input-field-wrapper"> 
-        <input type="number" id="gotoInput" min="1" max="9999" placeholder="Pages">
+        <input type="number" id="gotoInput" min="1" max="103" placeholder="Pages">
         
         <div class="input-arrows">
             <button id="pageUp" class="up"></button> <button id="pageDown" class="down"></button> </div>
@@ -420,7 +427,6 @@ body, html {
     <button id="gotoBtn" class="book-btn">ALLER</button>
 </div>
     </div>
-    <!-- Plein écran -->
     <button class="fullscreen-btn" id="toggleFull">MODE PLEIN ÉCRAN</button>
 
 </div>
@@ -433,14 +439,14 @@ body, html {
 
   <script>
     document.getElementById("pageUp").addEventListener("click", () => {
-  const inp = document.getElementById("gotoInput");
-  inp.value = Math.min(pages.length, Number(inp.value || 1) + 1);
-});
+    const inp = document.getElementById("gotoInput");
+    inp.value = Math.min(pages.length, Number(inp.value || 1) + 1);
+  });
 
-document.getElementById("pageDown").addEventListener("click", () => {
-  const inp = document.getElementById("gotoInput");
-  inp.value = Math.max(1, Number(inp.value || 1) - 1);
-});
+  document.getElementById("pageDown").addEventListener("click", () => {
+    const inp = document.getElementById("gotoInput");
+    inp.value = Math.max(1, Number(inp.value || 1) - 1);
+  });
 
   const pages = [
     "tome1/1.png", "tome1/2.png", "tome1/3.png", "tome1/4.png", "tome1/5.png",
@@ -476,9 +482,20 @@ document.getElementById("pageDown").addEventListener("click", () => {
   const indicator = document.getElementById("pageIndicator");
   const spread = document.getElementById("spread");
   const toggleBtn = document.getElementById("toggleFull");
+  const gotoInput = document.getElementById("gotoInput");
+
+  // Mettre à jour le max de l'input au chargement
+  gotoInput.max = pages.length;
+  // Mettre à jour l'indicateur de page au chargement
+  indicator.textContent = `Page 1 / ${pages.length}`;
+
 
   function normalizedLeftIndex(index) {
     if (index <= 0) return 0;
+    // Retourne l'index de la page de gauche (doit toujours être un index pair sauf si index=0)
+    // Exemple: index 1 -> 1 (page 2)
+    // Exemple: index 2 -> 1 (page 2)
+    // Exemple: index 3 -> 3 (page 4)
     return (index % 2 === 1) ? index : index - 1;
   }
 function saveBookmark() {
@@ -498,7 +515,7 @@ function loadBookmark() {
 
 
 document.getElementById("gotoBtn").addEventListener("click", () => {
-  const value = parseInt(document.getElementById("gotoInput").value, 10);
+  const value = parseInt(gotoInput.value, 10);
 
   if (isNaN(value)) return;
   if (value < 1 || value > pages.length) return;
@@ -514,16 +531,21 @@ document.getElementById("gotoBtn").addEventListener("click", () => {
 });
 
 // Permet "Entrée" dans l’input
-document.getElementById("gotoInput").addEventListener("keydown", (e) => {
+gotoInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") document.getElementById("gotoBtn").click();
 });
+
   function renderSpread() {
-    const isMobile = window.innerWidth < 900;
+    // Vérification de la largeur pour le mode mobile (même seuil que le CSS)
+    const isMobile = window.innerWidth < 900; 
     currentIndex = Math.max(0, Math.min(currentIndex, pages.length - 1));
 
     if (isMobile) {
+      // --- MODE MOBILE : Une seule page sur rightFrame ---
       leftFrame.style.display = "none";
       spread.classList.remove("has-two");
+
+      rightFrame.style.display = "flex"; // Assure que la page de droite est visible
 
       rightImg.src = pages[currentIndex];
       rightImg.alt = "Page " + (currentIndex + 1);
@@ -532,11 +554,18 @@ document.getElementById("gotoInput").addEventListener("keydown", (e) => {
       return;
     }
 
+    // --- MODE DESKTOP : Double page (ou page de couverture seule) ---
+    
+    // Réinitialiser le style de leftFrame pour le mode desktop (important!)
+    leftFrame.style.display = "flex";
+
     if (currentIndex === 0) {
+      // Page de couverture seule
       leftFrame.style.display = "none";
       spread.classList.remove("has-two");
 
       rightImg.src = pages[0];
+      rightImg.alt = "Page 1";
       indicator.textContent = `Page 1 / ${pages.length}`;
       return;
     }
@@ -544,101 +573,115 @@ document.getElementById("gotoInput").addEventListener("keydown", (e) => {
     const leftIndex = normalizedLeftIndex(currentIndex);
     const rightIndex = leftIndex + 1;
 
-    leftFrame.style.display = "flex";
+    // A partir de la page 2, on est toujours en double spread sur desktop
     spread.classList.add("has-two");
 
     leftImg.src = pages[leftIndex];
     leftImg.alt = "Page " + (leftIndex + 1);
 
     if (rightIndex < pages.length) {
+      // Double page normale
       rightImg.src = pages[rightIndex];
       rightImg.alt = "Page " + (rightIndex + 1);
+      rightFrame.style.display = "flex"; // Assurer que la page de droite est là
       indicator.textContent = `Pages ${leftIndex + 1}-${rightIndex + 1} / ${pages.length}`;
     } else {
-      rightImg.src = "";
+      // Dernière page seule (page impaire à la fin)
+      rightImg.src = ""; // Vider la page de droite
       rightImg.alt = "";
+      rightFrame.style.display = "flex";
       indicator.textContent = `Page ${leftIndex + 1} / ${pages.length}`;
     }
   }
 
-  function addFlipAnimation() {
-    leftImg.classList.remove("flip-left");
-    rightImg.classList.remove("flip-right");
-    void leftImg.offsetWidth;
-    void rightImg.offsetWidth;
-    leftImg.classList.add("flip-left");
-    rightImg.classList.add("flip-right");
+  function addFlipAnimation(direction = 'next') {
+    leftImg.classList.remove("flip-left", "flip-right");
+    rightImg.classList.remove("flip-left", "flip-right");
+    void leftImg.offsetWidth; // Force le reflow
+
+    if (direction === 'next') {
+        leftImg.classList.add("flip-left");
+        rightImg.classList.add("flip-right");
+    } else {
+        leftImg.classList.add("flip-right");
+        rightImg.classList.add("flip-left");
+    }
   }
 
   document.getElementById("nextPage").addEventListener("click", () => {
     const isMobile = window.innerWidth < 900;
+    let nextPage;
 
     if (isMobile) {
-      if (currentIndex < pages.length - 1) {
-        currentIndex++;
-        addFlipAnimation();
-        setTimeout(() => { renderSpread(); saveBookmark(); }, 160);
-
+      nextPage = currentIndex + 1;
+      if (nextPage < pages.length) {
+          currentIndex = nextPage;
+          addFlipAnimation('next');
+          setTimeout(() => { renderSpread(); saveBookmark(); }, 160);
       }
       return;
     }
 
+    // Desktop
     if (currentIndex === 0) {
-      if (pages.length > 1) {
-        currentIndex = 1;
-        addFlipAnimation();
-        setTimeout(() => { renderSpread(); saveBookmark(); }, 160);
-
-      }
-      return;
+      nextPage = 1;
+    } else {
+      const leftIndex = normalizedLeftIndex(currentIndex);
+      nextPage = leftIndex + 2;
     }
 
-    const leftIndex = normalizedLeftIndex(currentIndex);
-    const nextLeft = leftIndex + 2;
-
-    if (nextLeft < pages.length) {
-      currentIndex = nextLeft;
-      addFlipAnimation();
-      setTimeout(renderSpread, 160);
-    } else if (leftIndex + 1 < pages.length) {
-      currentIndex = pages.length - 1;
-      addFlipAnimation();
+    if (nextPage < pages.length) {
+      currentIndex = nextPage;
+      addFlipAnimation('next');
       setTimeout(() => { renderSpread(); saveBookmark(); }, 160);
-
+    } else if (currentIndex < pages.length - 1) {
+      // Gestion du cas où il ne reste qu'une seule page à afficher
+      currentIndex = pages.length - 1;
+      addFlipAnimation('next');
+      setTimeout(() => { renderSpread(); saveBookmark(); }, 160);
     }
   });
 
   document.getElementById("prevPage").addEventListener("click", () => {
     const isMobile = window.innerWidth < 900;
+    let prevPage;
 
     if (isMobile) {
-      if (currentIndex > 0) {
-        currentIndex--;
-        addFlipAnimation();
+      prevPage = currentIndex - 1;
+      if (prevPage >= 0) {
+        currentIndex = prevPage;
+        addFlipAnimation('prev');
         setTimeout(() => { renderSpread(); saveBookmark(); }, 160);
-
       }
       return;
     }
 
-    if (currentIndex === 0) return;
-
-    if (currentIndex === 1) {
-      currentIndex = 0;
-      addFlipAnimation();
-      setTimeout(() => { renderSpread(); saveBookmark(); }, 160);
-
-      return;
+    // Desktop
+    if (currentIndex <= 1) {
+      prevPage = 0;
+    } else {
+      const leftIndex = normalizedLeftIndex(currentIndex);
+      prevPage = Math.max(0, leftIndex - 2);
     }
 
-    const leftIndex = normalizedLeftIndex(currentIndex);
-    const prevLeft = Math.max(1, leftIndex - 2);
-
-    currentIndex = prevLeft;
-    addFlipAnimation();
-    setTimeout(() => { renderSpread(); saveBookmark(); }, 160);
-
+    if (prevPage >= 0) {
+      currentIndex = prevPage;
+      addFlipAnimation('prev');
+      setTimeout(() => { renderSpread(); saveBookmark(); }, 160);
+    }
   });
+  
+  // Gestion des touches du clavier pour naviguer
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ') {
+      document.getElementById('nextPage').click();
+    } else if (e.key === 'ArrowLeft' || e.key === 'Backspace') {
+      document.getElementById('prevPage').click();
+    } else if (e.key === 'f' || e.key === 'F') {
+      document.getElementById('toggleFull').click();
+    }
+  });
+
 
   window.addEventListener("resize", () => {
     clearTimeout(window._resizeTimer);
@@ -650,13 +693,16 @@ document.getElementById("gotoInput").addEventListener("keydown", (e) => {
     toggleBtn.textContent = document.body.classList.contains("fullpage")
       ? "Quitter plein écran"
       : "Mode plein écran";
+      
+    // Après le changement d'état, on redessine l'affichage pour appliquer les nouvelles tailles
+    setTimeout(renderSpread, 50); 
   }
 
   toggleBtn.addEventListener("click", toggleFull);
 
   loadBookmark();
-renderSpread();
-saveBookmark();
+  renderSpread();
+  saveBookmark();
 
 </script>
 
