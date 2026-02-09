@@ -2,74 +2,97 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Actus</title>
-  <link rel="icon" type="image/svg+xml" href="icons/N.svg">
-  <link rel="stylesheet" href="style3.css">
-  <link rel="stylesheet" href="style2.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&display=swap" rel="stylesheet">
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus - Actualités</title>
+  <link rel="icon" type="image/svg+xml" href="icons/N.svg">
+  <link rel="stylesheet" href="style-news.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
   <nav>
-  <div class="logo">
+    <div class="logo">
+      <a href="index.html">
+        <img src="icons/logo.png" alt="NEXUS LOGO">
+      </a>
+    </div>
     
-    <a href="index.html">
-      <img src="icons/logo.png" alt="NEXUS LOGO">
-    </a>
-  </div>
-  <button class="burger" aria-label="Menu">
-  &#9776;
-</button>
+    <button class="burger" aria-label="Menu">
+      &#9776;
+    </button>
 
-  <div class="nav-container">
-  <ul class="nav-links">
-    <!--li><a href="index.html">Personnages</a></li-->
-    <li><a href="index.html">Bibliothèque</a></li>
-    <!--li><a href="tcg/index.php">Card Game</a></li-->
-    <li><a href="news.html">Actus</a></li>
-    <!--li><a href="updates.html">Calendrier</a></li-->
+    <div class="nav-container">
+      <ul class="nav-links">
+        <li><a href="characters.html">Personnages</a></li>
+        <li><a href="index.html">Bibliothèque</a></li>
+        
+        <li><a href="archives.html">Archives</a></li>
+
+        <li><a href="news.html">Actus</a></li>
+      </ul>
+    </div>
     
-  </ul>
-</div>
-  <div class="language-switch">
-    <a href="../news.html">
-      <img src="" alt="">
-      <span></span>
-    </a>
-  </div>
-
-  </nav>
+    </nav>
 
   <main>
-    <h1>Actus</h1>
+    <header class="page-header reveal">
+      <h1>Actualités du Nexus</h1>
+      <p>Les dernières mises à jour, sorties et annonces de l'omnivers.</p>
+    </header>
 
-    <section class="news-section">
-      <div class="news-card">
-        <img src="news/tome1.png" alt="Nouvelle 2">
-        <div class="news-content">
-          <h2>Tome 1 disponible !</h2>
-          <p>L'aventure du Clan du Soleil débute dans le tome 1 de Nexus ! 
-            Découvriront ils les mystèrent que cachent l'île d'Orion ?
-           </p>
-          <span class="news-date">12 Décembre 2025</span>
-        </div>
-      </div>
+    <section class="news-grid reveal">
       
-      </div>
+<article class="news-card">
+  <div class="news-image">
+    <img src="news/tome1.png" alt="Couverture Tome 1" loading="lazy">
+  </div>
+  <div class="news-content">
+    <div class="news-meta">
+      <span class="news-date">12 Décembre 2025</span>
+      <span class="news-tag">Sortie</span>
+    </div>
+    <h2>Le Tome 1 est disponible !</h2>
+    <p>L'aventure du Clan du Soleil débute enfin. Découvrez les mystères cachés de l'île d'Orion...</p>
+    
+    <button class="news-button open-modal" 
+       data-title="Le Tome 1 est disponible !" 
+       data-date="12 Décembre 2025"
+       data-img="news/tome1.png"
+       data-full-text="L'attente est terminée. Le premier volume de la saga Nexus est enfin disponible. <br><br> Dans ce premier opus, suivez l'ascension du Clan du Soleil face aux menaces grandissantes de l'île d'Orion. Entre mystères, alliances et découverte de pouvoirs anciens, les héros devront faire face à des évenements qui les dépasses.<br><br>Disponible dès maintenant dans la Bibliothèque !">
+       Lire l'article
+    </button>
+
+  </div>
+</article>
+      
       
     </section>
   </main>
-<script>
-  const burger = document.querySelector('.burger');
-  const navLinks = document.querySelector('.nav-links');
 
-  burger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-  });
-</script>
+  <footer class="legal-footer reveal">
+    <p>© 2026 NexusVerse · Projet fan-made non officiel</p>
+  </footer>
+
+  <script src="script-news.js"></script>
+  <div id="article-modal" class="modal-overlay">
+    <div class="modal-container">
+      <button class="modal-close">&times;</button>
+      
+      <div class="modal-header">
+        <img id="modal-img" src="" alt="">
+        <div class="modal-title-overlay">
+          <span id="modal-date"></span>
+          <h2 id="modal-title"></h2>
+        </div>
+      </div>
+      
+      <div class="modal-body">
+        <p id="modal-text"></p>
+        <a href="index.html" class="modal-action-btn">Voir la page dédiée</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="script-news.js"></script>
 </body>
 </html>

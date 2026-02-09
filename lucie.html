@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus - Lucie</title>
+  <link rel="icon" type="image/svg+xml" href="icons/N.svg">
+  <link rel="stylesheet" href="style-char-detail.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <a href="characters.html">
+        <img src="icons/logo.png" alt="NEXUS LOGO">
+      </a>
+    </div>
+    <button class="burger" aria-label="Menu">&#9776;</button>
+    <div class="nav-container">
+      <ul class="nav-links">
+        <li><a href="characters.html">Personnages</a></li>
+        <li><a href="index.html">Bibliothèque</a></li>
+        <li><a href="archives.html">Archives</a></li>
+        <li><a href="news.html">Actus</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <a href="characters.html" class="back-btn">← Retour au Nexus</a>
+
+    <div class="char-wrapper reveal">
+      
+      <div class="char-visual">
+        <div class="char-bg"></div>
+        <img src="icons/big/lucie.png" alt="Lucie" class="main-img">
+      </div>
+
+      <div class="char-data">
+        <header class="char-header">
+          <h1>Lucie</h1>
+          <div class="tags">
+            <span class="tag faction">Clan du Soleil</span>
+            <span class="tag status">Vivante</span>
+          </div>
+        </header>
+
+        <section class="bio-section">
+          <h3>// Archives Biographiques</h3>
+          
+          <p class="bio-text">
+            <strong>L'Espionne de Tilted</strong><br>
+            Citadine au look décontracté (mèche violette et tatouages dorés), Lucie vivait à Tilted Towers avec son frère jumeau, Denver. Derrière son apparence insouciante se cache une experte en reliques et une hackeuse de talent. Surnommée "la petite fouineuse" par Harper, elle est la seule à avoir réussi l'impossible : infiltrer les bases souterraines de l'Institut Onirique.
+          </p>
+          
+          <p class="bio-text">
+            <strong>Les Secrets de l'Institut</strong><br>
+            En se faisant passer pour une agente, elle a volé des informations cruciales sur le "Point Zéro", confirmant les légendes du grand-père d'Harper. C'est elle qui a identifié l'amulette de Barret comme un traqueur d'énergie instable, apportant au groupe la connaissance technique qui leur manquait cruellement.
+          </p>
+
+          <p class="bio-text">
+            <strong>Cendres et Résilience</strong><br>
+            La guerre des Monarques lui a tout pris. Lors de l'éruption du volcan en plein cœur de la ville, son appartement a été pulvérisé et Denver a disparu dans le chaos. Marquée par cette perte mais refusant de sombrer, elle a transformé sa douleur en rage de vaincre, jurant de percer les mystères de l'île pour retrouver son frère.
+          </p>
+        </section>
+
+        <section class="evolution-section">
+          <h3>// Variantes Visuelles</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item">
+              <img src="icons/outfits/lucy/33.png" 
+                   alt="Civile intrépide" 
+                   data-caption="Civile intrépide" 
+                   class="gallery-trigger">
+            </div>
+            
+            
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="legal-footer reveal">
+    <p>© 2026 NexusVerse · Fiche de données classifiée</p>
+  </footer>
+
+  <div id="imgModal" class="modal-overlay">
+    <span class="modal-close">&times;</span>
+    <button class="modal-nav prev" aria-label="Précédent">&#10094;</button>
+    <button class="modal-nav next" aria-label="Suivant">&#10095;</button>
+
+    <div class="modal-card">
+      <div class="modal-img-wrapper">
+        <img id="modalImg" src="" alt="Visuel variante">
+        <div class="scan-overlay"></div>
+      </div>
+      <div id="caption"></div>
+    </div>
+  </div>
+
+  <script src="script-char-detail.js"></script>
+</body>
+</html>

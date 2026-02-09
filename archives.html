@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus - Archives</title>
+  <link rel="icon" type="image/svg+xml" href="icons/N.svg">
+  <link rel="stylesheet" href="style-char-detail.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* --- STYLES SPÉCIFIQUES HUB ARCHIVES --- */
+    
+    /* Conteneur principal grille */
+    .archives-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+      margin-top: 50px;
+    }
+
+    /* --- CARTE D'ARCHIVE GÉNÉRIQUE --- */
+    .archive-card {
+      position: relative;
+      background: rgba(20, 24, 30, 0.6);
+      border-radius: 15px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      display: flex; flex-direction: column;
+      height: 500px;
+      text-decoration: none; /* Pour les liens */
+    }
+
+    /* Image de fond de la carte */
+    .card-bg-img {
+      width: 100%; height: 60%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      filter: brightness(0.7);
+    }
+
+    /* Contenu texte en bas */
+    .card-content {
+      padding: 25px;
+      flex-grow: 1;
+      display: flex; flex-direction: column;
+      justify-content: space-between;
+      background: linear-gradient(to top, rgba(11, 12, 16, 0.95), rgba(11, 12, 16, 0.8));
+      border-top: 1px solid rgba(255,255,255,0.1);
+      position: relative; z-index: 2;
+    }
+
+    .card-title {
+      font-family: var(--font-title); font-size: 1.8rem; color: var(--white);
+      margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px;
+    }
+
+    .card-subtitle {
+      font-family: var(--font-body); font-size: 0.9rem; color: #888;
+      margin-bottom: 15px;
+    }
+
+    /* Étiquette de Status */
+    .status-badge {
+      display: inline-block; padding: 5px 12px;
+      font-family: var(--font-title); font-size: 0.7rem; letter-spacing: 1px;
+      text-transform: uppercase; border-radius: 4px; border: 1px solid;
+      margin-bottom: 10px;
+    }
+
+    /* --- STYLE : DÉVERROUILLÉ (TOME 1) --- */
+    .archive-card.unlocked {
+      border-color: rgba(77, 238, 234, 0.3);
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      cursor: pointer;
+    }
+
+    .archive-card.unlocked .status-badge {
+      color: var(--nexus-cyan); border-color: var(--nexus-cyan);
+      background: rgba(77, 238, 234, 0.1);
+    }
+
+    .archive-card.unlocked:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 30px rgba(77, 238, 234, 0.2);
+      border-color: var(--nexus-cyan);
+    }
+
+    .archive-card.unlocked:hover .card-bg-img {
+      transform: scale(1.1);
+      filter: brightness(1);
+    }
+
+    .access-btn {
+      margin-top: auto;
+      padding: 12px; text-align: center;
+      background: transparent;
+      border: 1px solid var(--nexus-cyan); color: var(--nexus-cyan);
+      font-family: var(--font-title); text-transform: uppercase; letter-spacing: 2px;
+      transition: 0.3s;
+    }
+    .archive-card.unlocked:hover .access-btn {
+      background: var(--nexus-cyan); color: var(--nexus-dark);
+      box-shadow: 0 0 15px var(--nexus-glow);
+    }
+
+    /* --- STYLE : VERROUILLÉ (TOME 2 & 3) --- */
+    .archive-card.locked {
+      border-color: rgba(255, 51, 51, 0.2);
+      opacity: 0.8;
+      cursor: not-allowed;
+    }
+
+    .archive-card.locked .card-bg-img {
+      filter: grayscale(100%) blur(2px) brightness(0.4);
+    }
+
+    /* Icône Cadenas */
+    .lock-icon {
+      position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%);
+      font-size: 4rem; color: rgba(255, 51, 51, 0.6); z-index: 5;
+    }
+
+    .archive-card.locked .status-badge {
+      color: #ff3333; border-color: #ff3333;
+      background: rgba(255, 51, 51, 0.1);
+    }
+
+    .archive-card.locked .card-title { color: #888; text-shadow: none; }
+
+    /* Animation "Accès Refusé" au clic/survol */
+    .archive-card.locked:active, .archive-card.locked.shake {
+      animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+      border-color: #ff3333;
+    }
+
+    @keyframes shake {
+      10%, 90% { transform: translate3d(-1px, 0, 0); }
+      20%, 80% { transform: translate3d(2px, 0, 0); }
+      30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+      40%, 60% { transform: translate3d(4px, 0, 0); }
+    }
+
+    /* Effet Scanline sur la carte active */
+    .scan-line {
+      position: absolute; top: 0; left: 0; width: 100%; height: 5px;
+      background: rgba(77, 238, 234, 0.6);
+      box-shadow: 0 0 10px var(--nexus-cyan);
+      opacity: 0; pointer-events: none; z-index: 10;
+    }
+    .archive-card.unlocked:hover .scan-line {
+      opacity: 1;
+      animation: scanDown 2s linear infinite;
+    }
+
+    @keyframes scanDown {
+      0% { top: 0%; opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { top: 100%; opacity: 0; }
+    }
+
+    /* Header de la page */
+    .page-header { text-align: center; margin-bottom: 40px; }
+    .page-header h1 {
+        font-family: var(--font-title); font-size: 3rem; color: var(--white);
+        text-transform: uppercase; letter-spacing: 3px;
+        text-shadow: 0 0 20px var(--nexus-glow);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <a href="characters.html"><img src="icons/logo.png" alt="NEXUS LOGO"></a>
+    </div>
+    <button class="burger">&#9776;</button>
+    <div class="nav-container">
+      <ul class="nav-links">
+        <li><a href="characters.html">Personnages</a></li>
+        <li><a href="index.html">Bibliothèque</a></li>
+        <li><a href="archives.html">Archives</a></li>
+        <li><a href="news.html">Actus</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page-header reveal">
+      <h1>Archives</h1>
+      <p style="color:var(--nexus-cyan); letter-spacing:2px;">// Sélectionnez un dossier d'archive</p>
+    </div>
+
+    <div class="archives-grid reveal">
+
+      <a href="chrono1.html" class="archive-card unlocked">
+        <div class="scan-line"></div>
+        <img src="illustrations/archives1.png" alt="Tome 1 Cover" class="card-bg-img">
+        
+        <div class="card-content">
+          <div>
+            <span class="status-badge">Accès Autorisé</span>
+            <h2 class="card-title">Tome 1</h2>
+            <p class="card-subtitle">Orion : L'Origine, la Guerre Élémentaire et l'Invasion.</p>
+          </div>
+          <div class="access-btn">Ouvrir le Dossier</div>
+        </div>
+      </a>
+
+      <div class="archive-card locked" onclick="triggerShake(this)">
+        <div class="lock-icon">&#128274;</div> <img src="illustrations/nosignal.png" alt="Tome 2 Cover" class="card-bg-img">
+        
+        <div class="card-content">
+          <div>
+            <span class="status-badge">Accès Refusé</span>
+            <h2 class="card-title">Tome 2</h2>
+            <p class="card-subtitle">Données corrompues.</p>
+          </div>
+          </div>
+      </div>
+
+      
+
+    </div>
+  </main>
+
+  <footer class="legal-footer reveal">
+    <p>© 2026 Nexus · Accès aux Archives Centrales</p>
+  </footer>
+
+  <script>
+    // Animation "Shake" au clic sur un dossier verrouillé
+    function triggerShake(element) {
+      element.classList.add('shake');
+      setTimeout(() => {
+        element.classList.remove('shake');
+      }, 500);
+    }
+
+    // Menu Burger (Copie du script standard)
+    const burger = document.querySelector('.burger');
+    const navLinks = document.querySelector('.nav-links');
+    if(burger) {
+        burger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            burger.classList.toggle('toggle');
+        });
+    }
+
+    // Scroll Reveal Simple
+    window.addEventListener('scroll', reveal);
+    function reveal() {
+      var reveals = document.querySelectorAll('.reveal');
+      for (var i = 0; i < reveals.length; i++) {
+        var windowheight = window.innerHeight;
+        var revealtop = reveals[i].getBoundingClientRect().top;
+        var revealpoint = 150;
+        if (revealtop < windowheight - revealpoint) {
+          reveals[i].style.opacity = '1';
+          reveals[i].style.transform = 'translateY(0)';
+        }
+      }
+    }
+  </script>
+</body>
+</html>

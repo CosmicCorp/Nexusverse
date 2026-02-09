@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Tome 1 - Clan du Soleil</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style3.css">
+    <link rel="icon" type="image/svg+xml" href="icons/N.svg">
+</head>
+<body>
+
+    
+
+    <nav>
+        <div class="logo">
+            <a href="index.html"> 
+                <img src="icons/logo.png" alt="Retour Accueil" class="nav-logo-img">
+            </a>
+        </div>
+        <div class="nav-controls">
+            <select id="pageSelect" class="info-button"></select>
+            <button id="fullscreenBtn" class="info-button">Plein Ecran</button>
+        </div>
+    </nav>
+    <div class="progress-container">
+        <div id="progressBar" class="progress-bar"></div>
+    </div>
+
+    <main id="readerContainer">
+        <div id="bookViewport" class="book-viewport">
+            <div id="book" class="book-content">
+                </div>
+        </div>
+    </main>
+
+    <div class="navigation-arrows">
+        <button id="prevBtn" class="nav-arrow">«</button>
+        <div id="pageIndicator" class="page-tag">0 / 0</div>
+        <button id="nextBtn" class="nav-arrow">»</button>
+    </div>
+
+    <script src="script-art1.js"></script>
+</body>
+</html>

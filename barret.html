@@ -2,127 +2,111 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Barret</title>
-  
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus - Barret</title>
   <link rel="icon" type="image/svg+xml" href="icons/N.svg">
+  <link rel="stylesheet" href="style-char-detail.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
-<style>
-    .character-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("icons/backgrouds/barret.png");
-  background-size: cover;
-  background-position: center;
-  filter: brightness(0.25);
-  z-index: -1;
-  border-radius: 15px;
-}
-</style>
 <body>
 
   <nav>
     <div class="logo">
-      <a href="index.html">
-        <img src="icons/logo.png" alt="Logo Univers Nexus">
+      <a href="characters.html">
+        <img src="icons/logo.png" alt="NEXUS LOGO">
       </a>
+    </div>
+    <button class="burger" aria-label="Menu">&#9776;</button>
+    <div class="nav-container">
+      <ul class="nav-links">
+        <li><a href="characters.html">Personnages</a></li>
+        <li><a href="index.html">Bibliothèque</a></li>
+        <li><a href="archives.html">Archives</a></li>
+        <li><a href="news.html">Actus</a></li>
+      </ul>
     </div>
   </nav>
 
   <main>
-  <div class="character-card">
-    <div class="character-image">
-      <img src="icons/big/barret.png" alt="Personnage 1">
+    <a href="characters.html" class="back-btn">← Retour au Nexus</a>
+
+    <div class="char-wrapper reveal">
+      
+      <div class="char-visual">
+        <div class="char-bg"></div>
+        <img src="icons/big/barret.png" alt="Barret" class="main-img">
+      </div>
+
+      <div class="char-data">
+        <header class="char-header">
+          <h1>Barret</h1>
+          <div class="tags">
+            <span class="tag faction">Clan du Soleil</span>
+            <span class="tag status">Vivant</span>
+          </div>
+        </header>
+
+        <section class="bio-section">
+          <h3>// Archives Biographiques</h3>
+          
+          <p class="bio-text">
+            <strong>L'Étincelle d'Orion</strong><br>
+            Cadet de Scarlet de quatre ans, Barret a grandi dans l'ombre des carcasses métalliques de la décharge. Moins impétueux que sa sœur mais tout aussi ingénieux, il a hérité du sens du devoir et du calme de leur père. Toujours vêtu de sa veste couleur rouille, il est souvent la voix de la raison qui tempère les ardeurs du groupe.
+          </p>
+          
+          <p class="bio-text">
+            <strong>La Découverte</strong><br>
+            C'est lui qui, au détour d'une fouille, a mis la main sur l'artefact qui allait tout changer : l'amulette boussole capable de localiser le Point Zéro. Cette découverte a propulsé le duo fraternel dans une guerre qui les dépassait, les forçant à s'allier avec le soldat Raptor , l'intrépide Harper et l'agile Lucie pour survivre aux ambitions des Monarques.
+          </p>
+
+          <p class="bio-text">
+            <strong>Le Pilier Fraternel</strong><br>
+            Survivant de l'effondrement d'Orion, Barret cache ses propres traumatismes pour rester le pilier émotionnel du Clan du Soleil. Derrière son masque métallique et son humour parfois maladroit, il veille inlassablement sur Scarlet, prêt à tout pour l'empêcher de sombrer sous le poids de la culpabilité.
+          </p>
+        </section>
+
+        <section class="evolution-section">
+          <h3>// Variantes Visuelles</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item">
+              <img src="icons/outfits/barret/57.png" 
+                   alt="Tenue de Ferrailleur" 
+                   data-caption="Veste rouille (Casque)" 
+                   class="gallery-trigger">
+            </div>
+            
+            <div class="gallery-item">
+              <img src="icons/outfits/barret/58.png" 
+                   alt="Variante Tactique" 
+                   data-caption="Veste rouille"
+                   class="gallery-trigger">
+            </div>
+          </div>
+        </section>
+
+      </div>
     </div>
-    <div class="character-info">
-      <h2>BARRET</h2>
-      <p class="allegeance">Allégeance : Clan du Soleil/ Eclipsés</p>
-      <p class="status">Status : Vivant</p>
-      
-      <p>
-         Frère de Scarlet et meilleur ami de Raptor, Barret était ferrailleur comme sa sœur dans la réalité 23 jusqu'à l'ouverture d'une brèche qui a provoqué le chaos et la chute de son monde. Il a traversé une tempête de réalités avec sa sœur et est arrivé dans la réalité zéro. Avec son ami Raptor et le Clan du Soleil, il se lance dans une escapade émouvante.
-      </p>
-      
+  </main>
+
+  <footer class="legal-footer reveal">
+    <p>© 2026 NexusVerse · Fiche de données classifiée</p>
+  </footer>
+
+  <div id="imgModal" class="modal-overlay">
+    <span class="modal-close">&times;</span>
+    
+    <button class="modal-nav prev" aria-label="Précédent">&#10094;</button>
+    <button class="modal-nav next" aria-label="Suivant">&#10095;</button>
+
+    <div class="modal-card">
+      <div class="modal-img-wrapper">
+        <img id="modalImg" src="" alt="Visuel variante">
+        <div class="scan-overlay"></div>
+      </div>
+      <div id="caption"></div>
     </div>
   </div>
-  <section class="evolution-section">
-  <h2>Tenues</h2>
-  <div class="evolution-gallery">
-    <div class="evolution-item">
-      <img src="icons/outfits/barret/63.png" alt="Survivant">
-      <span>Survivant</span>
-    </div>
-    <div class="evolution-item">
-      <img src="icons/outfits/barret/37.png" alt="Seigneur de la rouille">
-      <span>Seigneur de la rouille</span>
-    </div>
-    
-    
-  </div>
-</section>
 
-</main>
-
-<div id="imageModal" class="modal">
-  <span class="close">&times;</span>
-  <span class="nav left">&#10094;</span>
-  <img class="modal-content" id="modalImg">
-  <span class="nav right">&#10095;</span>
-  <div id="caption"></div>
-</div>
-
-<script>
-  const modal = document.getElementById("imageModal");
-  const modalImg = document.getElementById("modalImg");
-  const captionText = document.getElementById("caption");
-  const closeBtn = document.querySelector(".modal .close");
-  const navLeft = document.querySelector(".modal .nav.left");
-  const navRight = document.querySelector(".modal .nav.right");
-
-  const images = Array.from(document.querySelectorAll(".evolution-item img"));
-  let currentIndex = 0;
-
-  function showImage(index) {
-    const img = images[index];
-    modalImg.src = img.src;
-    captionText.textContent = img.alt;
-  }
-
-  images.forEach((img, index) => {
-    img.addEventListener("click", () => {
-      currentIndex = index;
-      showImage(currentIndex);
-      modal.style.display = "block";
-    });
-  });
-
-  closeBtn.onclick = () => modal.style.display = "none";
-
-  window.onclick = (event) => {
-    if (event.target === modal) {
-      modal.style.display = "none";
-    }
-  };
-
-  navLeft.onclick = () => {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    showImage(currentIndex);
-  };
-
-  navRight.onclick = () => {
-    currentIndex = (currentIndex + 1) % images.length;
-    showImage(currentIndex);
-  };
-
-  // Support clavier (flèches)
-  window.addEventListener("keydown", (e) => {
-    if (modal.style.display === "block") {
-      if (e.key === "ArrowLeft") navLeft.click();
-      else if (e.key === "ArrowRight") navRight.click();
-      else if (e.key === "Escape") closeBtn.click();
-    }
-  });
-</script>
+  <script src="script-char-detail.js"></script>
 </body>
 </html>

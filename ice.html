@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus - Le Roi des Glaces</title>
+  <link rel="icon" type="image/svg+xml" href="icons/N.svg">
+  <link rel="stylesheet" href="style-char-detail.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <a href="characters.html">
+        <img src="icons/logo.png" alt="NEXUS LOGO">
+      </a>
+    </div>
+    <button class="burger" aria-label="Menu">&#9776;</button>
+    <div class="nav-container">
+      <ul class="nav-links">
+        <li><a href="characters.html">Personnages</a></li>
+        <li><a href="index.html">Bibliothèque</a></li>
+        <li><a href="archives.html">Archives</a></li>
+        <li><a href="news.html">Actus</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <a href="characters.html" class="back-btn">← Retour au Nexus</a>
+
+    <div class="char-wrapper reveal">
+      
+      <div class="char-visual">
+        <div class="char-bg"></div>
+        <img src="icons/big/ice.png" alt="Le Roi des Glaces" class="main-img">
+      </div>
+
+      <div class="char-data">
+        <header class="char-header">
+          <h1>Le Roi des Glaces</h1>
+          <div class="tags">
+            <span class="tag faction" style="color: #4deeea; border-color: #4deeea; background: rgba(77, 238, 234, 0.1);">Légion du Givre</span>
+            <span class="tag status" style="color: #888; border-color: #888; background: rgba(136, 136, 136, 0.1);">Vaincu / Disparu</span>
+          </div>
+        </header>
+
+        <section class="bio-section">
+          <h3>// Archives Biographiques</h3>
+          
+          <p class="bio-text">
+            <strong>Le Tyran de Polar Peak</strong><br>
+            Venu d'au-delà des mers, le Roi des Glaces a fait une entrée apocalyptique sur Orion. Sa forteresse, encastrée dans un iceberg titanesque, a percuté l'île, broyant une partie de la décharge et installant un climat polaire instantané. Monarque cruel et millénaire, il a menacé de génocide la population locale si on ne lui livrait pas l'énergie du Point Zéro.
+          </p>
+          
+          <p class="bio-text">
+            <strong>La Soif de Pouvoir</strong><br>
+            Son ambition démesurée l'a poussé à écraser d'innombrables mondes pour s'approprier leurs sources de pouvoir. Sur Orion, il a tenté d'imposer sa loi par la terreur, utilisant des projections holographiques géantes pour glacer le sang des habitants.Il gardait jalousement un prisonnier redoutable dans ses geôles, une erreur qui causera sa perte.
+          </p>
+
+          <p class="bio-text">
+            <strong>La Chute du Trône</strong><br>
+            Son règne fut bref mais terrifiant. Lorsque le Maître du Feu s'est libéré de ses chaînes et a fait jaillir un volcan, une guerre élémentaire a éclaté. Le Roi des Glaces a vu sa forteresse pulvérisée par un météore de lave.Son château réduit en ruines fumantes, le monarque a disparu dans l'effondrement, laissant derrière lui une légende de givre et de destruction.
+          </p>
+        </section>
+
+        <section class="evolution-section">
+          <h3>// Variantes Visuelles</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item">
+              <img src="icons/outfits/ice/33.png" 
+                   alt="Armure Royale" 
+                   data-caption="Roi du frimas" 
+                   class="gallery-trigger">
+            </div>
+            
+            
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="legal-footer reveal">
+    <p>© 2026 NexusVerse · Fiche de données classifiée</p>
+  </footer>
+
+  <div id="imgModal" class="modal-overlay">
+    <span class="modal-close">&times;</span>
+    <button class="modal-nav prev" aria-label="Précédent">&#10094;</button>
+    <button class="modal-nav next" aria-label="Suivant">&#10095;</button>
+
+    <div class="modal-card">
+      <div class="modal-img-wrapper">
+        <img id="modalImg" src="" alt="Visuel variante">
+        <div class="scan-overlay"></div>
+      </div>
+      <div id="caption"></div>
+    </div>
+  </div>
+
+  <script src="script-char-detail.js"></script>
+</body>
+</html>

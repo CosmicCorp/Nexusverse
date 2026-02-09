@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus - Archives Tome 1</title>
+  <link rel="icon" type="image/svg+xml" href="icons/N.svg">
+  <link rel="stylesheet" href="style-char-detail.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    /* --- STYLES SPÉCIFIQUES TIMELINE --- */
+    .timeline-wrapper {
+      background: var(--nexus-card-bg);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 0 50px rgba(0,0,0,0.5);
+      padding: 60px;
+      position: relative;
+      overflow: hidden;
+      margin-top: 20px;
+    }
+    
+    .timeline-wrapper::before {
+        content: ''; position: absolute; inset: 0;
+        background-image: 
+            linear-gradient(rgba(77, 238, 234, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(77, 238, 234, 0.03) 1px, transparent 1px);
+        background-size: 40px 40px;
+        z-index: 0; pointer-events: none;
+    }
+
+    .timeline-header { text-align: center; margin-bottom: 80px; position: relative; z-index: 2; }
+    .timeline-header h1 {
+        font-family: var(--font-title); font-size: 3.5rem; color: var(--white);
+        text-transform: uppercase; letter-spacing: 4px;
+        text-shadow: 0 0 25px var(--nexus-glow); line-height: 1.1;
+    }
+    .timeline-header h2 {
+        font-family: var(--font-body); color: var(--nexus-cyan); 
+        font-size: 1.2rem; letter-spacing: 2px; margin-top: 10px; opacity: 0.8;
+    }
+
+    /* Ligne de temps centrale */
+    .timeline-container {
+        position: relative;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    .timeline-container::after {
+        content: ''; position: absolute; width: 4px; background: rgba(77, 238, 234, 0.2);
+        top: 0; bottom: 0; left: 50%; margin-left: -2px; border-radius: 2px;
+    }
+
+    /* Carte Événement */
+    .event-card {
+        padding: 10px 40px;
+        position: relative;
+        background-color: inherit;
+        width: 50%;
+        box-sizing: border-box;
+        margin-bottom: 50px;
+    }
+
+    .event-card.left { left: 0; text-align: right; }
+    .event-card.right { left: 50%; text-align: left; }
+
+    /* Le Point sur la ligne */
+    .event-card::after {
+        content: ''; position: absolute; width: 20px; height: 20px;
+        right: -10px; background: var(--nexus-dark);
+        border: 4px solid var(--nexus-cyan); top: 25px;
+        border-radius: 50%; z-index: 10;
+        box-shadow: 0 0 10px var(--nexus-cyan);
+        transition: var(--transition);
+    }
+    .event-card.right::after { left: -10px; }
+    .event-card:hover::after { background: var(--nexus-cyan); transform: scale(1.3); }
+
+    /* Contenu de la carte */
+    .content-box {
+        padding: 25px;
+        background: rgba(15, 18, 24, 0.8);
+        border: 1px solid rgba(77, 238, 234, 0.15);
+        border-radius: 12px;
+        position: relative;
+        transition: var(--transition);
+        backdrop-filter: blur(5px);
+    }
+    .content-box:hover {
+        border-color: var(--nexus-cyan);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .chapter-tag {
+        display: inline-block; padding: 4px 10px;
+        background: rgba(77, 238, 234, 0.1); color: var(--nexus-cyan);
+        font-family: var(--font-title); font-size: 0.75rem; border-radius: 4px;
+        margin-bottom: 10px; border: 1px solid rgba(77, 238, 234, 0.2);
+    }
+
+    .content-box h3 {
+        font-family: var(--font-title); color: var(--white);
+        font-size: 1.4rem; margin-bottom: 15px; text-transform: uppercase;
+    }
+
+    .content-box p {
+        font-family: var(--font-body); color: #ccc; font-size: 0.95rem; line-height: 1.6;
+    }
+
+    /* Images vignettes */
+    .event-img {
+        width: 100%; height: 180px; object-fit: cover;
+        border-radius: 8px; margin-bottom: 15px;
+        border: 1px solid rgba(255,255,255,0.1);
+        filter: grayscale(40%); transition: var(--transition);
+    }
+    .content-box:hover .event-img { filter: grayscale(0%); border-color: var(--nexus-cyan); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+        .timeline-container::after { left: 31px; }
+        .event-card { width: 100%; padding-left: 70px; padding-right: 25px; text-align: left; }
+        .event-card.left, .event-card.right { left: 0; text-align: left; }
+        .event-card::after { left: 21px; }
+        .timeline-header h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <a href="characters.html"><img src="icons/logo.png" alt="NEXUS LOGO"></a>
+    </div>
+    <button class="burger">&#9776;</button>
+    <div class="nav-container">
+      <ul class="nav-links">
+        <li><a href="characters.html">Personnages</a></li>
+        <li><a href="index.html">Bibliothèque</a></li>
+        <li><a href="archives.html">Archives</a></li>
+        <li><a href="news.html">Actus</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <a href="archives.html" class="back-btn">← Retour aux archives</a>
+
+    <div class="timeline-wrapper reveal">
+      <header class="timeline-header">
+        <h1>Orion</h1>
+        <h2>// Archives Classifiées - Tome 1</h2>
+      </header>
+      
+      <div class="timeline-container">
+
+        <div class="event-card left reveal">
+          <div class="content-box">
+            <span class="chapter-tag">CHAPITRES 1 & 2</span>
+            <img src="illustrations/amulette.png" alt="Amulette" class="event-img">
+            <h3>L'Amulette Vibrante</h3>
+            <p>
+              Dans la décharge d'Orion, Barret découvre une amulette étrange marquée d'un symbole triangulaire. L'objet vibre d'une énergie inconnue. Il la montre à Raptor, qui reconnaît le logo d'un groupe terroriste combattu jadis. Scarlet révèle alors leur secret : ils ne viennent pas de ce monde, mais sont des exilés d'une autre réalité.
+            </p>
+          </div>
+        </div>
+
+        <div class="event-card right reveal">
+          <div class="content-box">
+            <span class="chapter-tag">CHAPITRE 3</span>
+            <img src="illustrations/harper.png" alt="Rencontre Harper" class="event-img">
+            <h3>L'Alliance de la Ferme</h3>
+            <p>
+              Le trio rencontre <strong>Harper</strong>, la gardienne de la ferme, qui révèle que son grand-père étudiait une "énergie éternelle" cachée sous l'île. Au même moment, un iceberg titanesque percute la côte, marquant le début de l'invasion.
+            </p>
+          </div>
+        </div>
+
+        <div class="event-card left reveal">
+          <div class="content-box">
+            <span class="chapter-tag">CHAPITRES 4 À 5</span>
+            <img src="illustrations/ice.png" alt="Le Roi des Glaces" class="event-img">
+            <h3>L'Ultimatum Boréal</h3>
+            <p>
+              Le <strong>Roi des Glaces</strong> menace de geler l'île. Le groupe file à Tilted Towers chercher <strong>Lucie</strong>, l'amie de Harper. Experte en reliques, elle confie avoir infiltré l'Institut Onirique et confirme que le Point Zéro est la cible.
+            </p>
+          </div>
+        </div>
+
+        <div class="event-card right reveal">
+          <div class="content-box">
+            <span class="chapter-tag">CHAPITRE 6</span>
+            <img src="illustrations/volcano.png" alt="Volcan" class="event-img">
+            <h3>La Chute des Monarques</h3>
+            <p>
+              Le <strong>Maître du Feu</strong> fait jaillir un volcan. Une guerre apocalyptique éclate et Tilted Towers est pulvérisée. Les deux monarques s'entretuent et <strong>Denver</strong>, le frère de Lucie, disparaît dans les décombres.
+            </p>
+          </div>
+        </div>
+
+        <div class="event-card left reveal">
+          <div class="content-box">
+            <span class="chapter-tag">CHAPITRES 7 & 8</span>
+            <img src="illustrations/meteor.png" alt="Météore" class="event-img">
+            <h3>Neo Tilted & Le Météore</h3>
+            <p>
+              <strong>Neo Tilted</strong> sort de terre, dirigée par Singularité. Mais la paix est brisée lorsqu'un météore artificiel frappe <em>Ideal Factories</em>. L'Institut décrète la loi martiale, cachant au public la capsule alien à l'intérieur.
+            </p>
+          </div>
+        </div>
+
+        <div class="event-card right reveal">
+          <div class="content-box">
+            <span class="chapter-tag">CHAPITRE 9</span>
+            <img src="illustrations/visitor.png" alt="Reconnaissance Cratère" class="event-img">
+            <h3>La Fuite du Visiteur</h3>
+            <p>
+              Bravant le couvre-feu, Barret, Harper et Lucie s'infiltrent dans la base provisoire du cratère. Ils voient le <strong>Visiteur</strong> s'échapper et réalisent qu'il porte le même symbole que l'amulette. Il n'est pas un ennemi, mais une clé.
+            </p>
+          </div>
+        </div>
+
+        <div class="event-card left reveal">
+          <div class="content-box">
+            <span class="chapter-tag">CHAPITRES 10 & 11</span>
+            <img src="illustrations/cube.png" alt="Le Cube" class="event-img">
+            <h3>La Marche du Cube</h3>
+            <p>
+              Un immense <strong>Cube Violet</strong> apparaît. Le groupe braque l'armurerie de Retail Row pour s'équiper. Le Cube fond dans le Lac Indigo, créant une anomalie gravitationnelle et une île flottante.
+            </p>
+          </div>
+        </div>
+
+        <div class="event-card right reveal">
+          <div class="content-box" style="border-color: #a020f0; box-shadow: 0 0 15px rgba(160, 32, 240, 0.15);">
+            <span class="chapter-tag" style="background: rgba(160, 32, 240, 0.2); color: #a020f0;">CHAPITRE 12</span>
+            <img src="illustrations/ovni.png" alt="Vaisseau Mère" class="event-img">
+            <h3>L'Invasion dimentionelle</h3>
+            <p>
+              Le ciel s'obscurcit. Le <strong>Commandant Kiméra</strong> arrive avec son Vaisseau-Mère. Singularité est enlevée et tuée. Les défenses de l'Institut tombent. C'est le chaos total sur l'île.
+            </p>
+          </div>
+        </div>
+
+        <div class="event-card left reveal">
+          <div class="content-box" style="border-color: var(--nexus-cyan); box-shadow: 0 0 30px rgba(77, 238, 234, 0.25); transform: scale(1.02);">
+            <span class="chapter-tag" style="background: var(--nexus-cyan); color: var(--nexus-dark); font-weight: bold;">CHAPITRES 12 & 13 - CLIMAX</span>
+            <img src="illustrations/underground.png" alt="Infiltration Base Souterraine" class="event-img">
+            <h3>L'Infiltration de la Base Souterraine</h3>
+            <p>
+              Alors que les aliens ravagent la surface, le Clan du Soleil joue son va-tout. Utilisant les plans volés par Lucie, ils s'infiltrent dans la véritable <strong>Base Souterraine de l'Institut Onirique</strong>. Profitant de la panique des gardes, ils descendent dans les entrailles de l'île.
+            </p>
+          </div>
+        </div>
+
+        <div class="event-card right reveal" style="margin-bottom: 0;">
+          <div class="content-box" style="border-color: #ff3333; box-shadow: 0 0 20px rgba(255, 51, 51, 0.1);">
+            <span class="chapter-tag" style="background: rgba(255, 51, 51, 0.2); color: #ff3333; border-color: #ff3333;">ÉPILOGUE</span>
+            <img src="illustrations/skyfall.png" alt="Trou Noir" class="event-img">
+            <h3>La Fin</h3>
+            <p>
+              Le plan du Visiteur s'active. Les fusées des Sept guident le météore sur le Point Zéro exposé. L'impact crée une singularité qui aspire tout : l'Institut, les Aliens, et le Clan du Soleil. L'écran s'éteint.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="legal-footer reveal">
+    <p>© 2026 Nexus · Archives Chronologiques · Tome 1 Complété</p>
+  </footer>
+
+  <script src="script-char-detail.js"></script>
+</body>
+</html>
