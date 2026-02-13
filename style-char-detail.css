@@ -12,17 +12,14 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
   background-color: var(--nexus-dark);
   color: #c5c6c7;
   font-family: var(--font-body);
+  /* Fond global subtil */
   background-image: radial-gradient(circle at top right, #1f2833 0%, #0b0c10 60%);
   min-height: 100vh;
-  overflow-x: hidden; /* Crucial pour mobile */
+  overflow-x: hidden;
 }
 
 /* --- NAVIGATION STANDARD --- */
@@ -35,7 +32,7 @@ nav {
   justify-content: space-between; 
   align-items: center;
   padding: 0.8rem 5%;
-  background: rgba(11, 12, 16, 0.95);
+  background: rgba(11, 12, 16, 0.9);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -87,8 +84,8 @@ nav {
 
 /* --- LAYOUT PRINCIPAL --- */
 main { 
-  padding: 100px 5% 60px; 
-  max-width: 1200px; 
+  padding: 120px 5% 60px; 
+  max-width: 1400px; 
   margin: 0 auto; 
 }
 
@@ -99,108 +96,135 @@ main {
 }
 .back-btn:hover { color: var(--nexus-cyan); transform: translateX(-5px); }
 
-/* --- TIMELINE WRAPPER --- */
-.timeline-wrapper {
-    background: var(--nexus-card-bg);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 0 50px rgba(0,0,0,0.5);
-    padding: 60px;
-    position: relative;
-    overflow: hidden;
-    margin-top: 20px;
+/* --- CARTE PERSONNAGE (Wrapper) --- */
+.char-wrapper {
+  display: grid;
+  grid-template-columns: 45% 1fr;
+  gap: 50px;
+  background: var(--nexus-card-bg);
+  border-radius: 20px;
+  overflow: hidden;
+  
+  /* BORDURE DISCRÈTE */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  
+  box-shadow: 0 0 50px rgba(0,0,0,0.5);
+  min-height: 600px;
 }
 
-.timeline-header { text-align: center; margin-bottom: 80px; position: relative; z-index: 2; }
-.timeline-header h1 {
-    font-family: var(--font-title); font-size: 3.5rem; color: var(--white);
-    text-transform: uppercase; letter-spacing: 4px;
-    text-shadow: 0 0 25px var(--nexus-glow); line-height: 1.1;
-}
-.timeline-header h2 {
-    font-family: var(--font-body); color: var(--nexus-cyan); 
-    font-size: 1.2rem; letter-spacing: 2px; margin-top: 10px; opacity: 0.8;
+/* --- COLONNE VISUEL --- */
+.char-visual {
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  background: #000;
 }
 
-/* Ligne de temps centrale (Desktop) */
-.timeline-container {
-    position: relative;
-    max-width: 1000px;
-    margin: 0 auto;
+/* 1. GRILLE DE FOND (Derrière) */
+.char-bg {
+  position: absolute; inset: 0;
+  background-color: #0b0c10;
+  /* Motif Grille CSS */
+  background-image: 
+      linear-gradient(rgba(77, 238, 234, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(77, 238, 234, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 1; opacity: 0.5; transition: var(--transition);
 }
-.timeline-container::after {
-    content: ''; position: absolute; width: 4px; background: rgba(77, 238, 234, 0.2);
-    top: 0; bottom: 0; left: 50%; margin-left: -2px; border-radius: 2px;
+.char-visual:hover .char-bg { opacity: 0.8; transform: scale(1.05); }
+
+/* 2. IMAGE DU PERSONNAGE (Avec Masque de fondu au sol) */
+.main-img {
+  position: relative; z-index: 2;
+  max-width: 90%; max-height: 90%;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.8));
+  transition: transform 0.5s ease;
+
+  /* Masque qui rend le bas de l'image transparent */
+  -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+.char-visual:hover .main-img { transform: scale(1.02); }
+
+/* 3. VIGNETAGE (Juste pour l'ambiance sombre sur les bords) */
+.char-visual::after {
+  content: ''; position: absolute; inset: 0; z-index: 3; pointer-events: none;
+  background: radial-gradient(circle at center, transparent 50%, rgba(11, 12, 16, 0.8) 100%);
 }
 
-/* Carte Événement */
-.event-card {
-    padding: 10px 40px;
-    position: relative;
-    background-color: inherit;
-    width: 50%;
-    box-sizing: border-box;
-    margin-bottom: 50px;
+/* --- COLONNE INFOS --- */
+.char-data { padding: 50px; display: flex; flex-direction: column; }
+
+.char-header { margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; }
+.char-header h1 {
+  font-family: var(--font-title); font-size: 3.5rem; color: var(--white);
+  text-transform: uppercase; letter-spacing: 2px;
+  text-shadow: 0 0 15px var(--nexus-glow); line-height: 1;
 }
 
-.event-card.left { left: 0; text-align: right; }
-.event-card.right { left: 50%; text-align: left; }
-
-/* Le Point sur la ligne */
-.event-card::after {
-    content: ''; position: absolute; width: 20px; height: 20px;
-    right: -10px; background: var(--nexus-dark);
-    border: 4px solid var(--nexus-cyan); top: 25px;
-    border-radius: 50%; z-index: 10;
-    box-shadow: 0 0 10px var(--nexus-cyan);
-    transition: var(--transition);
+.tags { display: flex; gap: 15px; margin-top: 15px; }
+.tag {
+  padding: 5px 12px; font-size: 0.8rem; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2);
+  text-transform: uppercase; letter-spacing: 1px;
 }
-.event-card.right::after { left: -10px; }
-.event-card:hover::after { background: var(--nexus-cyan); transform: scale(1.3); }
+.tag.faction { background: rgba(255, 165, 0, 0.2); color: orange; border-color: orange; }
+.tag.status { background: rgba(0, 255, 0, 0.1); color: #00ff00; border-color: #00ff00; }
 
-/* Contenu de la carte */
-.content-box {
-    padding: 25px;
-    background: rgba(15, 18, 24, 0.8);
-    border: 1px solid rgba(77, 238, 234, 0.15);
-    border-radius: 12px;
-    position: relative;
-    transition: var(--transition);
-    backdrop-filter: blur(5px);
+.bio-section h3, .evolution-section h3 {
+  font-family: var(--font-title); color: var(--nexus-cyan); margin-bottom: 20px; font-size: 1.1rem;
 }
-.content-box:hover {
-    border-color: var(--nexus-cyan);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+.bio-text {
+  line-height: 1.8; color: #ccc; margin-bottom: 20px;
+  text-align: justify; font-size: 0.95rem;
 }
 
-.chapter-tag {
-    display: inline-block; padding: 4px 10px;
-    background: rgba(77, 238, 234, 0.1); color: var(--nexus-cyan);
-    font-family: var(--font-title); font-size: 0.75rem; border-radius: 4px;
-    margin-bottom: 10px; border: 1px solid rgba(77, 238, 234, 0.2);
+/* --- GALERIE (VIGNETTES TECH) --- */
+.evolution-section { margin-top: auto; }
+.gallery-grid { display: flex; gap: 20px; flex-wrap: wrap; }
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  /* Bordure double effet */
+  border: 1px solid rgba(77, 238, 234, 0.3);
+  background: rgba(11, 12, 16, 0.5);
+  transition: var(--transition);
 }
 
-.content-box h3 {
-    font-family: var(--font-title); color: var(--white);
-    font-size: 1.4rem; margin-bottom: 15px; text-transform: uppercase;
+.gallery-item img {
+  display: block;
+  width: 100px; 
+  aspect-ratio: 950 / 1550;
+  object-fit: cover; 
+  object-position: top center;
+  cursor: pointer; 
+  transition: transform 0.5s ease;
+  opacity: 0.8;
 }
 
-.content-box p {
-    font-family: var(--font-body); color: #ccc; font-size: 0.95rem; line-height: 1.6;
+/* Effet de survol sur la vignette */
+.gallery-item:hover {
+  border-color: var(--nexus-cyan);
+  box-shadow: 0 0 15px rgba(77, 238, 234, 0.4);
+  transform: translateY(-5px);
 }
 
-/* Images vignettes */
-.event-img {
-    width: 100%; height: 180px; object-fit: cover;
-    border-radius: 8px; margin-bottom: 15px;
-    border: 1px solid rgba(255,255,255,0.1);
-    filter: grayscale(40%); transition: var(--transition);
+.gallery-item:hover img {
+  transform: scale(1.1);
+  opacity: 1;
 }
-.content-box:hover .event-img { filter: grayscale(0%); border-color: var(--nexus-cyan); }
+
+/* Petit overlay "Scan" au survol */
+.gallery-item::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to bottom, transparent 50%, rgba(77, 238, 234, 0.1) 100%);
+  opacity: 0; transition: var(--transition); pointer-events: none;
+}
+.gallery-item:hover::after { opacity: 1; }
 
 /* --- FOOTER --- */
-.legal-footer { text-align: center; margin-top: 50px; font-size: 0.8rem; opacity: 0.5; padding-bottom: 20px;}
+.legal-footer { text-align: center; margin-top: 50px; font-size: 0.8rem; opacity: 0.5; }
 
 /* --- ANIMATIONS --- */
 .reveal { opacity: 0; transform: translateY(30px); animation: fadeIn 0.8s forwards; }
@@ -211,119 +235,133 @@ main {
   display: none; 
   position: fixed; z-index: 2000; left: 0; top: 0; 
   width: 100%; height: 100%;
-  background-color: rgba(5, 6, 8, 0.95);
+  background-color: rgba(5, 6, 8, 0.95); /* Fond très sombre */
   backdrop-filter: blur(8px);
+  /* Flexbox pour centrer parfaitement la carte */
+  /* Note : display: flex est appliqué par JS ou style inline si besoin, 
+     mais ici on garde display:none par défaut et le JS bascule en block.
+     Pour utiliser le centrage flex, on peut ajuster le JS ou utiliser le position absolute ci-dessous */
   justify-content: center; align-items: center;
 }
 
+/* Le conteneur global de la carte (Image + Texte) */
 .modal-card {
   position: relative;
-  width: auto; max-width: 90%; max-height: 70vh; 
+  width: auto; 
+  max-width: 90%;
+  /* Hauteur réduite pour un aspect compact */
+  max-height: 70vh; 
   background: rgba(15, 18, 24, 0.95);
   border: 1px solid var(--nexus-cyan);
   border-radius: 12px;
-  box-shadow: 0 0 40px rgba(77, 238, 234, 0.15);
-  display: flex; flex-direction: column;
-  overflow: hidden;
+  box-shadow: 0 0 40px rgba(77, 238, 234, 0.15), inset 0 0 20px rgba(77, 238, 234, 0.05);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Pour que le contenu ne dépasse pas les bords arrondis */
+  
+  /* Centrage absolu */
   position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
 }
 
+/* Zone Image */
 .modal-img-wrapper {
   position: relative;
   background: black;
-  flex-grow: 1; display: flex; justify-content: center; align-items: center;
-  overflow: hidden; min-height: 300px;
+  flex-grow: 1; /* Prend toute la place disponible */
+  display: flex; justify-content: center; align-items: center;
+  overflow: hidden;
+  min-height: 300px; /* Taille minimum */
 }
 
 .modal-card img {
-  display: block; max-height: 55vh; max-width: 100%; object-fit: contain;
+  display: block;
+  max-height: 55vh; /* Limite la hauteur de l'image */
+  max-width: 100%;
+  object-fit: contain;
 }
 
+/* Petit effet de scan par dessus l'image pour le style */
 .scan-overlay {
   position: absolute; inset: 0;
   background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
   background-size: 100% 2px, 3px 100%;
-  pointer-events: none; opacity: 0.3;
+  pointer-events: none;
+  opacity: 0.3;
 }
 
+/* Zone Texte (Légende) */
 #caption {
   background: linear-gradient(90deg, rgba(11, 12, 16, 1) 0%, rgba(20, 24, 30, 1) 50%, rgba(11, 12, 16, 1) 100%);
-  color: var(--nexus-cyan); font-family: var(--font-title);
-  font-size: 1rem; letter-spacing: 1.5px; text-transform: uppercase;
-  padding: 15px 25px; text-align: center;
+  color: var(--nexus-cyan);
+  font-family: var(--font-title);
+  font-size: 1rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 15px 25px;
+  text-align: center;
   border-top: 1px solid rgba(77, 238, 234, 0.3);
+  text-shadow: 0 0 8px var(--nexus-glow);
 }
 
+/* Navigation (Flèches) - Hors de la carte */
 .modal-nav {
   position: absolute; top: 50%; transform: translateY(-50%);
-  background: transparent; color: #666; border: none; font-size: 3rem;
-  padding: 20px; cursor: pointer; z-index: 2005; transition: var(--transition);
+  background: transparent;
+  color: #666;
+  border: none;
+  font-size: 3rem;
+  padding: 20px;
+  cursor: pointer;
+  z-index: 2005;
+  transition: var(--transition);
 }
-.modal-nav:hover { color: var(--nexus-cyan); transform: translateY(-50%) scale(1.1); }
+
+.modal-nav:hover { color: var(--nexus-cyan); text-shadow: 0 0 15px var(--nexus-cyan); transform: translateY(-50%) scale(1.1); }
 .prev { left: 5%; }
 .next { right: 5%; }
 
+/* Bouton Fermer */
 .modal-close {
   position: absolute; top: 20px; right: 30px;
   color: #666; font-size: 40px; cursor: pointer;
-  z-index: 2010; transition: var(--transition); line-height: 1;
+  z-index: 2010; transition: var(--transition);
+  line-height: 1;
 }
 .modal-close:hover { color: var(--nexus-cyan); transform: rotate(90deg); }
 
 
-/* --- OPTIMISATION MOBILE (Tablette & Smartphone) --- */
+/* --- RESPONSIVE MOBILE --- */
 @media (max-width: 900px) {
-    /* Header plus petit */
-    .timeline-header h1 { font-size: 2.2rem; }
-    
-    /* Réduction des marges globales */
-    main { padding-left: 15px; padding-right: 15px; }
-    .timeline-wrapper { padding: 30px 15px; }
-
-    /* Timeline : On passe tout à gauche */
-    .timeline-container::after { 
-        left: 20px; /* La ligne se met à gauche */
-    }
-    
-    .event-card {
-        width: 100%;
-        padding-left: 50px; /* Place pour la ligne à gauche */
-        padding-right: 0;
-        margin-bottom: 30px;
-    }
-
-    /* Annulation de l'alternance gauche/droite */
-    .event-card.left, .event-card.right { 
-        left: 0; 
-        text-align: left; /* Texte aligné à gauche pour la lecture */
-    }
-
-    /* Le point sur la ligne */
-    .event-card::after, .event-card.right::after {
-        left: 11px; /* Alignement avec la ligne à 20px (20px - 9px pour centrer) */
-        right: auto;
-    }
-
-    .content-box { padding: 20px; }
-    .content-box p { text-align: left; } /* Pas de justify sur mobile */
-
-    /* Navigation Mobile */
-    .burger { display: block; z-index: 2001; }
-    .nav-links {
-        position: fixed; right: 0; top: 0; 
-        height: 100vh; width: 80%;
-        background: rgba(11, 12, 16, 0.98); 
-        flex-direction: column;
-        justify-content: center; align-items: center;
-        transform: translateX(100%); 
-        z-index: 2000;
-        border-left: 1px solid var(--nexus-cyan);
-    }
-    .nav-links.active { transform: translateX(0); }
-    
-    /* Modale Mobile */
-    .modal-card { width: 95%; }
-    .prev { left: 0; }
-    .next { right: 0; }
-    .modal-nav { padding: 10px; font-size: 2rem; background: rgba(0,0,0,0.5); }
+  .char-wrapper { grid-template-columns: 1fr; }
+  .char-visual { height: 450px; }
+  .char-data { padding: 30px; }
+  .char-header h1 { font-size: 2.5rem; }
+  
+  /* Menu Burger Mobile */
+  .burger { display: block; z-index: 2001; }
+  .nav-links {
+    position: fixed; right: 0; top: 0; 
+    height: 100vh; width: 75%;
+    background: rgba(11, 12, 16, 0.98); 
+    flex-direction: column;
+    justify-content: center; align-items: center;
+    transform: translateX(100%); 
+    z-index: 2000;
+    border-left: 1px solid var(--nexus-cyan);
+  }
+  .nav-links.active { transform: translateX(0); }
+  
+  /* Ajustements Modale Mobile */
+  .modal-card { 
+    width: 90%; 
+    max-height: 70vh; 
+  }
+  .modal-card img { max-height: 50vh; }
+  
+  /* On rapproche les flèches du bord sur mobile */
+  .prev { left: 0; }
+  .next { right: 0; }
+  .modal-nav { font-size: 2rem; padding: 10px; }
+  
+  #caption { font-size: 0.85rem; padding: 10px; }
 }
