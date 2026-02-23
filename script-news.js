@@ -1,6 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    
+    /* --- 1. GESTION DU MENU BURGER --- */
+    const burger = document.querySelector('.burger');
+    const navLinks = document.querySelector('.nav-links');
+    const links = document.querySelectorAll('.nav-links li a');
+
+    if (burger && navLinks) {
+        burger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            burger.innerHTML = navLinks.classList.contains('active') ? '&#10006;' : '&#9776;';
+        });
+
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                burger.innerHTML = '&#9776;';
+            });
+        });
+    }
 
     /* --- 2. SCROLL REVEAL ANIMATION --- */
     const revealElements = document.querySelectorAll('.reveal');
@@ -20,85 +37,79 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', revealOnScroll);
     revealOnScroll(); // Déclencher une fois au chargement
-});
-document.addEventListener('DOMContentLoaded', () => {
-    
-    // ... (Garde ton code existant pour le menu Burger et le Scroll Reveal ici) ...
+
 
     /* --- 3. GESTION DE LA MODALE --- */
     const modalOverlay = document.getElementById('article-modal');
+    const modalContainer = document.querySelector('.modal-container');
     const modalClose = document.querySelector('.modal-close');
     const openButtons = document.querySelectorAll('.open-modal');
 
-    // Éléments internes de la modale à remplir
-    const mTitle = document.getElementById('modal-title');
-    const mDate = document.getElementById('modal-date');
-    const mImg = document.getElementById('modal-img');
-    const mText = document.getElementById('modal-text');
+    if (modalOverlay) {
+        // Éléments internes de la modale à remplir
+        const mTitle = document.getElementById('modal-title');
+        const mDate = document.getElementById('modal-date');
+        const mImg = document.getElementById('modal-img');
+        const mText = document.getElementById('modal-text');
 
-    // Fonction pour ouvrir
-    openButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault(); // Empêche le lien de suivre href="#"
+        // Fonction pour ouvrir
+        openButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault(); // Empêche le lien de suivre href="#"
 
-            // Récupérer les données depuis les attributs HTML du bouton
-            const title = btn.getAttribute('data-title');
-            const date = btn.getAttribute('data-date');
-            const img = btn.getAttribute('data-img');
-            const fullText = btn.getAttribute('data-full-text');
+                // Récupérer les données depuis les attributs HTML du bouton
+                const title = btn.getAttribute('data-title');
+                const date = btn.getAttribute('data-date');
+                const img = btn.getAttribute('data-img');
+                const fullText = btn.getAttribute('data-full-text');
+                const layout = btn.getAttribute('data-layout');
 
-            // Remplir la modale
-            mTitle.textContent = title;
-            mDate.textContent = date;
-            mImg.src = img;
-            mText.innerHTML = fullText; // innerHTML permet d'utiliser des <br> dans le texte
+                // Gestion du layout large vs normal
+                if (layout === 'large') {
+                    modalContainer.classList.add('layout-large');
+                } else {
+                    modalContainer.classList.remove('layout-large');
+                }
 
-            // Afficher
-            modalOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Bloque le scroll de la page derrière
+                // Remplir la modale
+                mTitle.textContent = title;
+                mDate.textContent = date;
+                mImg.src = img;
+                mText.innerHTML = fullText; // innerHTML permet d'utiliser des <br> dans le texte
+
+                // Afficher
+                modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Bloque le scroll de la page derrière
+            });
         });
-    });
 
-    // Fonction pour fermer
-    const closeModal = () => {
-        modalOverlay.classList.remove('active');
-        document.body.style.overflow = ''; // Réactive le scroll
-    };
+        // Fonction pour fermer
+        const closeModal = () => {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = ''; // Réactive le scroll
+        };
 
-    // Fermer au clic sur la croix
-    modalClose.addEventListener('click', closeModal);
-
-    // Fermer au clic en dehors de la boîte (sur le fond sombre)
-    modalOverlay.addEventListener('click', (e) => {
-        if (e.target === modalOverlay) {
-            closeModal();
+        // Fermer au clic sur la croix
+        if (modalClose) {
+            modalClose.addEventListener('click', closeModal);
         }
-    });
-    
-    // Fermer avec la touche Echap
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
-            closeModal();
-        }
-    });
-});
-const burger = document.querySelector('.burger');
-    const navLinks = document.querySelector('.nav-links');
-    const links = document.querySelectorAll('.nav-links li a');
 
-    burger.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        burger.innerHTML = navLinks.classList.contains('active') ? '&#10006;' : '&#9776;';
-    });
-
-    links.forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            burger.innerHTML = '&#9776;';
+        // Fermer au clic en dehors de la boîte (sur le fond sombre)
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                closeModal();
+            }
         });
-    });
+        
+        // Fermer avec la touche Echap
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                closeModal();
+            }
+        });
+    }
 
-    /* --- 2. GESTION DES CATÉGORIES (Accordéon) --- */
+    /* --- 4. GESTION DES CATÉGORIES (Accordéon) --- */
     const headers = document.querySelectorAll('.category-header');
 
     headers.forEach(header => {
@@ -107,13 +118,16 @@ const burger = document.querySelector('.burger');
             const grid = document.getElementById(targetId);
             const toggle = header.querySelector('.category-toggle');
 
-            // Basculer la classe 'hidden'
-            if (grid.classList.contains('hidden')) {
-                grid.classList.remove('hidden');
-                toggle.textContent = '−'; // Signe moins
-            } else {
-                grid.classList.add('hidden');
-                toggle.textContent = '+'; // Signe plus
+            if (grid && toggle) {
+                // Basculer la classe 'hidden'
+                if (grid.classList.contains('hidden')) {
+                    grid.classList.remove('hidden');
+                    toggle.textContent = '−'; // Signe moins
+                } else {
+                    grid.classList.add('hidden');
+                    toggle.textContent = '+'; // Signe plus
+                }
             }
         });
     });
+});

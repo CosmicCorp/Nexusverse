@@ -117,10 +117,7 @@ function createPage(index) {
 }
 
 // Contrôles de Navigation
-const nextBtn = document.getElementById('nextBtn');
-const prevBtn = document.getElementById('prevBtn');
-
-nextBtn.onclick = () => {
+document.getElementById('nextBtn').onclick = () => {
     if (isAnimating) return;
     const step = (window.innerWidth <= 768 || currentIndex === 0) ? 1 : 2;
     if (currentIndex + step < pages.length) {
@@ -130,7 +127,7 @@ nextBtn.onclick = () => {
     }
 };
 
-prevBtn.onclick = () => {
+document.getElementById('prevBtn').onclick = () => {
     if (isAnimating) return;
     const step = (window.innerWidth <= 768 || currentIndex <= 2) ? 1 : 2;
     if (currentIndex - step >= 0) {
@@ -163,45 +160,3 @@ window.onresize = () => {
 
 // Premier affichage
 renderBook();
-
-// ==========================================
-// GESTION DU SWIPE TACTILE (AJOUT MOBILE)
-// ==========================================
-
-let touchStartX = 0;
-let touchEndX = 0;
-const minSwipeDistance = 50; // Seuil minimum pour valider un swipe
-const readerContainer = document.getElementById('readerContainer');
-
-// Capture le début du toucher
-readerContainer.addEventListener('touchstart', (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-}, { passive: true });
-
-// Capture la fin du toucher et calcule la direction
-readerContainer.addEventListener('touchend', (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-}, { passive: true });
-
-function handleSwipe() {
-    // 1. Si on est déjà en train d'animer, on ne fait rien
-    if (isAnimating) return;
-
-    // 2. Si une image est zoomée, on désactive le swipe de page 
-    // pour permettre à l'utilisateur de se déplacer DANS l'image.
-    if (document.querySelector('.zoomed')) return;
-
-    const distance = touchEndX - touchStartX;
-
-    // Vérifie si le mouvement est assez long
-    if (Math.abs(distance) > minSwipeDistance) {
-        if (distance < 0) {
-            // Glissement vers la GAUCHE -> Page SUIVANTE
-            nextBtn.click();
-        } else {
-            // Glissement vers la DROITE -> Page PRÉCÉDENTE
-            prevBtn.click();
-        }
-    }
-}

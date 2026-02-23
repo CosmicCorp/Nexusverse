@@ -17,11 +17,7 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  
-  /* --- FIX MOBILE CHROME --- */
-  height: 100vh;   /* Fallback pour vieux navigateurs */
-  height: 100dvh;  /* Dynamic Viewport Height : ignore la barre d'URL */
-  
+  height: 100vh;
   /* Structure en 3 blocs verticaux */
   display: flex;
   flex-direction: column;
@@ -85,8 +81,6 @@ nav {
   overflow: hidden;
   padding: 10px;
   position: relative;
-  /* Important pour que le swipe fonctionne bien sur toute la zone */
-  touch-action: pan-y; 
 }
 
 .book-viewport {

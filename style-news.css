@@ -102,22 +102,19 @@ main {
 }
 .page-header p { font-size: 1.1rem; opacity: 0.8; max-width: 600px; margin: 0 auto; }
 
-/* --- GRILLE D'ACTUALITÉS (Flexbox pour centrage parfait) --- */
+/* --- GRILLE D'ACTUALITÉS --- */
 .news-grid {
   display: flex;
-  flex-wrap: wrap; /* Permet le retour à la ligne */
-  justify-content: center; /* Centre les cartes horizontalement */
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 40px;
 }
 
 /* --- CARTE D'ACTUALITÉ --- */
 .news-card {
-  /* Dimensions flexibles avec limite */
   flex: 1 1 350px; 
   max-width: 450px; 
   width: 100%;
-  
-  /* Style */
   background: var(--nexus-card-bg);
   border-radius: 16px;
   overflow: hidden;
@@ -134,7 +131,6 @@ main {
   box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 0 20px rgba(77, 238, 234, 0.2);
 }
 
-/* Image de l'article */
 .news-image {
   height: 220px;
   overflow: hidden;
@@ -145,7 +141,7 @@ main {
   width: 100%; height: 100%; object-fit: cover;
   transition: transform 0.5s ease;
 }
-/* Placeholder */
+
 .news-image.placeholder {
     display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.3);
 }
@@ -153,7 +149,6 @@ main {
 
 .news-card:hover .news-image img { transform: scale(1.05); }
 
-/* Contenu de l'article */
 .news-content { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
 
 .news-meta {
@@ -173,7 +168,6 @@ main {
 
 .news-card p { font-size: 0.95rem; line-height: 1.6; color: #ccc; margin-bottom: 25px; flex-grow: 1; }
 
-/* Bouton */
 .news-button {
   display: inline-block; text-align: center;
   text-decoration: none; padding: 12px 24px;
@@ -189,12 +183,12 @@ main {
 }
 .news-button.disabled { opacity: 0.5; cursor: not-allowed; border-color: #555; color: #555;}
 
-/* --- MODALE (POP-UP) --- */
+/* --- MODALE (POP-UP) STANDARD --- */
 .modal-overlay {
   position: fixed; top: 0; left: 0; width: 100%; height: 100%;
   background: rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(8px);
-  z-index: 3000; /* Au-dessus de tout, même du menu mobile */
+  z-index: 3000;
   display: flex; justify-content: center; align-items: center;
   opacity: 0; visibility: hidden;
   transition: all 0.4s ease;
@@ -216,18 +210,18 @@ main {
 
 .modal-close {
   position: absolute; top: 15px; right: 20px;
-  background: none; border: none; font-size: 2rem; color: var(--white);
-  cursor: pointer; z-index: 10; text-shadow: 0 0 10px black;
+  background: rgba(0, 0, 0, 0.5); border: none; font-size: 1.8rem; color: var(--white);
+  cursor: pointer; z-index: 10; width: 40px; height: 40px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
   transition: var(--transition);
 }
-.modal-close:hover { color: var(--nexus-cyan); transform: rotate(90deg); }
+.modal-close:hover { color: var(--nexus-cyan); transform: rotate(90deg); background: rgba(0, 0, 0, 0.8); }
 
 .modal-header { position: relative; width: 100%; height: 250px; overflow: hidden; }
 
 .modal-header img {
   width: 100%; height: 100%; object-fit: cover;
   filter: brightness(0.7);
-  /* Ajustement vertical pour voir les têtes des personnages */
   object-position: center 20%;
 }
 
@@ -249,7 +243,6 @@ main {
 }
 .modal-action-btn:hover { box-shadow: 0 0 20px var(--nexus-glow); transform: translateY(-2px); }
 
-/* Scrollbar Modale */
 .modal-container::-webkit-scrollbar { width: 8px; }
 .modal-container::-webkit-scrollbar-thumb { background: var(--nexus-cyan); border-radius: 4px; }
 .modal-container::-webkit-scrollbar-track { background: rgba(0,0,0,0.3); }
@@ -264,15 +257,47 @@ main {
 .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
 .reveal.active { opacity: 1; transform: translateY(0); }
 
+/* --- MODIFIERS POUR MODALE LARGE (Images 1200x700) --- */
+.modal-container.layout-large {
+  max-width: 1000px; 
+}
+
+/* LA CORRECTION EST ICI */
+.modal-container.layout-large .modal-header {
+  height: auto;
+  max-height: none; /* Laisse le conteneur s'adapter au contenu */
+  background: #000;
+  display: flex;
+  flex-direction: column; /* Force l'empilement vertical (Image en haut, texte en bas) */
+  align-items: center;
+}
+
+.modal-container.layout-large .modal-header img {
+  object-fit: contain;
+  height: auto;
+  max-height: 55vh;
+  width: 100%;
+  filter: none;
+}
+
+.modal-container.layout-large .modal-title-overlay {
+  position: static;
+  width: 100%; /* S'assure que le bloc texte prenne bien toute la largeur */
+  background: rgba(11, 12, 16, 0.95);
+  padding: 25px 30px 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  text-align: left; /* Réaligne correctement le texte à gauche */
+}
+
+.modal-container.layout-large #modal-title {
+  text-shadow: none;
+}
+
 /* --- RESPONSIVE MOBILE --- */
 @media (max-width: 768px) {
   nav { padding: 1rem; }
   
-  /* IMPORTANT : Z-index élevé pour être cliquable */
-  .burger { 
-    display: block; 
-    z-index: 2001; 
-  }
+  .burger { display: block; z-index: 2001; }
   
   .nav-links {
     position: fixed; right: 0; top: 0; 
@@ -283,8 +308,6 @@ main {
     transform: translateX(100%); 
     box-shadow: -5px 0 30px rgba(0,0,0,0.8);
     border-left: 1px solid var(--nexus-cyan);
-    
-    /* IMPORTANT : Z-index en dessous du burger mais au dessus de la page */
     z-index: 2000;
   }
   
@@ -293,12 +316,31 @@ main {
   main { padding-top: 110px; }
   .page-header h1 { font-size: 2rem; }
   
-  /* Permettre à la carte de prendre tout l'espace sur mobile */
   .news-card { max-width: 100%; }
   .news-image { height: 200px; }
   
-  /* Ajustements modale */
+  /* Ajustements modale standard */
   .modal-header { height: 180px; }
   #modal-title { font-size: 1.4rem; }
   .modal-body { padding: 20px; font-size: 0.95rem; }
+  
+  /* Ajustements spécifiques modale layout-large pour mobile */
+  .modal-container.layout-large .modal-header {
+    height: auto; 
+    max-height: none; /* Laisse assez de place pour que l'image et le texte s'empilent */
+  }
+  .modal-container.layout-large .modal-header img {
+    max-height: 40vh; /* Garde l'image proportionnelle sur mobile */
+    width: 100%;
+  }
+  .modal-container.layout-large .modal-title-overlay {
+    padding: 15px 20px 10px; 
+    width: 100%;
+  }
+  .modal-container.layout-large #modal-title {
+    font-size: 1.25rem;
+  }
+  .modal-container.layout-large .modal-body {
+    padding: 15px 20px 20px; 
+  }
 }
