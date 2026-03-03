@@ -1,26 +1,4 @@
-const pages = [
-    "tome1/1.png", "tome1/2.png", "tome1/3.png", "tome1/4.png", "tome1/5.png",
-    "tome1/6.png", "tome1/7.png", "tome1/8.png", "tome1/9.png", "tome1/10.png",
-    "tome1/11.png", "tome1/12.png", "tome1/13.png", "tome1/14.png", "tome1/15.png",
-    "tome1/16.png", "tome1/17.png", "tome1/18.png", "tome1/19.png", "tome1/20.png",
-    "tome1/21.png", "tome1/22.png", "tome1/23.png", "tome1/24.png", "tome1/25.png",
-    "tome1/26.png", "tome1/27.png", "tome1/28.png", "tome1/29.png", "tome1/30.png",
-    "tome1/31.png", "tome1/32.png", "tome1/33.png", "tome1/34.png", "tome1/35.png",
-    "tome1/36.png", "tome1/37.png", "tome1/38.png", "tome1/39.png", "tome1/40.png",
-    "tome1/41.png", "tome1/42.png", "tome1/43.png", "tome1/44.png", "tome1/45.png",
-    "tome1/46.png", "tome1/47.png", "tome1/48.png", "tome1/49.png", "tome1/50.png",
-    "tome1/51.png", "tome1/52.png", "tome1/53.png", "tome1/54.png", "tome1/55.png",
-    "tome1/56.png", "tome1/57.png", "tome1/58.png", "tome1/59.png", "tome1/60.png",
-    "tome1/61.png", "tome1/62.png", "tome1/63.png", "tome1/64.png", "tome1/65.png",
-    "tome1/66.png", "tome1/67.png", "tome1/68.png", "tome1/69.png", "tome1/70.png",
-    "tome1/71.png", "tome1/72.png", "tome1/73.png", "tome1/74.png", "tome1/75.png",
-    "tome1/76.png", "tome1/77.png", "tome1/78.png", "tome1/79.png", "tome1/80.png",
-    "tome1/81.png", "tome1/82.png", "tome1/83.png", "tome1/84.png", "tome1/85.png",
-    "tome1/86.png", "tome1/87.png", "tome1/88.png", "tome1/89.png", "tome1/90.png",
-    "tome1/91.png", "tome1/92.png", "tome1/93.png", "tome1/94.png", "tome1/95.png",
-    "tome1/96.png", "tome1/97.png", "tome1/98.png", "tome1/99.png", "tome1/100.png",
-    "tome1/101.png", "tome1/102.png", "tome1/103.png"
-];
+const pages = Array.from({ length: 103 }, (_, i) => `tome1/${i + 1}.png`);
 
 let currentIndex = 0;
 let lastTap = 0;
@@ -160,3 +138,32 @@ window.onresize = () => {
 
 // Premier affichage
 renderBook();
+
+// --- GESTION DU SWIPE SUR MOBILE ---
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+// On enregistre la position de départ du doigt
+book.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+}, { passive: true });
+
+// On enregistre la position de fin et on calcule la direction
+book.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+}, { passive: true });
+
+function handleSwipe() {
+    // La distance minimale (en pixels) pour considérer que c'est un swipe
+    const swipeThreshold = 50; 
+
+    if (touchStartX - touchEndX > swipeThreshold) {
+        // Swipe vers la gauche = Page suivante
+        document.getElementById('nextBtn').click();
+    } else if (touchEndX - touchStartX > swipeThreshold) {
+        // Swipe vers la droite = Page précédente
+        document.getElementById('prevBtn').click();
+    }
+}

@@ -200,4 +200,9 @@ nav {
     max-width: 95vw;
     max-height: 100%;
   }
+  
+  /* Masque les boutons de navigation sur mobile */
+  #prevBtn, #nextBtn {
+    display: none !important;
+  }
 }

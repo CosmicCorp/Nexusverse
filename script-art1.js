@@ -1,19 +1,4 @@
-const pages = [
-    "art1/1.png", "art1/2.png", "art1/3.png", "art1/4.png", "art1/5.png",
-    "art1/6.png", "art1/7.png", "art1/8.png", "art1/9.png", "art1/10.png",
-    "art1/11.png", "art1/12.png", "art1/13.png", "art1/14.png", "art1/15.png",
-    "art1/16.png", "art1/17.png", "art1/18.png", "art1/19.png", "art1/20.png",
-    "art1/21.png", "art1/22.png", "art1/23.png", "art1/24.png", "art1/25.png",
-    "art1/26.png", "art1/27.png", "art1/28.png", "art1/29.png", "art1/30.png",
-    "art1/31.png", "art1/32.png", "art1/33.png", "art1/34.png", "art1/35.png",
-    "art1/36.png", "art1/37.png", "art1/38.png", "art1/39.png", "art1/40.png",
-    "art1/41.png", "art1/42.png", "art1/43.png", "art1/44.png", "art1/45.png",
-    "art1/46.png", "art1/47.png", "art1/48.png", "art1/49.png", "art1/50.png",
-    "art1/51.png", "art1/52.png", "art1/53.png", "art1/54.png", "art1/55.png",
-    "art1/56.png", "art1/57.png", "art1/58.png", "art1/59.png", "art1/60.png",
-    "art1/61.png", "art1/62.png", "art1/63.png", "art1/64.png", "art1/65.png",
-    "art1/66.png", "art1/67.png", "art1/68.png", "art1/69.png"
-];
+const pages = Array.from({ length: 69 }, (_, i) => `art1/${i + 1}.png`);
 
 let currentIndex = 0;
 let lastTap = 0;
@@ -153,3 +138,32 @@ window.onresize = () => {
 
 // Premier affichage
 renderBook();
+
+// --- GESTION DU SWIPE SUR MOBILE ---
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+// On enregistre la position de départ du doigt
+book.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+}, { passive: true });
+
+// On enregistre la position de fin et on calcule la direction
+book.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+}, { passive: true });
+
+function handleSwipe() {
+    // La distance minimale (en pixels) pour considérer que c'est un swipe
+    const swipeThreshold = 50; 
+
+    if (touchStartX - touchEndX > swipeThreshold) {
+        // Swipe vers la gauche = Page suivante
+        document.getElementById('nextBtn').click();
+    } else if (touchEndX - touchStartX > swipeThreshold) {
+        // Swipe vers la droite = Page précédente
+        document.getElementById('prevBtn').click();
+    }
+}

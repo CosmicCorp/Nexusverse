@@ -1,4 +1,3 @@
-// Génère automatiquement un tableau de "tome1/1.png" à "tome1/103.png"
 const pages = Array.from({ length: 134 }, (_, i) => `tome2/${i + 1}.png`);
 
 let currentIndex = 0;
@@ -139,3 +138,32 @@ window.onresize = () => {
 
 // Premier affichage
 renderBook();
+
+// --- GESTION DU SWIPE SUR MOBILE ---
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+// On enregistre la position de départ du doigt
+book.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+}, { passive: true });
+
+// On enregistre la position de fin et on calcule la direction
+book.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+}, { passive: true });
+
+function handleSwipe() {
+    // La distance minimale (en pixels) pour considérer que c'est un swipe
+    const swipeThreshold = 50; 
+
+    if (touchStartX - touchEndX > swipeThreshold) {
+        // Swipe vers la gauche = Page suivante
+        document.getElementById('nextBtn').click();
+    } else if (touchEndX - touchStartX > swipeThreshold) {
+        // Swipe vers la droite = Page précédente
+        document.getElementById('prevBtn').click();
+    }
+}
