@@ -1,4 +1,4 @@
-// Génère automatiquement un tableau de "tome2/1.png" à "tome2/134.png"
+// Génère automatiquement un tableau de "tome1/1.png" à "tome1/103.png"
 const pages = Array.from({ length: 134 }, (_, i) => `tome2/${i + 1}.png`);
 
 let currentIndex = 0;
