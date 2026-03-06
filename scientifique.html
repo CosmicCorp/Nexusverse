@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NexusVerse - Le Scientifique</title>
+  <link rel="icon" type="image/svg+xml" href="icons/N.svg">
+  <link rel="stylesheet" href="style-char-detail.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <a href="characters.html">
+        <img src="icons/logo.png" alt="NEXUS LOGO">
+      </a>
+    </div>
+    <button class="burger" aria-label="Menu">&#9776;</button>
+    <div class="nav-container">
+      <ul class="nav-links">
+        <li><a href="characters.html" class="active">Personnages</a></li>
+        <li><a href="index.html">Bibliothèque</a></li>
+        <li><a href="archives.html">Archives</a></li>
+        <li><a href="news.html">Actus</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <a href="characters.html" class="back-btn">← Retour au Nexus</a>
+
+    <div class="char-wrapper reveal">
+      
+      <div class="char-visual">
+        <div class="char-bg"></div>
+        <img src="icons/big/scientifique.png" alt="Le Scientifique" class="main-img">
+      </div>
+
+      <div class="char-data">
+        <header class="char-header">
+          <h1>Le Scientifique</h1>
+          <div class="tags">
+            <span class="tag faction" style="color: #ff3333; border-color: #ff3333; background: rgba(255, 51, 51, 0.1);">Les Sept</span>
+            <span class="tag status" style="color: #4deeea; border-color: #4deeea; background: rgba(77, 238, 234, 0.1);">Vivant / Opérationnel</span>
+          </div>
+        </header>
+
+        <section class="bio-section">
+          <h3>// Archives Biographiques</h3>
+          
+          <p class="bio-text">
+            <strong>L'Ingénieur Cosmique</strong><br>
+            Membre éminent de la mystérieuse organisation des "Sept", Le Scientifique est reconnaissable à son armure lourde et imposante, surmontée d'un casque à visière numérique similaire à celui de son confrère, Le Visiteur. Esprit brillant, pragmatique et souvent condescendant, il est le cerveau technique du groupe. Son rôle est de concevoir les dispositifs complexes capables de manipuler l'énergie infinie des réalités et d'endiguer les menaces cosmiques qui pèsent sur l'omnivers.
+          </p>
+          
+          <p class="bio-text">
+            <strong>L'Intervention au Temple Zéro</strong><br>
+            Il fait son apparition inopinée à la toute fin du Tome 2, alors que la dislocation d'Astéria bat son plein et que l'île part en lambeaux dans le vide spatial. Le Clan du Soleil, fuyant la fureur de l'Exécutrice Cubique, le surprend à l'intérieur du Temple Zéro, en train d'installer froidement un dispositif directement sur l'orbe. D'un calme olympien au milieu de l'apocalypse, il reconnaît immédiatement Scarlet, Barret et les autres, avouant que Le Visiteur lui a déjà parlé du groupe "qui se prend pour des héros".
+          </p>
+
+          <p class="bio-text">
+            <strong>Le Protocole "Bulle de Réalité"</strong><br>
+            Loin de se laisser impressionner par la colère de Barret, Le Scientifique leur ordonne de rester en dehors de ses affaires, jugeant que la situation dépasse largement leurs compétences. Il dévoile alors le plan risqué mais indispensable des Sept : écarter définitivement l'Ultime Réalité, puis lancer le protocole "Bulle de Réalité". Une manœuvre d'une ampleur inimaginable visant à sécuriser le Point Zéro avant que des entités malveillantes ou l'Institut Onirique ne puissent à nouveau le corrompre.
+          </p>
+        </section>
+
+        <section class="evolution-section">
+          <h3>// Variantes Visuelles</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item">
+              <img src="icons/big/scientifique.png" 
+                   alt="Armure Standard" 
+                   data-caption="Exo-Armure Lourde des Sept" 
+                   class="gallery-trigger">
+            </div>
+            
+            <div class="gallery-item">
+              <img src="icons/outfits/scientifique/variante1.png" 
+                   alt="Variante Visière" 
+                   data-caption="Mode Interface - Visière Souriante"
+                   class="gallery-trigger">
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="legal-footer reveal">
+    <p>© 2026 NexusVerse · Fiche de données classifiée</p>
+  </footer>
+
+  <div id="imgModal" class="modal-overlay">
+    <span class="modal-close">&times;</span>
+    <button class="modal-nav prev" aria-label="Précédent">&#10094;</button>
+    <button class="modal-nav next" aria-label="Suivant">&#10095;</button>
+
+    <div class="modal-card">
+      <div class="modal-img-wrapper">
+        <img id="modalImg" src="" alt="Visuel variante">
+        <div class="scan-overlay"></div>
+      </div>
+      <div id="caption"></div>
+    </div>
+  </div>
+
+  <script src="script-char-detail.js"></script>
+</body>
+</html>

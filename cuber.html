@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NexusVerse - L'Exécutrice Cubique</title>
+  <link rel="icon" type="image/svg+xml" href="icons/N.svg">
+  <link rel="stylesheet" href="style-char-detail.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <a href="characters.html">
+        <img src="icons/logo.png" alt="NEXUS LOGO">
+      </a>
+    </div>
+    <button class="burger" aria-label="Menu">&#9776;</button>
+    <div class="nav-container">
+      <ul class="nav-links">
+        <li><a href="characters.html" class="active">Personnages</a></li>
+        <li><a href="index.html">Bibliothèque</a></li>
+        <li><a href="archives.html">Archives</a></li>
+        <li><a href="news.html">Actus</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <a href="characters.html" class="back-btn">← Retour au Nexus</a>
+
+    <div class="char-wrapper reveal">
+      
+      <div class="char-visual">
+        <div class="char-bg"></div>
+        <img src="icons/big/cuber.png" alt="L'Exécutrice Cubique" class="main-img">
+      </div>
+
+      <div class="char-data">
+        <header class="char-header">
+          <h1>L'Exécutrice Cubique</h1>
+          <div class="tags">
+            <span class="tag faction" style="color: #a020f0; border-color: #a020f0; background: rgba(160, 32, 240, 0.1);">L'Ultime Réalité</span>
+            <span class="tag status" style="color: #ff3333; border-color: #ff3333; background: rgba(255, 51, 51, 0.1);">Menace Cosmique</span>
+          </div>
+        </header>
+
+        <section class="bio-section">
+          <h3>// Archives Biographiques</h3>
+          
+          <p class="bio-text">
+            <strong>Le Fléau d'Havrèque</strong><br>
+            Entité ténébreuse aux pouvoirs incommensurables, l'Exécutrice Cubique (surnommée la "sorcière" ou la "démone" par les survivants) est la manifestation d'une force corruptrice cosmique. C'est elle qui a mené l'assaut destructeur sur la mégapole d'Havrèque, le monde d'origine de Loper, Scarlet et Barret. Capable de manipuler une magie sombre et de corrompre tout ce qu'elle touche, elle a anéanti leur réalité, forçant Hiro à se sacrifier pour créer une brèche dimensionnelle et permettre à ses amis de fuir sa fureur.
+          </p>
+          
+          <p class="bio-text">
+            <strong>L'Avènement sur Astéria</strong><br>
+            Attirée sur Astéria par les interactions du Clan du Soleil avec l'orbe du temple, l'Exécutrice a fait une entrée apocalyptique à la fin du Tome 2. Profitant d'une défaillance dans le dispositif à faille de la Faction Chaos, elle a surgi des ténèbres et pulvérisé les installations de l'Institut en un instant. Déchaînant une foudre sombre foudroyante, elle a calciné sur place les agents Sorana et Fusion, prouvant que rien, ni les armées, ni la technologie, ne peut entraver sa marche.
+          </p>
+
+          <p class="bio-text">
+            <strong>La Chute du Nouveau Monde</strong><br>
+            Usant de son énergie noire, elle a érigé une immense tour faite d'amalgames cubiques au centre de l'île pour canaliser la puissance du Point Zéro. Son but : ouvrir un gigantesque portail dimensionnel pour faire déferler sa propre flotte. Ce siphonnage extrême a provoqué la dislocation pure et simple d'Astéria, dont les fragments se sont mis à flotter dans le vide spatial. Bien qu'elle ait finalement été balayée par une onde de choc défensive du Point Zéro, l'Exécutrice a prouvé qu'elle était l'incarnation même de la destruction, prête à consumer l'omnivers tout entier.
+          </p>
+        </section>
+
+        <section class="evolution-section">
+          <h3>// Variantes Visuelles</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item">
+              <img src="icons/outfits/cube/1.png" 
+                   alt="Forme Sombre" 
+                   data-caption="Forme Corrompue" 
+                   class="gallery-trigger">
+            </div>
+            
+            
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="legal-footer reveal">
+    <p>© 2026 NexusVerse · Fiche de données classifiée</p>
+  </footer>
+
+  <div id="imgModal" class="modal-overlay">
+    <span class="modal-close">&times;</span>
+    <button class="modal-nav prev" aria-label="Précédent">&#10094;</button>
+    <button class="modal-nav next" aria-label="Suivant">&#10095;</button>
+
+    <div class="modal-card">
+      <div class="modal-img-wrapper">
+        <img id="modalImg" src="" alt="Visuel variante">
+        <div class="scan-overlay"></div>
+      </div>
+      <div id="caption"></div>
+    </div>
+  </div>
+
+  <script src="script-char-detail.js"></script>
+</body>
+</html>

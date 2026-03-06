@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NexusVerse - Léo</title>
+  <link rel="icon" type="image/svg+xml" href="icons/N.svg">
+  <link rel="stylesheet" href="style-char-detail.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <a href="characters.html">
+        <img src="icons/logo.png" alt="NEXUS LOGO">
+      </a>
+    </div>
+    <button class="burger" aria-label="Menu">&#9776;</button>
+    <div class="nav-container">
+      <ul class="nav-links">
+        <li><a href="characters.html" class="active">Personnages</a></li>
+        <li><a href="index.html">Bibliothèque</a></li>
+        <li><a href="archives.html">Archives</a></li>
+        <li><a href="news.html">Actus</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <a href="characters.html" class="back-btn">← Retour au Nexus</a>
+
+    <div class="char-wrapper reveal">
+      
+      <div class="char-visual">
+        <div class="char-bg"></div>
+        <img src="icons/big/leo.png" alt="Léo" class="main-img">
+      </div>
+
+      <div class="char-data">
+        <header class="char-header">
+          <h1>Léo</h1>
+          <div class="tags">
+            <span class="tag faction">Clan du Soleil</span>
+            <span class="tag status">Vivant / Égaré</span>
+          </div>
+        </header>
+
+        <section class="bio-section">
+          <h3>// Archives Biographiques</h3>
+          
+          <p class="bio-text">
+            <strong>L'Étoile Montante de Fontainewood</strong><br>
+            Jeune acteur originaire de la mondaine Côte Dorée, le cœur du cinéma de Fontainewood, Léo vivait sa passion intensément aux côtés de son grand frère cascadeur, Damian. Reconnaissable à sa veste en cuir blanche ornée de motifs noirs et à sa mèche épaisse tombant sur le front (affectueusement moquée par Loper), il allie un humour sarcastique à une grande sensibilité. C'est un jeune homme courageux qui admire la force de ceux qui l'entourent.
+          </p>
+          
+          <p class="bio-text">
+            <strong>L'Apocalypse et la Survie</strong><br>
+            La vie de Léo s'est brutalement arrêtée lors du tournage du film "Peelian 2", lorsqu'une flotte de soucoupes extraterrestres a bombardé et anéanti sa réalité. Après avoir cru mourir dans les décombres, il s'est mystérieusement réveillé avec son frère sur les plaines d'Astéria. Là-bas, ils ont secouru Loper et ont rejoint le Clan du Soleil. Bien que discret au premier abord, Léo se montre très attentionné : c'est lui qui offre un plastron d'armure à Scarlet avant la bataille finale, touché par l'héroïsme et l'authenticité de la jeune femme avec qui il noue un lien profond et sincère.
+          </p>
+
+          <p class="bio-text">
+            <strong>La Fracture Dimensionnelle</strong><br>
+            L'expédition vers le Temple Zéro pour repousser la sombre entité s'est soldée par un nouveau cataclysme. Une violente onde de choc émise par le Point Zéro a disloqué Astéria, projetant ses fragments dans le vide spatial. Dans la violence de l'impact, le groupe a été scindé en deux. Léo s'est retrouvé piégé sur un morceau de terre à la dérive avec Scarlet, Loper et Raptor. Déchiré par la séparation avec Damian, il s'efforce néanmoins de ravaler ses propres larmes pour rassurer ses camarades paniquées, tentant de garder son sang-froid face à l'immensité terrifiante du cosmos.
+          </p>
+        </section>
+
+        <section class="evolution-section">
+          <h3>// Variantes Visuelles</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item">
+              <img src="icons/outfits/leo/93.png" 
+                   alt="Tenue Acteur" 
+                   data-caption="Veste en Cuir Blanche" 
+                   class="gallery-trigger">
+            </div>
+            <div class="gallery-item">
+              <img src="icons/outfits/leo/94.png" 
+                   alt="Variante Exploration" 
+                   data-caption="Tenue d'Interieur"
+                   class="gallery-trigger">
+            </div>
+            <div class="gallery-item">
+              <img src="icons/outfits/leo/95.png" 
+                   alt="Variante Exploration" 
+                   data-caption="Veste d'Exploration"
+                   class="gallery-trigger">
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="legal-footer reveal">
+    <p>© 2026 NexusVerse · Fiche de données classifiée</p>
+  </footer>
+
+  <div id="imgModal" class="modal-overlay">
+    <span class="modal-close">&times;</span>
+    <button class="modal-nav prev" aria-label="Précédent">&#10094;</button>
+    <button class="modal-nav next" aria-label="Suivant">&#10095;</button>
+
+    <div class="modal-card">
+      <div class="modal-img-wrapper">
+        <img id="modalImg" src="" alt="Visuel variante">
+        <div class="scan-overlay"></div>
+      </div>
+      <div id="caption"></div>
+    </div>
+  </div>
+
+  <script src="script-char-detail.js"></script>
+</body>
+</html>

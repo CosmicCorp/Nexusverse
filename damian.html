@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NexusVerse - Damian</title>
+  <link rel="icon" type="image/svg+xml" href="icons/N.svg">
+  <link rel="stylesheet" href="style-char-detail.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <a href="characters.html">
+        <img src="icons/logo.png" alt="NEXUS LOGO">
+      </a>
+    </div>
+    <button class="burger" aria-label="Menu">&#9776;</button>
+    <div class="nav-container">
+      <ul class="nav-links">
+        <li><a href="characters.html" class="active">Personnages</a></li>
+        <li><a href="index.html">Bibliothèque</a></li>
+        <li><a href="archives.html">Archives</a></li>
+        <li><a href="news.html">Actus</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <a href="characters.html" class="back-btn">← Retour au Nexus</a>
+
+    <div class="char-wrapper reveal">
+      
+      <div class="char-visual">
+        <div class="char-bg"></div>
+        <img src="icons/big/damian.png" alt="Damian" class="main-img">
+      </div>
+
+      <div class="char-data">
+        <header class="char-header">
+          <h1>Damian</h1>
+          <div class="tags">
+            <span class="tag faction">Clan du Soleil</span>
+            <span class="tag status">Vivant / Égaré</span>
+          </div>
+        </header>
+
+        <section class="bio-section">
+          <h3>// Archives Biographiques</h3>
+          
+          <p class="bio-text">
+            <strong>La Star de Fontainewood</strong><br>
+            Originaire de la prestigieuse "Côte Dorée", le cœur de l'industrie cinématographique de Fontainewood, Damian menait une vie à cent à l'heure. Acteur et cascadeur spécialisé dans les films d'action, il partageait cette passion dévorante avec son petit frère Léo. Doté d'une musculature imposante, reconnaissable à sa casquette blanche et sa veste argentée grande ouverte, Damian est un jeune homme au tempérament chaleureux, protecteur et doté d'un indéfectible sens de la famille.
+          </p>
+          
+          <p class="bio-text">
+            <strong>La Chute de la Côte Dorée</strong><br>
+            Leur rêve hollywoodien a brutalement pris fin lors du tournage du blockbuster "Peelian 2". Une armada de soucoupes volantes extraterrestres a envahi le ciel, bombardant la ville de projectiles énergétiques. Piégés dans l'apocalypse de la Dernière Réalité, Damian et Léo n'ont dû leur survie qu'en se terrant dans les décombres de leur monde en flammes. Frappés par ce cataclysme et séparés de tous leurs amis, les deux frères se sont réveillés seuls et désorientés sur les plaines irréelles d'Astéria.
+          </p>
+
+          <p class="bio-text">
+            <strong>Le Protecteur du Clan</strong><br>
+            C'est dans les forêts d'Astéria qu'il a croisé la route de Loper, effondrée et brisée par la perte de ses propres proches. Touché par sa détresse, Damian est devenu son roc, nouant avec elle un lien romantique profond et inattendu. En rejoignant le "Clan du Soleil", il se rapproche naturellement de Barret, partageant avec lui cet instinct viscéral de grand frère protecteur. Toujours prêt à foncer tête baissée pour défendre les siens, il fait de la survie de son nouveau groupe sa priorité absolue.
+          </p>
+
+          <p class="bio-text">
+            <strong>Séparation dans le Vide</strong><br>
+            Lors de la mission désespérée au Temple Zéro pour contrecarrer les plans de l'entité cubique et de l'Institut, la réalité elle-même s'est effondrée. Une onde de choc du Point Zéro a fracturé le sol d'Astéria, scindant l'île en débris flottant dans le vide spatial. Cette division soudaine a arraché Damian à son frère Léo et à Loper, le laissant dériver seul vers l'inconnu, sous les cris déchirants de celle qu'il s'était juré de ne jamais abandonner.
+          </p>
+        </section>
+
+        <section class="evolution-section">
+          <h3>// Variantes Visuelles</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item">
+              <img src="icons/outfits/damian/105.png" 
+                   alt="Tenue Cascadeur" 
+                   data-caption="Veste Argentée" 
+                   class="gallery-trigger">
+            </div>
+            <div class="gallery-item">
+              <img src="icons/outfits/damian/106.png" 
+                   alt="Variante Exploration" 
+                   data-caption="Tenue d'interieur"
+                   class="gallery-trigger">
+            </div>
+            
+            <div class="gallery-item">
+              <img src="icons/outfits/damian/107.png" 
+                   alt="Variante Exploration" 
+                   data-caption="Explorateur"
+                   class="gallery-trigger">
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="legal-footer reveal">
+    <p>© 2026 NexusVerse · Fiche de données classifiée</p>
+  </footer>
+
+  <div id="imgModal" class="modal-overlay">
+    <span class="modal-close">&times;</span>
+    <button class="modal-nav prev" aria-label="Précédent">&#10094;</button>
+    <button class="modal-nav next" aria-label="Suivant">&#10095;</button>
+
+    <div class="modal-card">
+      <div class="modal-img-wrapper">
+        <img id="modalImg" src="" alt="Visuel variante">
+        <div class="scan-overlay"></div>
+      </div>
+      <div id="caption"></div>
+    </div>
+  </div>
+
+  <script src="script-char-detail.js"></script>
+</body>
+</html>

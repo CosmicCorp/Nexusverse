@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NexusVerse - Hiro</title>
+  <link rel="icon" type="image/svg+xml" href="icons/N.svg">
+  <link rel="stylesheet" href="style-char-detail.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <a href="characters.html">
+        <img src="icons/logo.png" alt="NEXUS LOGO">
+      </a>
+    </div>
+    <button class="burger" aria-label="Menu">&#9776;</button>
+    <div class="nav-container">
+      <ul class="nav-links">
+        <li><a href="characters.html" class="active">Personnages</a></li>
+        <li><a href="index.html">Bibliothèque</a></li>
+        <li><a href="archives.html">Archives</a></li>
+        <li><a href="news.html">Actus</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <a href="characters.html" class="back-btn">← Retour au Nexus</a>
+
+    <div class="char-wrapper reveal">
+      
+      <div class="char-visual">
+        <div class="char-bg"></div>
+        <img src="icons/big/hiro.png" alt="Hiro" class="main-img">
+      </div>
+
+      <div class="char-data">
+        <header class="char-header">
+          <h1>Hiro</h1>
+          <div class="tags">
+            <span class="tag faction">Civil (Havrèque)</span>
+            <span class="tag status" style="color: #ffaa00; border-color: #ffaa00; background: rgba(255, 170, 0, 0.1);">Disparu / Présumé Mort</span>
+          </div>
+        </header>
+
+        <section class="bio-section">
+          <h3>// Archives Biographiques</h3>
+          
+          <p class="bio-text">
+            <strong>Le Musicien d'Havrèque</strong><br>
+            Originaire de la mégapole côtière d'Havrèque, Hiro était un jeune homme reconnaissable à ses cheveux bruns foncés en coupe courte légèrement hérissée. Il ne se séparait d'ailleurs jamais de son emblématique blouson varsity blanc et mauve. Musicien hors pair et guitariste passionné, il formait un groupe d'amis inséparable avec Scarlet, Barret et Loper. Cette dernière, bassiste amatrice, nourrissait de profonds sentiments romantiques à son égard, et ils avaient même comme projet de monter un groupe de punk rock ensemble.
+          </p>
+          
+          <p class="bio-text">
+            <strong>Le Plan Désespéré</strong><br>
+            Lorsque leur réalité a été attaquée par une redoutable entité corrompant tout sur son passage, le groupe s'est retrouvé acculé. Pour sauver leur monde, Hiro a eu l'idée audacieuse de s'infiltrer dans le complexe scientifique de la ville, plus précisément dans le pôle dédié aux anomalies extérieures. Leur objectif : dérober un artefact expérimental, un cristal forgé de matière négative contenant une ancienne tempête dimensionnelle, afin de la libérer sur les hordes de carcasses.
+          </p>
+
+          <p class="bio-text">
+            <strong>Le Sacrifice Héroïque</strong><br>
+            Conscient de la gravité de la situation, Hiro a pris l'ultime décision de se sacrifier pour sauver ceux qu'il aimait. Refusant de laisser ses amis périr et leur adressant un dernier sourire, il a couru frénétiquement escalader un bâtiment avant de se jeter dans le vide, brisant le cristal dans sa chute. La puissante déflagration a libéré la tempête qui a balayé la ville, aspirant l'entité ainsi que Scarlet, Barret et Loper vers de nouvelles réalités. Emporté le premier par l'onde de choc, nul ne sait si le jeune guitariste a simplement été égaré dans une autre dimension ou si le fracas de l'explosion l'a totalement désintégré.
+          </p>
+        </section>
+
+        <section class="evolution-section">
+          <h3>// Variantes Visuelles</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item">
+              <img src="icons/outfits/hiro/1.png" 
+                   alt="Tenue Civile" 
+                   data-caption="Blouson Varsity" 
+                   class="gallery-trigger">
+            </div>
+            
+            
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="legal-footer reveal">
+    <p>© 2026 NexusVerse · Fiche de données classifiée</p>
+  </footer>
+
+  <div id="imgModal" class="modal-overlay">
+    <span class="modal-close">&times;</span>
+    <button class="modal-nav prev" aria-label="Précédent">&#10094;</button>
+    <button class="modal-nav next" aria-label="Suivant">&#10095;</button>
+
+    <div class="modal-card">
+      <div class="modal-img-wrapper">
+        <img id="modalImg" src="" alt="Visuel variante">
+        <div class="scan-overlay"></div>
+      </div>
+      <div id="caption"></div>
+    </div>
+  </div>
+
+  <script src="script-char-detail.js"></script>
+</body>
+</html>
