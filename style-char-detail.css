@@ -12,6 +12,12 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* Custom Scrollbar Nexus */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--nexus-dark); }
+::-webkit-scrollbar-thumb { background: rgba(77, 238, 234, 0.3); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--nexus-cyan); }
+
 body {
   background-color: var(--nexus-dark);
   color: #c5c6c7;
@@ -104,10 +110,7 @@ main {
   background: var(--nexus-card-bg);
   border-radius: 20px;
   overflow: hidden;
-  
-  /* BORDURE DISCRÈTE */
   border: 1px solid rgba(255, 255, 255, 0.08);
-  
   box-shadow: 0 0 50px rgba(0,0,0,0.5);
   min-height: 600px;
 }
@@ -120,11 +123,9 @@ main {
   background: #000;
 }
 
-/* 1. GRILLE DE FOND (Derrière) */
 .char-bg {
   position: absolute; inset: 0;
   background-color: #0b0c10;
-  /* Motif Grille CSS */
   background-image: 
       linear-gradient(rgba(77, 238, 234, 0.05) 1px, transparent 1px),
       linear-gradient(90deg, rgba(77, 238, 234, 0.05) 1px, transparent 1px);
@@ -133,20 +134,16 @@ main {
 }
 .char-visual:hover .char-bg { opacity: 0.8; transform: scale(1.05); }
 
-/* 2. IMAGE DU PERSONNAGE (Avec Masque de fondu au sol) */
 .main-img {
   position: relative; z-index: 2;
   max-width: 90%; max-height: 90%;
   filter: drop-shadow(0 10px 20px rgba(0,0,0,0.8));
   transition: transform 0.5s ease;
-
-  /* Masque qui rend le bas de l'image transparent */
-  -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
 }
 .char-visual:hover .main-img { transform: scale(1.02); }
 
-/* 3. VIGNETAGE (Juste pour l'ambiance sombre sur les bords) */
 .char-visual::after {
   content: ''; position: absolute; inset: 0; z-index: 3; pointer-events: none;
   background: radial-gradient(circle at center, transparent 50%, rgba(11, 12, 16, 0.8) 100%);
@@ -170,8 +167,11 @@ main {
 .tag.faction { background: rgba(255, 165, 0, 0.2); color: orange; border-color: orange; }
 .tag.status { background: rgba(0, 255, 0, 0.1); color: #00ff00; border-color: #00ff00; }
 
+/* Amélioration des titres de section façon Terminal */
 .bio-section h3, .evolution-section h3 {
   font-family: var(--font-title); color: var(--nexus-cyan); margin-bottom: 20px; font-size: 1.1rem;
+  border-left: 3px solid var(--nexus-cyan); padding-left: 10px;
+  box-shadow: -2px 0 10px rgba(77, 238, 234, 0.3);
 }
 .bio-text {
   line-height: 1.8; color: #ccc; margin-bottom: 20px;
@@ -180,48 +180,69 @@ main {
 
 /* --- GALERIE (VIGNETTES TECH) --- */
 .evolution-section { margin-top: auto; }
-.gallery-grid { display: flex; gap: 20px; flex-wrap: wrap; }
+
+.gallery-grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); /* Légèrement élargi */
+  gap: 18px; 
+}
 
 .gallery-item {
   position: relative;
   overflow: hidden;
   border-radius: 8px;
-  /* Bordure double effet */
-  border: 1px solid rgba(77, 238, 234, 0.3);
-  background: rgba(11, 12, 16, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #000;
   transition: var(--transition);
+  aspect-ratio: 950 / 1550;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  cursor: pointer;
+}
+
+/* Scanline Holographique */
+.gallery-item::before {
+  content: ''; position: absolute; top: -100%; left: 0; width: 100%; height: 50%;
+  background: linear-gradient(to bottom, transparent, rgba(77, 238, 234, 0.5), transparent);
+  transition: top 0.6s ease-in-out; z-index: 2; pointer-events: none;
 }
 
 .gallery-item img {
-  display: block;
-  width: 100px; 
-  aspect-ratio: 950 / 1550;
-  object-fit: cover; 
-  object-position: top center;
-  cursor: pointer; 
-  transition: transform 0.5s ease;
-  opacity: 0.8;
+  display: block; width: 100%; height: 100%;
+  object-fit: cover; object-position: top center;
+  transition: transform 0.6s ease, filter 0.3s;
+  opacity: 0.75;
+  filter: grayscale(20%);
 }
 
-/* Effet de survol sur la vignette */
 .gallery-item:hover {
   border-color: var(--nexus-cyan);
-  box-shadow: 0 0 15px rgba(77, 238, 234, 0.4);
+  box-shadow: 0 0 20px rgba(77, 238, 234, 0.3), 0 10px 20px rgba(0,0,0,0.8);
   transform: translateY(-5px);
 }
 
+.gallery-item:hover::before { top: 200%; } /* Déclenche le scan */
+
 .gallery-item:hover img {
   transform: scale(1.1);
-  opacity: 1;
+  opacity: 1; filter: grayscale(0%);
 }
 
-/* Petit overlay "Scan" au survol */
-.gallery-item::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(to bottom, transparent 50%, rgba(77, 238, 234, 0.1) 100%);
-  opacity: 0; transition: var(--transition); pointer-events: none;
+/* Nouveau : Label au survol */
+.item-overlay {
+  position: absolute; bottom: 0; left: 0; width: 100%;
+  padding: 15px 5px 10px;
+  background: linear-gradient(to top, rgba(11,12,16,0.95) 20%, transparent);
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  text-align: center; z-index: 3;
 }
-.gallery-item:hover::after { opacity: 1; }
+.gallery-item:hover .item-overlay { transform: translateY(0); }
+
+.item-text {
+  color: var(--nexus-cyan); font-family: var(--font-title); font-size: 0.75rem;
+  text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 0 5px var(--nexus-glow);
+}
+
 
 /* --- FOOTER --- */
 .legal-footer { text-align: center; margin-top: 50px; font-size: 0.8rem; opacity: 0.5; }
@@ -235,99 +256,60 @@ main {
   display: none; 
   position: fixed; z-index: 2000; left: 0; top: 0; 
   width: 100%; height: 100%;
-  background-color: rgba(5, 6, 8, 0.95); /* Fond très sombre */
-  backdrop-filter: blur(8px);
-  /* Flexbox pour centrer parfaitement la carte */
-  /* Note : display: flex est appliqué par JS ou style inline si besoin, 
-     mais ici on garde display:none par défaut et le JS bascule en block.
-     Pour utiliser le centrage flex, on peut ajuster le JS ou utiliser le position absolute ci-dessous */
+  background-color: rgba(5, 6, 8, 0.95); 
+  backdrop-filter: blur(10px);
   justify-content: center; align-items: center;
 }
 
-/* Le conteneur global de la carte (Image + Texte) */
 .modal-card {
   position: relative;
   width: auto; 
-  max-width: 90%;
-  /* Hauteur réduite pour un aspect compact */
-  max-height: 70vh; 
-  background: rgba(15, 18, 24, 0.95);
-  border: 1px solid var(--nexus-cyan);
+  max-width: 95%; 
+  max-height: 90vh; 
+  background: rgba(11, 12, 16, 0.98);
+  border: 1px solid rgba(77, 238, 234, 0.5);
   border-radius: 12px;
   box-shadow: 0 0 40px rgba(77, 238, 234, 0.15), inset 0 0 20px rgba(77, 238, 234, 0.05);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden; /* Pour que le contenu ne dépasse pas les bords arrondis */
-  
-  /* Centrage absolu */
+  display: flex; flex-direction: column; overflow: hidden; 
   position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
 }
 
-/* Zone Image */
 .modal-img-wrapper {
-  position: relative;
-  background: black;
-  flex-grow: 1; /* Prend toute la place disponible */
+  position: relative; background: #000; flex-grow: 1; 
   display: flex; justify-content: center; align-items: center;
-  overflow: hidden;
-  min-height: 300px; /* Taille minimum */
+  overflow: hidden; min-height: 300px; 
 }
 
 .modal-card img {
-  display: block;
-  max-height: 55vh; /* Limite la hauteur de l'image */
-  max-width: 100%;
-  object-fit: contain;
+  display: block; max-height: 80vh; max-width: 100%; object-fit: contain;
+  transition: opacity 0.3s ease-in-out; /* Pour le JS */
 }
 
-/* Petit effet de scan par dessus l'image pour le style */
-.scan-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-  background-size: 100% 2px, 3px 100%;
-  pointer-events: none;
-  opacity: 0.3;
-}
-
-/* Zone Texte (Légende) */
 #caption {
-  background: linear-gradient(90deg, rgba(11, 12, 16, 1) 0%, rgba(20, 24, 30, 1) 50%, rgba(11, 12, 16, 1) 100%);
-  color: var(--nexus-cyan);
-  font-family: var(--font-title);
-  font-size: 1rem;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  padding: 15px 25px;
-  text-align: center;
-  border-top: 1px solid rgba(77, 238, 234, 0.3);
-  text-shadow: 0 0 8px var(--nexus-glow);
+  background: rgba(5, 6, 8, 0.9);
+  color: var(--white);
+  font-family: var(--font-title); font-size: 1rem;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 15px 25px; text-align: center;
+  border-top: 1px solid rgba(77, 238, 234, 0.2);
 }
+#caption::before { content: '>> '; color: var(--nexus-cyan); }
 
-/* Navigation (Flèches) - Hors de la carte */
 .modal-nav {
   position: absolute; top: 50%; transform: translateY(-50%);
-  background: transparent;
-  color: #666;
-  border: none;
-  font-size: 3rem;
-  padding: 20px;
-  cursor: pointer;
-  z-index: 2005;
-  transition: var(--transition);
+  background: transparent; color: rgba(255,255,255,0.3); border: none;
+  font-size: 4rem; padding: 20px; cursor: pointer; z-index: 2005; transition: var(--transition);
 }
-
 .modal-nav:hover { color: var(--nexus-cyan); text-shadow: 0 0 15px var(--nexus-cyan); transform: translateY(-50%) scale(1.1); }
 .prev { left: 5%; }
 .next { right: 5%; }
 
-/* Bouton Fermer */
 .modal-close {
   position: absolute; top: 20px; right: 30px;
-  color: #666; font-size: 40px; cursor: pointer;
-  z-index: 2010; transition: var(--transition);
-  line-height: 1;
+  color: rgba(255,255,255,0.5); font-size: 45px; cursor: pointer;
+  z-index: 2010; transition: var(--transition); line-height: 1;
 }
-.modal-close:hover { color: var(--nexus-cyan); transform: rotate(90deg); }
+.modal-close:hover { color: #ff4d4d; transform: rotate(90deg); text-shadow: 0 0 10px red; }
 
 
 /* --- RESPONSIVE MOBILE --- */
@@ -337,31 +319,19 @@ main {
   .char-data { padding: 30px; }
   .char-header h1 { font-size: 2.5rem; }
   
-  /* Menu Burger Mobile */
   .burger { display: block; z-index: 2001; }
   .nav-links {
-    position: fixed; right: 0; top: 0; 
-    height: 100vh; width: 75%;
-    background: rgba(11, 12, 16, 0.98); 
-    flex-direction: column;
+    position: fixed; right: 0; top: 0; height: 100vh; width: 75%;
+    background: rgba(11, 12, 16, 0.98); flex-direction: column;
     justify-content: center; align-items: center;
-    transform: translateX(100%); 
-    z-index: 2000;
+    transform: translateX(100%); z-index: 2000;
     border-left: 1px solid var(--nexus-cyan);
   }
   .nav-links.active { transform: translateX(0); }
   
-  /* Ajustements Modale Mobile */
-  .modal-card { 
-    width: 90%; 
-    max-height: 70vh; 
-  }
-  .modal-card img { max-height: 50vh; }
-  
-  /* On rapproche les flèches du bord sur mobile */
-  .prev { left: 0; }
-  .next { right: 0; }
-  .modal-nav { font-size: 2rem; padding: 10px; }
-  
-  #caption { font-size: 0.85rem; padding: 10px; }
+  .modal-card { width: 95%; max-height: 85vh; }
+  .modal-card img { max-height: 75vh; }
+  .prev { left: 0; } .next { right: 0; }
+  .modal-nav { font-size: 2.5rem; padding: 10px; }
+  #caption { font-size: 0.8rem; padding: 10px; }
 }

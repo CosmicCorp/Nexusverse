@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus - Sélection de Galerie</title>
+  <link rel="icon" type="image/svg+xml" href="icons/N.svg">
+  
+  <link rel="stylesheet" href="style-library.css">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <a href="index.html">
+        <img id="logo-img" src="icons/logo.png" alt="NEXUS LOGO">
+      </a>
+    </div>
+    
+    <button class="burger" aria-label="Menu">
+      &#9776;
+    </button>
+    <script src="logo-dates.js"></script>
+    <div class="nav-container">
+      <ul class="nav-links">
+        <li><a href="characters.html">Personnages</a></li>
+        <li><a href="index.html">Bibliothèque</a></li>
+        <li><a href="galleries.html">Galeries</a></li>
+        <li><a href="news.html">Actus</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page-header">
+      <h1>Archives Visuelles</h1>
+      <p>Sélectionnez une galerie pour explorer les illustrations de l'omnivers.</p>
+    </div>
+
+    
+
+    <section class="category">
+      <div class="category-header">
+        <div>
+          <h2>Galeries des Tomes</h2>
+          <span class="subtitle">Banque visuelle de l'omnivers</span>
+        </div>
+        <span class="category-toggle">&#9660;</span>
+      </div>
+
+      <div class="tomes-grid reveal active">
+        
+        <div class="tome-card">
+          <div class="cover-container">
+            <div class="cover-flipper">
+              <div class="cover-front">
+                <img src="gallerycovers/1.png" alt="Galerie Tome 1">
+                <a href="galery.html" class="tome-overlay">
+                  <span class="overlay-text">Ouvrir la galerie</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="tome-info">
+            <div class="tome-meta">
+              <span class="tome-number">Clan du Soleil</span>
+              <span class="tome-status">Tome 1</span>
+            </div>
+            <h3 class="tome-title">La Formation Du Clan</h3>
+            <p class="tome-sub">73 illustrations indexées</p>
+          </div>
+        </div>
+        <div class="tome-card">
+          <div class="cover-container">
+            <div class="cover-flipper">
+              <div class="cover-front">
+                <img src="gallerycovers/2.png" alt="Galerie Tome 1">
+                <a href="galery2.html" class="tome-overlay">
+                  <span class="overlay-text">Ouvrir la galerie</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="tome-info">
+            <div class="tome-meta">
+              <span class="tome-number">Nouveau Monde</span>
+              <span class="tome-status">Tome 2</span>
+            </div>
+            <h3 class="tome-title">Union face au vide</h3>
+            <p class="tome-sub">69 illustrations indexées</p>
+          </div>
+        </div>
+
+        <!--div class="tome-card">
+          <div class="cover-container">
+            <div class="cover-flipper">
+              <div class="cover-front">
+                <img src="galery/tome1/1.png" alt="Galerie Tome 1">
+                <a href="galery.html" class="tome-overlay">
+                  <span class="overlay-text">Ouvrir la galerie</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="tome-info">
+            <div class="tome-meta">
+              <span class="tome-number">Archive 01</span>
+              <span class="tome-status">Disponible</span>
+            </div>
+            <h3 class="tome-title">L'Éveil du Nexus</h3>
+            <p class="tome-sub">73 illustrations indexées</p>
+          </div>
+        </div>
+
+        <div class="tome-card upcoming">
+          <div class="cover-container">
+            <div class="cover-flipper">
+              <div class="cover-front">
+                <img src="galery/tome1/2.png" alt="Galerie Tome 2">
+              </div>
+            </div>
+          </div>
+          <div class="tome-info">
+            <div class="tome-meta">
+              <span class="tome-number">Archive 02</span>
+              <span class="tome-status">En cours</span>
+            </div>
+            <h3 class="tome-title">Échos du Vide</h3>
+            <p class="tome-sub">Acquisition des données en cours...</p>
+          </div>
+        </div>
+
+        <div class="tome-card locked">
+          <div class="cover-container">
+            <div class="cover-flipper">
+              <div class="cover-front">
+                <div class="hologram-effect"></div>
+                <div class="lock-icon" style="font-size: 2rem;">&#128274;</div>
+                <span class="glitch-text">ACCÈS REFUSÉ</span>
+              </div>
+            </div>
+          </div>
+          <div class="tome-info">
+            <div class="tome-meta">
+              <span class="tome-number">Archive 03</span>
+              <span class="tome-status" style="color: #ff3c3c; border-color: rgba(255, 60, 60, 0.4); background: rgba(255, 60, 60, 0.1);">Restreint</span>
+            </div>
+            <h3 class="tome-title">Fichiers Corrompus</h3>
+            <p class="tome-sub">Niveau d'accréditation insuffisant</p>
+          </div>
+        </div-->
+
+      </div>
+    </section>
+  </main>
+
+  <div class="legal-footer">
+    <p>&copy; 2026 Nexus Omnivers. Archives Visuelles Classifiées.</p>
+  </div>
+
+  <button id="back-to-top" title="Retour en haut">&#10148;</button>
+
+  <script src="script.js"></script>
+  <script>
+    // Script d'interaction pour réduire/développer la grille au clic sur l'en-tête de catégorie
+    document.querySelectorAll('.category-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const grid = header.nextElementSibling;
+        const icon = header.querySelector('.category-toggle');
+        grid.classList.toggle('hidden');
+        icon.classList.toggle('rotated');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -24,22 +24,37 @@
     <div class="nav-container">
       <ul class="nav-links">
         <li><a href="characters.html">Personnages</a></li>
-         <li><a href="index.html">Bibliothèque</a></li>
-         <li><a href="archives.html">Archives</a></li>
+         <li><a href="index.html" class="active">Bibliothèque</a></li>
+         <li><a href="galleries.html">Galeries</a></li>
         <li><a href="news.html">Actus</a></li>
-        
       </ul>
     </div>
-
-    
   </nav>
 
   <main>
     <header class="page-header reveal">
       <h1>Bibliothèque</h1>
       <p>Explorez les tomes, spin-offs et chroniques de l'omnivers.</p>
+      
+      <div class="search-container">
+        <div class="search-box">
+          <span class="search-icon">⌕</span>
+          <input type="text" id="search-input" placeholder="Rechercher un tome">
+        </div>
+      </div>
     </header>
+<div class="search-container">
+        </div>
 
+      <!--div class="info-banner" id="new-tome-banner">
+        <div class="banner-content">
+          <img src="covers/3.png" alt="Nouveau Tome" class="banner-img" loading="lazy">
+          <div class="banner-text">
+            <strong>Nouveau !</strong> Le Tome 3 est maintenant disponible à la lecture.
+          </div>
+        </div>
+        <button class="close-banner" aria-label="Fermer le bandeau" id="close-banner-btn">&times;</button>
+      </div-->
     <div class="library-wrapper">
       
       <section class="category reveal">
@@ -48,122 +63,139 @@
             <h2>Série Principale</h2>
             <span class="subtitle">L'histoire canonique du Clan du Soleil</span>
           </div>
-          <span class="category-toggle">−</span>
+          <span class="category-toggle">▼</span>
         </div>
         
         <div class="tomes-grid" id="main-series">
           
-          <a class="tome-card" href="tome1.html">
-            <div class="tome-cover">
-              <img src="covers/1.png" alt="Couverture Tome 1" loading="lazy">
-              <div class="tome-overlay">Lire</div>
+          <div class="tome-card">
+            <div class="cover-container">
+              <div class="cover-flipper">
+                <div class="cover-front">
+                  <img src="covers/1.png" alt="Couverture Standard Tome 1" loading="lazy">
+                  <a href="tome1.html" class="tome-overlay">
+                    <span class="overlay-text">Lire</span>
+                  </a>
+                </div>
+                <div class="cover-back">
+                  <img src="covers/alt1.png" alt="Couverture Alternative Tome 1" loading="lazy">
+                  <a href="tome1.html" class="tome-overlay">
+                    <span class="overlay-text">Lire</span>
+                  </a>
+                </div>
+              </div>
+              <button class="btn-alt-cover" title="Voir la couverture alternative" aria-label="Couverture alternative">
+                <span class="icon">↻</span>
+              </button>
             </div>
             <div class="tome-info">
-              <span class="tome-number">Tome 01</span>
+              <div class="tome-meta">
+                <span class="tome-number">Tome 01</span>
+                <span class="tome-status">103 Pages</span>
+              </div>
               <h3 class="tome-title">Le Clan du Soleil</h3>
               <p class="tome-sub">Le commencement</p>
             </div>
-          </a>
+          </div>
 
-
-          <a class="tome-card" href="tome2.html">
-            <div class="tome-cover">
-              <img src="covers/2.png" alt="Couverture Tome 1" loading="lazy">
-              <div class="tome-overlay">Lire</div>
+          <div class="tome-card">
+            <div class="cover-container">
+              <div class="cover-flipper">
+                <div class="cover-front">
+                  <img src="covers/2.png" alt="Couverture Standard Tome 2" loading="lazy">
+                  <a href="tome2.html" class="tome-overlay">
+                    <span class="overlay-text">Lire</span>
+                  </a>
+                </div>
+                <div class="cover-back">
+                  <img src="covers/alt2.png" alt="Couverture Alternative Tome 2" loading="lazy">
+                  <a href="tome2.html" class="tome-overlay">
+                    <span class="overlay-text">Lire</span>
+                  </a>
+                </div>
+              </div>
+              <button class="btn-alt-cover" title="Voir la couverture alternative" aria-label="Couverture alternative">
+                <span class="icon">↻</span>
+              </button>
             </div>
             <div class="tome-info">
-              <span class="tome-number">Tome 02</span>
+              <div class="tome-meta">
+                <span class="tome-number">Tome 02</span>
+                <span class="tome-status">134 Pages</span>
+              </div>
               <h3 class="tome-title">Nouveau Monde</h3>
-              <p class="tome-sub">Monde reformé <br>Menaces réformés</p>
-            </div>
-          </a>
-
-          <div class="tome-card locked">
-            <div class="tome-cover">
-              
-              <div class="lock-icon">🔒</div>
-            </div>
-            <div class="tome-info">
-              <span class="tome-number">Autres tomes</span>
-              <h3 class="tome-title">À Venir</h3>
-              <p class="tome-sub">En écriture...</p>
+              <p class="tome-sub">Monde reformé <br>Menaces réformées</p>
             </div>
           </div>
 
-        </div>
-      </section>
-
-      <!--section class="category reveal">
-        <div class="category-header" data-target="spinoff-series">
-          <div class="header-content">
-            <h2>Histoires Parallèles</h2>
-            <span class="subtitle">Spin-offs & Univers Alternatifs</span>
-          </div>
-          <span class="category-toggle">+</span>
-        </div>
-        
-        <div class="tomes-grid hidden" id="spinoff-series">
-          
-          <div class="tome-card locked">
-            <div class="tome-cover">
-              <img src="covers/soon.png" alt="Bientôt">
+          <!--div class="tome-card">
+            <div class="cover-container">
+              <div class="cover-flipper">
+                <div class="cover-front">
+                  <img src="covers/3.png" alt="Couverture Standard Tome 3" loading="lazy">
+                  <a href="tome3.html" class="tome-overlay">
+                    <span class="overlay-text">Lire</span>
+                  </a>
+                </div>
+                <div class="cover-back">
+                  <img src="covers/alt3.png" alt="Couverture Alternative Tome 2" loading="lazy">
+                  <a href="tome3.html" class="tome-overlay">
+                    <span class="overlay-text">Lire</span>
+                  </a>
+                </div>
+              </div>
+              <button class="btn-alt-cover" title="Voir la couverture alternative" aria-label="Couverture alternative">
+                <span class="icon">↻</span>
+              </button>
             </div>
             <div class="tome-info">
-              <span class="tome-number">Spin-off</span>
-              <h3 class="tome-title">Projet Harper</h3>
-              <p class="tome-sub">Dossier classifié</p>
+              <div class="tome-meta">
+                <span class="tome-number">Tome 03</span>
+                <span class="tome-status">134 Pages</span>
+              </div>
+              <h3 class="tome-title">Archipel Ultime</h3>
+              <p class="tome-sub">Clan divisé<br>Archipel menacé</p>
             </div>
-          </div>
-
-        </div>
-      </section-->
-<section class="category reveal">
-        <div class="category-header" data-target="spinoff-series">
-          <div class="header-content">
-            <h2>Lore Visuel</h2>
-            <span class="subtitle">La banque visuelle de l'omnivers</span>
-          </div>
-          <span class="category-toggle">+</span>
-        </div>
-        
-        <div class="tomes-grid hidden" id="spinoff-series">
-
-             <a class="tome-card" href="art1.html">
-            <div class="tome-cover">
-              <img src="covers/art1.png" alt="Couverture Tome 1" loading="lazy">
-              <div class="tome-overlay">Lire</div>
+          </div-->
+           
+          <!--div class="tome-card upcoming">
+            <div class="cover-container">
+              <div class="cover-front">
+                <img src="covers/3.png" alt="Couverture Tome à venir" loading="lazy">
+              </div>
             </div>
             <div class="tome-info">
-              <span class="tome-number">Le Clan du Soleil</span>
-              <h3 class="tome-title">Lore Visuel 1</h3>
-              <p class="tome-sub">Le parfait complément au tome 1</p>
-            </div>
-          </a>
-          <!--a class="tome-card" href="art2.html">
-            <div class="tome-cover">
-              <img src="covers/art2.png" alt="Couverture Tome 1" loading="lazy">
-              <div class="tome-overlay">Lire</div>
-            </div>
-            <div class="tome-info">
-              <span class="tome-number">Nouveau Monde</span>
-              <h3 class="tome-title">Lore Visuel 2</h3>
-              <p class="tome-sub">Le parfait complément au Tome 2</p>
-            </div>
-          </a>
-
-          <div class="tome-card locked">
-            <div class="tome-cover">
-              <img src="covers/art2.png" alt="Bientôt">
-            </div>
-            <div class="tome-info">
-              <span class="tome-number">Nouveau Monde</span>
-              <h3 class="tome-title">À venir !</h3>
-              <p class="tome-sub">Le 14 Mars 2026</p>
+              <div class="tome-meta">
+                <span class="tome-number">Tome 03</span>
+                <span class="tome-status">À venir</span>
+              </div>
+              <h3 class="tome-title">Archipel Ultime</h3>
+              <p class="tome-sub">Le 21 Mai 2026</p>
             </div>
           </div-->
 
+          <div class="tome-card locked">
+            <div class="cover-container">
+              <div class="cover-front">
+                
+                <div class="lock-icon">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                </div>
+                <div class="glitch-text">ARRIVE BIENTOT</div>
+              </div>
+            </div>
+            <div class="tome-info">
+              <div class="tome-meta">
+                <span class="tome-number"></span>
+              </div>
+              <h3 class="tome-title">Tome Crypté</h3>
+              <p class="tome-sub">En cours d'écriture...</p>
+            </div>
+          </div>
+
         </div>
       </section>
+
     </div>
   </main>
 

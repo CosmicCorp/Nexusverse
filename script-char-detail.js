@@ -33,19 +33,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const galleryImages = Array.from(document.querySelectorAll('.gallery-item img'));
     let currentIndex = 0;
 
-    // Fonction pour mettre à jour l'image affichée
+    // Fonction pour mettre à jour l'image affichée avec un effet de fondu
     const updateModalImage = (index) => {
-        const img = galleryImages[index];
-        modalImg.src = img.src;
-        const caption = img.getAttribute('data-caption');
-        captionText.innerHTML = caption ? caption : "";
-        currentIndex = index;
+        // Disparition douce
+        modalImg.style.opacity = "0"; 
+        
+        setTimeout(() => {
+            const img = galleryImages[index];
+            modalImg.src = img.src;
+            const caption = img.getAttribute('data-caption');
+            captionText.innerHTML = caption ? caption : "";
+            currentIndex = index;
+            
+            // Réapparition une fois l'image chargée
+            modalImg.onload = () => {
+                modalImg.style.opacity = "1";
+            };
+        }, 200);
     };
 
     // Clic sur une vignette
     galleryImages.forEach((img, index) => {
-        img.addEventListener('click', function() {
-            modal.style.display = "block";
+        img.closest('.gallery-item').addEventListener('click', function() {
+            modal.style.display = "flex"; // Utilisation de flex pour garder le centrage
             updateModalImage(index);
         });
     });
@@ -76,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Navigation Clavier (Flèches Gauche/Droite)
     document.addEventListener('keydown', (e) => {
-        if (modal.style.display === "block") {
+        if (modal.style.display === "flex" || modal.style.display === "block") {
             if (e.key === 'ArrowRight') nextBtn.click();
             if (e.key === 'ArrowLeft') prevBtn.click();
             if (e.key === 'Escape') modal.style.display = "none";
@@ -111,5 +121,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
     window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll();
+    revealOnScroll(); // Trigger au chargement
 });

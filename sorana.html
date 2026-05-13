@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus - Sorana</title>
+  <link rel="icon" type="image/svg+xml" href="icons/N.svg">
+  <link rel="stylesheet" href="style-char-detail.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <a href="characters.html">
+        <img src="icons/logo.png" alt="NEXUS LOGO">
+      </a>
+    </div>
+    <button class="burger" aria-label="Menu">&#9776;</button>
+    <div class="nav-container">
+      <ul class="nav-links">
+        <li><a href="characters.html">Personnages</a></li>
+        <li><a href="index.html">Bibliothèque</a></li>
+        <li><a href="galleries.html">Galeries</a></li>
+        <li><a href="news.html">Actus</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <a href="characters.html" class="back-btn">← Retour au Nexus</a>
+
+    <div class="char-wrapper reveal">
+      
+      <div class="char-visual">
+        <div class="char-bg"></div>
+        <img src="icons/big/sorana.png" alt="Fusion" class="main-img">
+      </div>
+
+      <div class="char-data">
+        <header class="char-header">
+          <h1>Sorana</h1>
+          <div class="tags">
+            <span class="tag faction" style="color: #ff3333; border-color: #ff3333; background: rgba(255, 51, 51, 0.1);">Faction Chaos</span>
+            <span class="tag status" style="color: #ff3333; border-color: #ff3333; background: rgba(255, 51, 51, 0.1);">Décédée</span>
+          </div>
+        </header>
+
+        <section class="bio-section">
+          <h3>// Archives Biographiques</h3>
+          
+          <p class="bio-text">
+  <p class="bio-text">
+  <strong> L'Officier du Chaos</strong><br>
+  Agent tactique d'élite et figure d'autorité de la Faction Chaos, Sorana opère avec une froide détermination pour le compte de l'Institut Onirique et de son maître, Géno. Déployée sur Astéria pour orchestrer l'invasion de l'île, elle supervise la construction de la base centrale d'une poigne de fer et ordonne à son subordonné, Fusion, de calibrer la faille dimensionnelle. Cependant, son assurance impitoyable vole en éclats lorsque la machine se dérègle sous l'influence du temple. Paniquée au milieu de ses installations en ruines, elle secoue son technicien à terre pour tenter de comprendre la situation. Son commandement s'achève brutalement lorsque l'Exécutrice Cubique surgit de la faille corrompue et la réduit instantanément en cendres d'un éclair de foudre noire, balayant ainsi d'un revers de main la menace de l'Institut.
+</p>
+        </section>
+
+        <section class="evolution-section">
+          <h3>// Variantes Visuelles</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item">
+              <img src="icons/outfits/sorana/1.png" 
+                   alt="Tenue Tactique" 
+                   data-caption="Tenue d'agent" 
+                   class="gallery-trigger">
+            </div>
+            
+            
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="legal-footer reveal">
+    <p>© 2026 NexusVerse · Fiche de données classifiée</p>
+  </footer>
+
+  <div id="imgModal" class="modal-overlay">
+    <span class="modal-close">&times;</span>
+    <button class="modal-nav prev" aria-label="Précédent">&#10094;</button>
+    <button class="modal-nav next" aria-label="Suivant">&#10095;</button>
+
+    <div class="modal-card">
+      <div class="modal-img-wrapper">
+        <img id="modalImg" src="" alt="Visuel variante">
+        <div class="scan-overlay"></div>
+      </div>
+      <div id="caption"></div>
+    </div>
+  </div>
+
+  <script src="script-char-detail.js"></script>
+</body>
+</html>
