@@ -324,6 +324,7 @@ main {
   left: 0;
   width: 100%;
   height: 100%;
+  -webkit-backface-visibility: hidden; /* Fix iOS Safari */
   backface-visibility: hidden;
   border-radius: 6px;
   overflow: hidden;
@@ -540,6 +541,130 @@ main {
 .tome-card.locked .tome-title { color: #888; }
 .tome-card.locked .tome-meta { border-bottom-color: rgba(255, 60, 60, 0.2); }
 
+/* --- CARTE TOME À VENIR (Grisée et sans hover) --- */
+.tome-card.upcoming {
+  pointer-events: none; 
+  filter: grayscale(100%); 
+  opacity: 0.55; 
+  border-color: rgba(255, 255, 255, 0.05); 
+}
+
+.tome-card.upcoming .tome-status {
+  color: #8a9ba8;
+  border-color: rgba(138, 155, 168, 0.3);
+  background: rgba(138, 155, 168, 0.1);
+}
+
+.tome-card.upcoming .tome-number {
+  color: #8a9ba8;
+}
+
+/* --- BANDEAU D'INFORMATION --- */
+.info-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, rgba(31, 40, 51, 0.95), rgba(11, 12, 16, 0.8));
+  border: 1px solid var(--nexus-cyan); 
+  border-left: 6px solid var(--nexus-cyan); 
+  border-radius: 8px;
+  padding: 20px 30px; 
+  margin-top: 40px; 
+  margin-bottom: 40px; 
+  margin-left: auto; 
+  margin-right: auto; 
+  width: 100%;
+  max-width: 900px; 
+  backdrop-filter: blur(12px);
+  animation: bannerGlow 3s infinite alternate;
+  transition: opacity 0.4s ease, transform 0.4s ease, margin 0.4s ease, padding 0.4s ease, max-height 0.4s ease;
+  max-height: 150px;
+  overflow: hidden;
+}
+
+@keyframes bannerGlow {
+  from { box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 10px rgba(77, 238, 234, 0.15); }
+  to { box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 35px rgba(77, 238, 234, 0.5); } 
+}
+
+.info-banner.hidden {
+  opacity: 0;
+  transform: translateY(-10px);
+  margin-top: 0;
+  margin-bottom: 0; 
+  padding-top: 0;
+  padding-bottom: 0;
+  max-height: 0;
+  border: none;
+}
+
+.banner-content {
+  display: flex;
+  align-items: center;
+  gap: 20px; 
+  flex: 1; 
+  overflow: hidden; 
+}
+
+.banner-img {
+  width: 70px;  
+  height: 100px; 
+  min-width: 70px; 
+  max-width: 70px; 
+  flex-shrink: 0; 
+  object-fit: cover; 
+  border-radius: 6px; 
+  border: 1px solid rgba(77, 238, 234, 0.4); 
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8), 0 0 10px rgba(77, 238, 234, 0.2); 
+}
+
+.banner-text {
+  font-size: 0.95rem;
+  color: #ffffff; 
+  text-align: left;
+  line-height: 1.5;
+  flex: 1; 
+}
+
+.banner-text strong {
+  color: var(--nexus-cyan);
+  font-family: var(--font-title);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* --- CROIX DE FERMETURE --- */
+.close-banner {
+  background: rgba(11, 12, 16, 0.6);
+  border: 1px solid rgba(77, 238, 234, 0.3);
+  border-radius: 50%;
+  color: var(--nexus-cyan);
+  font-size: 1.6rem; 
+  width: 36px; 
+  height: 36px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-left: 15px; 
+  flex-shrink: 0; 
+  padding: 0; 
+  line-height: 0; 
+  outline: none; 
+}
+
+.close-banner:hover {
+  background: rgba(77, 238, 234, 0.2);
+  color: var(--white);
+  border-color: var(--nexus-cyan);
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 0 15px var(--nexus-glow);
+}
+
 /* --- FOOTER --- */
 .legal-footer {
   text-align: center; 
@@ -554,9 +679,9 @@ main {
 .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1); }
 .reveal.active { opacity: 1; transform: translateY(0); }
 
-/* --- RESPONSIVE --- */
+/* --- RESPONSIVE MOBILE UNIFIÉ --- */
 @media (max-width: 768px) {
-  /* Navigation Mobile (INTACTE) */
+  /* Navigation Mobile */
   nav { padding: 1rem; }
   .burger { display: block; z-index: 1001; }
   .nav-links {
@@ -579,6 +704,7 @@ main {
   .page-header h1 { font-size: 2.2rem; letter-spacing: 3px; }
   
   .category-header { 
+    position: relative; /* <-- CORRECTION DU BUG D'AFFICHAGE DE LA FLÈCHE */
     flex-direction: column; 
     align-items: flex-start; 
     padding: 15px 20px; 
@@ -603,189 +729,9 @@ main {
   
   .tome-title { font-size: 1rem; }
   .tome-sub { font-size: 0.75rem; }
-  .btn-alt-cover { width: 32px; height: 32px; font-size: 1rem; opacity: 1; transform: none;} /* Toujours visible sur mobile */
-}
-/* --- CARTE TOME À VENIR (Grisée et sans hover) --- */
-.tome-card.upcoming {
-  pointer-events: none; /* Désactive absolument tous les hovers et clics */
-  filter: grayscale(100%); /* Bascule toutes les couleurs (y compris l'image) en niveaux de gris */
-  opacity: 0.55; /* Atténue la carte pour renforcer l'effet d'indisponibilité */
-  border-color: rgba(255, 255, 255, 0.05); /* Retire la bordure cyan */
-}
-
-/* Ajustement du badge de statut pour qu'il s'intègre au thème grisé */
-.tome-card.upcoming .tome-status {
-  color: #8a9ba8;
-  border-color: rgba(138, 155, 168, 0.3);
-  background: rgba(138, 155, 168, 0.1);
-}
-
-/* Force la couleur du numéro de tome pour écraser le cyan par défaut */
-.tome-card.upcoming .tome-number {
-  color: #8a9ba8;
-}
-/* --- BANDEAU D'INFORMATION (Version Élargie & Visible) --- */
-.info-banner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: linear-gradient(90deg, rgba(31, 40, 51, 0.95), rgba(11, 12, 16, 0.8));
-  border: 1px solid var(--nexus-cyan); 
-  border-left: 6px solid var(--nexus-cyan); 
-  border-radius: 8px;
-  padding: 20px 30px; /* Légèrement augmenté pour plus d'impact */
+  .btn-alt-cover { width: 32px; height: 32px; font-size: 1rem; opacity: 1; transform: none;} 
   
-  /* Ajustement des marges pour espacer au-dessus ET en-dessous */
-  margin-top: 40px; 
-  margin-bottom: 40px; /* C'est cette ligne qui décolle le bandeau des catégories */
-  margin-left: auto; /* Centre le bandeau horizontalement */
-  margin-right: auto; /* Centre le bandeau horizontalement */
-  
-  width: 100%;
-  max-width: 900px; /* Élargi de 750px à 900px */
-  
-  backdrop-filter: blur(12px);
-  animation: bannerGlow 3s infinite alternate;
-  transition: opacity 0.4s ease, transform 0.4s ease, margin 0.4s ease, padding 0.4s ease, max-height 0.4s ease;
-  max-height: 150px;
-  overflow: hidden;
-}
-
-/* L'animation de pulsation lumineuse (inchangée mais rappelée ici pour être sûr) */
-@keyframes bannerGlow {
-  from { box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 10px rgba(77, 238, 234, 0.15); }
-  to { box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 35px rgba(77, 238, 234, 0.5); } /* Glow légèrement plus fort */
-}
-
-/* Modification pour la fermeture du bandeau afin de supprimer les marges quand il disparait */
-.info-banner.hidden {
-  opacity: 0;
-  transform: translateY(-10px);
-  margin-top: 0;
-  margin-bottom: 0; /* Ajouté pour éviter un espace vide une fois fermé */
-  padding-top: 0;
-  padding-bottom: 0;
-  max-height: 0;
-  border: none;
-}
-.banner-content {
-  display: flex;
-  align-items: center;
-  gap: 18px; 
-  flex: 1; /* Permet à ce bloc de prendre la place disponible correctement */
-  overflow: hidden; /* Sécurité pour éviter tout débordement */
-}
-
-.banner-img {
-  width: 105px; 
-  height: 125px;
-  min-width: 45px; /* Verrouille la largeur minimale */
-  max-width: 45px; /* Verrouille la largeur maximale */
-  flex-shrink: 0; /* EMPÊCHE l'image de s'étirer pour remplir le bandeau */
-  object-fit: cover; /* Centre et recadre l'image proprement sans l'écraser */
-  border-radius: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.6);
-}
-
-.banner-text {
-  font-size: 0.95rem;
-  color: #ffffff; 
-  text-align: left;
-  line-height: 1.5;
-  flex: 1; /* Permet au texte de prendre l'espace restant de manière fluide */
-}
-
-.banner-text strong {
-  color: var(--nexus-cyan);
-  font-family: var(--font-title);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  font-size: 0.85rem;
-  display: block;
-  margin-bottom: 4px;
-}
-.banner-content {
-  display: flex;
-  align-items: center;
-  gap: 20px; /* Un peu plus d'espace pour aérer avec la grande image */
-  flex: 1; 
-  overflow: hidden; 
-}
-
-.banner-img {
-  width: 70px;  /* Largeur augmentée */
-  height: 100px; /* Hauteur augmentée */
-  min-width: 70px; /* Verrouille la nouvelle largeur */
-  max-width: 70px; /* Verrouille la nouvelle largeur */
-  flex-shrink: 0; 
-  object-fit: cover; 
-  border-radius: 6px; /* Bords très légèrement plus arrondis */
-  border: 1px solid rgba(77, 238, 234, 0.4); /* Bordure cyan au lieu de blanche */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8), 0 0 10px rgba(77, 238, 234, 0.2); /* Ombre plus marquée */
-}
-
-.banner-text {
-  font-size: 0.95rem;
-  color: #ffffff; 
-  text-align: left;
-  line-height: 1.5;
-  flex: 1; 
-}
-
-.banner-text strong {
-  color: var(--nexus-cyan);
-  font-family: var(--font-title);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  font-size: 0.85rem;
-  display: block;
-  margin-bottom: 4px;
-}
-
-/* --- NOUVEAU STYLE POUR LA CROIX DE FERMETURE --- */
-/* --- NOUVEAU STYLE POUR LA CROIX DE FERMETURE (Centrage Corrigé) --- */
-.close-banner {
-  background: rgba(11, 12, 16, 0.6);
-  border: 1px solid rgba(77, 238, 234, 0.3);
-  border-radius: 50%;
-  color: var(--nexus-cyan);
-  font-size: 1.6rem; 
-  width: 36px; 
-  height: 36px; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: var(--transition);
-  margin-left: 15px; 
-  flex-shrink: 0; 
-  
-  /* Les corrections pour le centrage sont ici : */
-  padding: 0; /* Annule les espacements invisibles par défaut du bouton */
-  line-height: 0; /* Annule l'espacement invisible du caractère de texte */
-  outline: none; /* Retire la bordure de focus moche de certains navigateurs */
-}
-
-.close-banner:hover {
-  background: rgba(77, 238, 234, 0.2);
-  color: var(--white);
-  border-color: var(--nexus-cyan);
-  transform: scale(1.1) rotate(90deg);
-  box-shadow: 0 0 15px var(--nexus-glow);
-}
-
-/* Ajustement Responsive */
-@media (max-width: 768px) {
-  .close-banner {
-    width: 30px;
-    height: 30px;
-    font-size: 1.4rem;
-  }
-}
-
-/* Ajustement Responsive pour mobile avec la nouvelle grande image */
-@media (max-width: 768px) {
+  /* Bandeau d'information Mobile */
   .info-banner {
     padding: 15px;
   }

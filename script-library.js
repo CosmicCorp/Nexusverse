@@ -149,11 +149,12 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        /* --- SCROLL REVEAL ANIMATION --- */
+        /* --- SCROLL REVEAL ANIMATION (CORRIGÉ POUR MOBILE) --- */
         const revealElements = document.querySelectorAll('.reveal');
         const revealOnScroll = () => {
             const windowHeight = window.innerHeight;
-            const elementVisible = 100;
+            // On réduit grandement le seuil pour mobile pour être sûr que l'animation se déclenche
+            const elementVisible = window.innerWidth <= 768 ? 10 : 100;
 
             revealElements.forEach((el) => {
                 const elementTop = el.getBoundingClientRect().top;
