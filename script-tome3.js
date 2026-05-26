@@ -1,4 +1,4 @@
-const pages = Array.from({ length: 199 }, (_, i) => `tome3/${i + 1}.png`);
+const pages = Array.from({ length: 201 }, (_, i) => `tome3/${i + 1}.png`);
 
 let currentIndex = 0;
 let lastTap = 0;
