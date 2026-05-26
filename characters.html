@@ -34,8 +34,8 @@
   <main>
     <div id="new-char-banner" class="banner">
       <div class="banner-content">
-        <img src="icons/small/loper.png" alt="Nouveau" class="banner-img">
-        <span><strong>Nouveau !</strong> La page de <em>Loper</em> et des personnages du Tome 2 sont maintenant disponibles. <a href="#Clan">Découvrir</a></span>
+        <img src="icons/small/adriane.png" alt="Nouveau" class="banner-img">
+        <span><strong>Nouveau !</strong> La page d'<em>Adriane</em> et des personnages du Tome 3 sont maintenant disponibles. <a href="#Clan">Découvrir</a></span>
       </div>
       <button id="close-banner" aria-label="Fermer le bandeau">&#10006;</button>
     </div>
@@ -43,127 +43,30 @@
     <h1>Bienvenue sur Nexus</h1>
     <p>Explorez l'omnivers Nexus. Recherchez vos alliés ou vos ennemis parmi les différentes factions de l'histoire.</p>
 
-    <div class="search-container">
-      <span class="search-icon">&#128269;</span>
-      <input type="text" id="search-bar" placeholder="Rechercher un héros, un antagoniste..." autocomplete="off">
+    <div class="search-controls">
+      <div class="search-container">
+        <span class="search-icon">&#128269;</span>
+        <input type="text" id="search-bar" placeholder="Rechercher un héros, un antagoniste..." autocomplete="off">
+      </div>
+      <div class="filter-container">
+        <select id="category-filter" class="nexus-select">
+          <option value="all">Toutes les factions</option>
+          </select>
+      </div>
     </div>
 
     <div id="no-results" class="no-results hidden">
       <p>Aucun personnage ne correspond à votre recherche.</p>
     </div>
 
-    <div class="section-nav">
-      <a href="#Clan">Clan du Soleil</a>
-      <a href="#seven">Les Septs</a>
-      <a href="#order">Institut Onirique</a>
-      <a href="#neutral">Autres Alliés</a>
-      <a href="#last">Inconnu</a>
-      <a href="#villains">Antagonistes</a>
-    </div>
+    <div class="section-nav" id="section-nav-container"></div>
 
-    <h2 id="Clan">Clan du Soleil <span class="count"></span></h2>
-    <div class="character-grid">
-      <a href="barret.html" class="character-icon">
-        <img src="icons/small/barret.png" alt="Barret">
-        <span>Barret</span>
-      </a>
-      <a href="raider.html" class="character-icon">
-        <img src="icons/small/raider.png" alt="Scarlet">
-        <span>Scarlet</span>
-      </a>
-      <a href="raptor.html" class="character-icon">
-        <img src="icons/small/raptor.png" alt="Raptor">
-        <span>Raptor</span>
-      </a>
-      <a href="harper.html" class="character-icon">
-        <img src="icons/small/harper.png" alt="Harper">
-        <span>Harper</span>
-      </a>
-      <a href="lucie.html" class="character-icon">
-        <img src="icons/small/lucie.png" alt="Lucie">
-        <span>Lucie</span>
-      </a>
-      <a href="leo.html" class="character-icon">
-        <img src="icons/small/leo.png" alt="Léo">
-        <span>Léo</span>
-      </a>
-      <a href="damian.html" class="character-icon">
-        <img src="icons/small/damian.png" alt="Damian">
-        <span>Damian</span>
-      </a>
-      <a href="loper.html" class="character-icon">
-        <img src="icons/small/loper.png" alt="Loper">
-        <span>Loper</span>
-      </a>
-    </div>
+    <div id="characters-container"></div>
 
-    <h2 id="neutral">Autres Alliés <span class="count"></span></h2>
-    <div class="character-grid">
-      <a href="denver.html" class="character-icon">
-        <img src="icons/small/denver.png" alt="Denver">
-        <span>Denver</span>
-      </a>
-      <a href="hiro.html" class="character-icon">
-        <img src="icons/small/hiro.png" alt="Hiro">
-        <span>Hiro</span>
-      </a>
-    </div>
-
-    <h2 id="seven">Les Septs <span class="count"></span></h2>
-    <div class="character-grid">
-      <a href="visitor.html" class="character-icon">
-        <img src="icons/small/visitor.png" alt="Le Visiteur">
-        <span>Le Visiteur</span>
-      </a>
-      <a href="scientifique.html" class="character-icon">
-        <img src="icons/small/scientifique.png" alt="Le Scientifique">
-        <span>Le Scientifique</span>
-      </a>
-    </div>
-
-    <h2 id="order">Institut Onirique <span class="count"></span></h2>
-    <div class="character-grid">
-      <a href="singularity.html" class="character-icon">
-        <img src="icons/small/singularity.png" alt="Singularité">
-        <span>Singularité</span>
-      </a>
-      <a href="sorana.html" class="character-icon">
-        <img src="icons/small/sorana.png" alt="Sorana">
-        <span>Sorana</span>
-      </a>
-      <a href="fusion.html" class="character-icon">
-        <img src="icons/small/fusion.png" alt="Fusion">
-        <span>Fusion</span>
-      </a>
-    </div>
-
-    <h2 id="last">Inconnu <span class="count"></span></h2>
-    <div class="character-grid">
-      <a href="kimera.html" class="character-icon">
-        <img src="icons/small/kymera.png" alt="Commandant Kimera">
-        <span>Commandant Kimera</span>
-      </a>
-      <a href="cuber.html" class="character-icon">
-        <img src="icons/small/cuber.png" alt="Executrice Cubique">
-        <span>Executrice Cubique</span>
-      </a>
-    </div>
-
-    <h2 id="villains">Autres Antagonistes <span class="count"></span></h2>
-    <div class="character-grid">
-      <a href="ice.html" class="character-icon">
-        <img src="icons/small/ice.png" alt="Roi des Glaces">
-        <span>Roi des Glaces</span>
-      </a>
-      <a href="fire.html" class="character-icon">
-        <img src="icons/small/fire.png" alt="Roi du Feu">
-        <span>Roi du Feu</span>
-      </a>
-    </div>
   </main>
 
   <button id="back-to-top" title="Retour en haut">&#10148;</button>
-
+<script src="personnages.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

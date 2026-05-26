@@ -1,0 +1,110 @@
+const newsData = [
+  {
+    "id": "news-9",
+    "date": "26 Mai 2026",
+    "modalDate": "26 Mai 2026",
+    "tag": "Sortie",
+    "title": "Le Tome 3 est disponible !",
+    "subtitle": "Le groupe est divisé , de nouvelles rencontres et une menace imminente...",
+    "image": "news/tome3.png",
+    "layout": "normal",
+    "fullText": "L'attente est terminée. Le troisième volume de la saga Nexus, 'Archipel Ultime', est enfin disponible. <br><br> Après le tumulte ayant brisé Astéria et séparé le clan en deux , Scarlet , Léo , Loper et Raptor se retrouvent sur un mystérieux archipel. L'Institut Onirique a pris les commande et des alliés inatendus vont se joindre au groupe , découvrez la suite de l'aventure, disponible dès maintenant dans la Bibliothèque !",
+    "buttonText": "Lire l'article"
+  },
+  {
+    "id": "news-8",
+    "date": "22 Mai 2026",
+    "modalDate": "22 Mai 2026",
+    "tag": "Sortie prochaine",
+    "title": "Nouvel Archipel , Nouvelles menaces...",
+    "subtitle": "Tome 3 le 26 Mai",
+    "image": "news/T3-1.2.png",
+    "layout": "large",
+    "fullText": "Des profondeur du vide",
+    "buttonText": "Voir l'indice"
+  },
+  {
+    "id": "news-7",
+    "date": "13 Mai 2026",
+    "modalDate": "13 Mai 2026",
+    "tag": "Sortie prochaine",
+    "title": "Extraction du Zéro en cours...",
+    "subtitle": "Tome 3 Fin Mai",
+    "image": "news/T3-1.png",
+    "layout": "large",
+    "fullText": "Le Point Zéro sera à nouveau à nous <br> , quoi qu'il en coute",
+    "buttonText": "Voir l'indice"
+  },
+  {
+    "id": "news-6",
+    "date": "04 Mars 2026",
+    "modalDate": "04 Mars 2026",
+    "tag": "Sortie",
+    "title": "Le Tome 2 est disponible !",
+    "subtitle": "L'aventure se poursuit sur Astéria. De nouvelles alliances se forgent, mais une menace plane dans l'ombre...",
+    "image": "news/tome2.png",
+    "layout": "normal",
+    "fullText": "L'attente est terminée. Le deuxième volume de la saga Nexus, 'Nouveau Monde', est enfin disponible. <br><br> Après le cataclysme d'Orion et la destruction de leurs mondes d'origine, le Clan du Soleil s'échoue sur la terre verdoyante d'Astéria. S'ils y trouvent de l'aide et tissent de nouvelles alliances avec des survivants comme Damian et Léo, ce nouveau havre de paix pourrait bien n'être qu'une illusion. Dans l'ombre, la mystérieuse Faction Chaos avance ses pions et convoite déjà les secrets enfouis de l'île...<br><br>Plongez dans la suite de l'aventure, disponible dès maintenant dans la Bibliothèque !",
+    "buttonText": "Lire l'article"
+  },
+  {
+    "id": "news-5",
+    "date": "03 Mars 2026",
+    "modalDate": "27 Février 2026",
+    "tag": "Sortie prochaine",
+    "title": "Convoitise",
+    "subtitle": "Tome 2 le 4 Mars",
+    "image": "news/teaser4.png",
+    "layout": "large",
+    "fullText": "Une figure perfide convoite le Zéro <br> Il semblerait qu'il lui soit familier...",
+    "buttonText": "Voir l'indice"
+  },
+  {
+    "id": "news-4",
+    "date": "02 Mars 2026",
+    "modalDate": "26 Février 2026",
+    "tag": "Sortie prochaine",
+    "title": "Alliés",
+    "subtitle": "Tome 2 le 4 Mars",
+    "image": "news/teaser3.png",
+    "layout": "large",
+    "fullText": "Le Point Zéro a attiré du monde <br> Quelque chose se prépare...",
+    "buttonText": "Voir l'indice"
+  },
+  {
+    "id": "news-3",
+    "date": "25 Février 2026",
+    "modalDate": "25 Février 2026",
+    "tag": "Sortie prochaine",
+    "title": "Coordonnées",
+    "subtitle": "Tome 2 le 4 Mars",
+    "image": "news/teaser2.png",
+    "layout": "large",
+    "fullText": "Réalité reformée <br>Le Zéro est convoité...",
+    "buttonText": "Voir l'indice"
+  },
+  {
+    "id": "news-2",
+    "date": "24 Février 2026",
+    "modalDate": "24 Février 2026",
+    "tag": "Sortie prochaine",
+    "title": "Ondulations",
+    "subtitle": "Tome 2 le 4 Mars",
+    "image": "news/teaser1.png",
+    "layout": "large",
+    "fullText": "La singularité née de l'éffondrement oscille. <br>L'énergie du Zéro est perçue...",
+    "buttonText": "Voir l'indice"
+  },
+  {
+    "id": "news-1",
+    "date": "12 Décembre 2025",
+    "modalDate": "12 Décembre 2025",
+    "tag": "Sortie",
+    "title": "Le Tome 1 est disponible !",
+    "subtitle": "L'aventure du Clan du Soleil débute enfin. Découvrez les mystères cachés de l'île d'Orion...",
+    "image": "news/tome1.png",
+    "layout": "normal",
+    "fullText": "L'attente est terminée. Le premier volume de la saga Nexus est enfin disponible. <br><br> Dans ce premier opus, suivez l'ascension du Clan du Soleil face aux menaces grandissantes de l'île d'Orion. Entre mystères, alliances et découverte de pouvoirs anciens, les héros devront faire face à des évenements qui les dépasses.<br><br>Disponible dès maintenant dans la Bibliothèque !",
+    "buttonText": "Lire l'article"
+  }
+];

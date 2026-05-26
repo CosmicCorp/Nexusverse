@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus - Jones</title>
+  <link rel="icon" type="image/svg+xml" href="icons/N.svg">
+  <link rel="stylesheet" href="style-char-detail.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <a href="characters.html">
+        <img src="icons/logo.png" alt="NEXUS LOGO">
+      </a>
+    </div>
+    <button class="burger" aria-label="Menu">&#9776;</button>
+    <div class="nav-container">
+      <ul class="nav-links">
+        <li><a href="characters.html">Personnages</a></li>
+        <li><a href="index.html">Bibliothèque</a></li>
+        <li><a href="galleries.html">Galeries</a></li>
+        <li><a href="news.html">Actus</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <a href="characters.html" class="back-btn">← Retour au Nexus</a>
+
+    <div class="char-wrapper reveal">
+      
+      <div class="char-visual">
+        <div class="char-bg"></div>
+        <img src="icons/big/jones.png" alt="Barret" class="main-img">
+      </div>
+
+      <div class="char-data">
+        <header class="char-header">
+          <h1>Jones</h1>
+          <div class="tags">
+            <span class="tag faction">Clan du Soleil</span>
+            <span class="tag status">Vivant</span>
+          </div>
+        </header>
+
+        <section class="bio-section">
+          <h3>// Archives Biographiques</h3>
+          
+   <p class="bio-text">
+  <strong>L'Agent Renégat</strong><br>
+  Ancien soldat de l'Institut Onirique, John Jones a fini par se rebeller contre les méthodes impitoyables du Professeur Slone. Écœuré par la mise en danger du Point Zéro, il trahit sa faction pour appeler à l'aide La Fondation, le leader des Sept. Après le sacrifice de ce dernier pour stabiliser l'orbe, Jones honore sa promesse en ralliant le Clan du Soleil. Devenu un allié de confiance, il combat l'Ultime Réalité à leurs côtés et utilise sa connaissance des bases de son ancien camp pour guider le groupe vers le Pont.
+</p>
+        </section>
+
+        <section class="evolution-section">
+          <h3>// Variantes Visuelles</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item">
+              <img src="icons/outfits/jones/158.png" 
+                   alt="Tenue de Ferrailleur" 
+                   data-caption="Agent" 
+                   class="gallery-trigger">
+            </div>
+            
+            <div class="gallery-item">
+              <img src="icons/outfits/jones/159.png" 
+                   alt="Variante Tactique" 
+                   data-caption="Renégat"
+                   class="gallery-trigger">
+            </div>
+            <div class="gallery-item">
+              <img src="icons/outfits/jones/160.png" 
+                   alt="Variante Tactique" 
+                   data-caption="Veste"
+                   class="gallery-trigger">
+            </div>
+            
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="legal-footer reveal">
+    <p>© 2026 Nexus · Fiche de données classifiée</p>
+  </footer>
+
+  <div id="imgModal" class="modal-overlay">
+    <span class="modal-close">&times;</span>
+    
+    <button class="modal-nav prev" aria-label="Précédent">&#10094;</button>
+    <button class="modal-nav next" aria-label="Suivant">&#10095;</button>
+
+    <div class="modal-card">
+      <div class="modal-img-wrapper">
+        <img id="modalImg" src="" alt="Visuel variante">
+        <div class="scan-overlay"></div>
+      </div>
+      <div id="caption"></div>
+    </div>
+  </div>
+
+  <script src="script-char-detail.js"></script>
+</body>
+</html>

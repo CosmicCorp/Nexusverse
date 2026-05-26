@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus - Séléna</title>
+  <link rel="icon" type="image/svg+xml" href="icons/N.svg">
+  <link rel="stylesheet" href="style-char-detail.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <a href="characters.html">
+        <img src="icons/logo.png" alt="NEXUS LOGO">
+      </a>
+    </div>
+    <button class="burger" aria-label="Menu">&#9776;</button>
+    <div class="nav-container">
+      <ul class="nav-links">
+        <li><a href="characters.html">Personnages</a></li>
+        <li><a href="index.html">Bibliothèque</a></li>
+        <li><a href="galleries.html">Galeries</a></li>
+        <li><a href="news.html">Actus</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <a href="characters.html" class="back-btn">← Retour au Nexus</a>
+
+    <div class="char-wrapper reveal">
+      
+      <div class="char-visual">
+        <div class="char-bg"></div>
+        <img src="icons/big/selena.png" alt="Fusion" class="main-img">
+      </div>
+
+      <div class="char-data">
+        <header class="char-header">
+          <h1>Séléna</h1>
+          <div class="tags">
+            <span class="tag faction" style="color: #ff3333; border-color: #ff3333; background: rgba(255, 51, 51, 0.1);">Alliée des Septs</span>
+            <span class="tag status" style="color: #ff3333; border-color: #ff3333; background: rgba(255, 51, 51, 0.1);">Présumée morte</span>
+          </div>
+        </header>
+
+        <section class="bio-section">
+          <h3>// Archives Biographiques</h3>
+          
+          <p class="bio-text">
+  <p class="bio-text">
+  <strong>La Régente Rebelle</strong><br>
+  Séléna détonnait au sein de l'Institut Onirique par sa profonde humanité. Horrifiée en découvrant les atrocités dissimulées par son patron, elle brise sa loyauté envers l'Ordre et initie une rébellion de l'intérieur avec le soldat Magnus Velkor. Trahie par sa propre sœur, elle fuit avec Magnus, avec qui elle fonde l'organisation des Sept et donne naissance à Raptor. Tragiquement contrainte d'abandonner son fils dans un orphelinat pour le soustraire à la menace de l'Institut, Séléna finit par sacrifier sa propre vie lors d'une embuscade pour permettre à Magnus de s'échapper. Ses derniers mots d'amour et son acte de bravoure ultime forgent l'héritage héroïque de sa famille.
+</p>
+        </section>
+
+        <section class="evolution-section">
+          <h3>// Variantes Visuelles</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item">
+              <img src="icons/outfits/selena/183.png" 
+                   alt="Tenue Tactique" 
+                   data-caption="Régente" 
+                   class="gallery-trigger">
+            </div>
+            <div class="gallery-item">
+              <img src="icons/outfits/selena/184.png" 
+                   alt="Tenue Tactique" 
+                   data-caption="Rebelle" 
+                   class="gallery-trigger">
+            </div>
+            <div class="gallery-item">
+              <img src="icons/outfits/selena/185.png" 
+                   alt="Tenue Tactique" 
+                   data-caption="Décontractée" 
+                   class="gallery-trigger">
+            </div>
+            <div class="gallery-item">
+              <img src="icons/outfits/selena/186.png" 
+                   alt="Tenue Tactique" 
+                   data-caption="Décontractée (Enceinte)" 
+                   class="gallery-trigger">
+            </div>
+            
+            
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="legal-footer reveal">
+    <p>© 2026 NexusVerse · Fiche de données classifiée</p>
+  </footer>
+
+  <div id="imgModal" class="modal-overlay">
+    <span class="modal-close">&times;</span>
+    <button class="modal-nav prev" aria-label="Précédent">&#10094;</button>
+    <button class="modal-nav next" aria-label="Suivant">&#10095;</button>
+
+    <div class="modal-card">
+      <div class="modal-img-wrapper">
+        <img id="modalImg" src="" alt="Visuel variante">
+        <div class="scan-overlay"></div>
+      </div>
+      <div id="caption"></div>
+    </div>
+  </div>
+
+  <script src="script-char-detail.js"></script>
+</body>
+</html>
