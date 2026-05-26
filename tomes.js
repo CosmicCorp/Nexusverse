@@ -36,7 +36,7 @@ const libraryData = [
         "coverBack": "covers/alt3.png",
         "altBack": "Couverture Alternative Tome 3",
         "number": "Tome 03",
-        "status": "199 Pages",
+        "status": "201 Pages",
         "title": "Archipel Ultime",
         "subtitle": "Rebellion dans l'archipel"
       },
