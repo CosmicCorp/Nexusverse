@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus - Groupes & Factions</title>
+  <link rel="icon" type="image/svg+xml" href="icons/N.svg">
+  <link rel="stylesheet" href="style2.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins&display=swap" rel="stylesheet">
+  
+  <style>
+    /* --- STYLES SPÉCIFIQUES ACCORDÉON --- */
+    .accordion-container {
+      max-width: 1400px;
+      margin: 0 auto 4rem auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .accordion-item {
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border: 1px solid rgba(77, 238, 234, 0.15);
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    /* Overlay sombre pour garantir la lisibilité du texte sur l'image de fond */
+    .accordion-item::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(11, 12, 16, 0.65);
+      backdrop-filter: blur(4px);
+      z-index: 0;
+      transition: var(--transition);
+    }
+
+    .accordion-item:hover {
+      border-color: rgba(77, 238, 234, 0.4);
+      box-shadow: 0 0 20px rgba(77, 238, 234, 0.1);
+    }
+
+    /* Le fond s'éclaircit légèrement au survol pour révéler l'image */
+    .accordion-item:hover::before {
+      background: rgba(11, 12, 16, 0.45);
+      backdrop-filter: blur(2px);
+    }
+
+    .accordion-item.active {
+      border-color: var(--nexus-cyan);
+      box-shadow: 0 0 25px rgba(77, 238, 234, 0.2);
+    }
+
+    /* Quand déployé, on assombrit fortement le fond pour bien isoler l'image interne */
+    .accordion-item.active::before {
+      background: rgba(11, 12, 16, 0.95);
+      backdrop-filter: blur(15px);
+    }
+
+    .accordion-header {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 30px;
+      background: transparent;
+      border: none;
+      color: var(--nexus-cyan);
+      font-family: var(--font-title);
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: var(--transition);
+      text-shadow: 0 2px 4px rgba(0,0,0,0.8); /* Ombre pour détacher le texte de l'image de fond */
+    }
+
+    .accordion-header:hover {
+      background: rgba(77, 238, 234, 0.05);
+      text-shadow: 0 0 10px var(--nexus-glow), 0 2px 4px rgba(0,0,0,0.8);
+    }
+
+    .icon-toggle {
+      font-size: 2rem;
+      font-weight: 300;
+      transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    /* Le contenu est masqué par défaut */
+    .accordion-content {
+      position: relative;
+      z-index: 1;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.4s ease, padding 0.4s ease;
+      padding: 0 30px;
+    }
+
+    /* État actif (déployé) */
+    .accordion-item.active .icon-toggle {
+      transform: rotate(45deg); /* Transforme le + en x */
+      color: var(--white);
+    }
+
+    .accordion-item.active .accordion-content {
+      /* Une valeur max très grande pour englober les images panoramiques */
+      max-height: 3000px; 
+      opacity: 1;
+      padding: 0 30px 30px 30px;
+    }
+
+    /* Style des images panoramiques */
+    .panoramic-img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+      object-fit: cover;
+      display: block;
+      margin-top: 15px;
+    }
+
+    .accordion-desc {
+      color: var(--nexus-cyan);
+      font-family: var(--font-title);
+      margin-top: 15px;
+      font-size: 1.5rem;
+      line-height: 1.6;
+      text-align: center;
+    }
+    
+    @media screen and (max-width: 768px) {
+      .accordion-header {
+        font-size: 1.2rem;
+        padding: 20px;
+      }
+      .accordion-content { padding: 0 20px; }
+      .accordion-item.active .accordion-content { padding: 0 20px 20px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <a href="index.html">
+        <img id="logo-img" src="icons/logo.png" alt="NEXUS LOGO">
+      </a>
+    </div>
+    
+    <button class="burger" aria-label="Menu">
+      &#9776;
+    </button>
+    <div class="nav-container">
+      <ul class="nav-links">
+        <li><a href="characters.html">Personnages</a></li>
+        <li><a href="index.html">Bibliothèque</a></li>
+        <li><a href="galleries.html">Galeries</a></li>
+        <li><a href="news.html">Actus</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <h1>Factions & Groupes</h1>
+    <p>Explorez les alliances, syndicats et entités majeures de l'omnivers. Cliquez sur une catégorie pour révéler l'archive visuelle.</p>
+
+    <div class="accordion-container">
+
+      <div class="accordion-item" style="background-image: url('group/161.png');">
+        <button class="accordion-header">
+          Nexus : Le Clan du Soleil
+          <span class="icon-toggle">+</span>
+        </button>
+        <div class="accordion-content">
+          <p class="accordion-desc">Le Clan du Soleil</p>
+          <img src="group/Tome 1.png" class="panoramic-img" loading="lazy" alt="Gardiens du Nexus">
+        </div>
+      </div>
+
+      <div class="accordion-item" style="background-image: url('group/162.png');">
+        <button class="accordion-header">
+          Nouveau Monde
+          <span class="icon-toggle">+</span>
+        </button>
+        <div class="accordion-content">
+          <p class="accordion-desc">Le Clan du Soleil</p>
+          <img src="group/Tome 2 (climax).png" class="panoramic-img" loading="lazy" alt="Syndicat de l'Ombre">
+        </div>
+      </div>
+
+      <div class="accordion-item" style="background-image: url('group/163.png');">
+        <button class="accordion-header">
+          Archipel Ultime
+          <span class="icon-toggle">+</span>
+        </button>
+        <div class="accordion-content">
+          <p class="accordion-desc">Le Clan du Soleil</p>
+          <img src="group/Tome 3 (climax).png" class="panoramic-img" loading="lazy" alt="Horde Nécromantique">
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <button id="back-to-top" title="Retour en haut">&#10148;</button>
+
+  <script src="script.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+      accordionHeaders.forEach(header => {
+        header.addEventListener('click', () => {
+          const currentItem = header.parentElement;
+          const isActive = currentItem.classList.contains('active');
+
+          // Optionnel : Si tu veux fermer les autres accordéons quand on en ouvre un nouveau
+          /*
+          document.querySelectorAll('.accordion-item').forEach(item => {
+            item.classList.remove('active');
+          });
+          */
+
+          // Bascule l'état de l'accordéon cliqué
+          if (!isActive) {
+            currentItem.classList.add('active');
+          } else {
+            currentItem.classList.remove('active');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

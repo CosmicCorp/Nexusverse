@@ -122,4 +122,53 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     window.addEventListener('scroll', revealOnScroll);
     revealOnScroll(); // Trigger au chargement
+
+    /* 4. ACCORDÉON GALERIE (Injection dynamique) */
+    const evolutionSection = document.querySelector('.evolution-section');
+    const galleryGrid = document.querySelector('.gallery-grid');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    if (evolutionSection && galleryGrid && galleryItems.length > 0) {
+        // Création et injection du bouton sans toucher au HTML
+        const toggleBtn = document.createElement('button');
+        toggleBtn.className = 'gallery-toggle-btn';
+        toggleBtn.textContent = 'Voir toutes les variantes ▼';
+        evolutionSection.appendChild(toggleBtn);
+
+        let isExpanded = false;
+
+        const updateGridHeight = () => {
+            if (isExpanded) {
+                // Si ouvert : on donne la hauteur totale de la grille
+                galleryGrid.style.maxHeight = galleryGrid.scrollHeight + "px";
+            } else {
+                // Si fermé : on limite la hauteur à celle du tout premier élément
+                const firstItemHeight = galleryItems[0].offsetHeight;
+                galleryGrid.style.maxHeight = firstItemHeight + "px";
+            }
+        };
+
+        // Initialisation de la hauteur au chargement
+        // On utilise un setTimeout pour s'assurer que le CSS a bien été appliqué
+        setTimeout(updateGridHeight, 50);
+
+        // Événement au clic sur le bouton
+        toggleBtn.addEventListener('click', () => {
+            isExpanded = !isExpanded;
+            updateGridHeight();
+            toggleBtn.textContent = isExpanded ? 'Masquer les variantes ▲' : 'Voir toutes les variantes ▼';
+        });
+
+        // Mise à jour automatique de la hauteur si la fenêtre est redimensionnée (responsive)
+        window.addEventListener('resize', () => {
+            if (isExpanded) {
+                // Astuce : on retire la contrainte temporairement pour recalculer la vraie taille
+                galleryGrid.style.maxHeight = 'none';
+                const newHeight = galleryGrid.scrollHeight;
+                galleryGrid.style.maxHeight = newHeight + "px";
+            } else {
+                updateGridHeight();
+            }
+        });
+    }
 });
