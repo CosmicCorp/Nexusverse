@@ -12,7 +12,7 @@ const libraryData = [
         "coverBack": "covers/alt1.png",
         "altBack": "Couverture Alternative Tome 1",
         "number": "Tome 01",
-        "status": "103 Pages",
+        "status": "120 Pages",
         "title": "Le Clan du Soleil",
         "subtitle": "Le commencement"
       },
@@ -24,7 +24,7 @@ const libraryData = [
         "coverBack": "covers/alt2.png",
         "altBack": "Couverture Alternative Tome 2",
         "number": "Tome 02",
-        "status": "134 Pages",
+        "status": "138 Pages",
         "title": "Nouveau Monde",
         "subtitle": "Monde reformé <br>Menaces réformées"
       },
@@ -43,7 +43,7 @@ const libraryData = [
       {
         "type": "locked",
         "number": "",
-        "title": "Tome Crypté",
+        "title": "Bientot...",
         "subtitle": "En cours d'écriture..."
       }
     ]
