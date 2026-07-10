@@ -1,5 +1,17 @@
 const newsData = [
   {
+    "id": "news-10",
+    "date": "10 Juillet 2026",
+    "modalDate": "10 Juillet 2026",
+    "tag": "Sortie prochaine",
+    "title": "Le conflit approche...",
+    "subtitle": "L'affrontement final entre l'Institut Onirique et la Résistance commence le 14 Aout !",
+    "image": "news/name4.png",
+    "layout": "normal",
+    "fullText": "La Guerre Zéro va marquer un tournant pour la réalité entière , quelle sera l'issue du conflit ?",
+    "buttonText": "Lire l'article"
+  },
+  {
     "id": "news-9",
     "date": "26 Mai 2026",
     "modalDate": "26 Mai 2026",

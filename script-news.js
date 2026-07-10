@@ -22,17 +22,50 @@ document.addEventListener('DOMContentLoaded', () => {
     /* =========================================================
        2. GÉNÉRATION DYNAMIQUE (HORS-LIGNE)
        ========================================================= */
+    const heroContainer = document.getElementById('hero-news-container');
     const newsContainer = document.getElementById('news-container');
 
-    if (newsContainer) {
-        if (typeof newsData !== 'undefined') {
-            let htmlContent = '';
+    if (newsContainer && heroContainer) {
+        if (typeof newsData !== 'undefined' && newsData.length > 0) {
+            
+            // --- A. Génération de l'actu "À la une" (la plus récente, index 0) ---
+            const heroNews = newsData[0];
+            const heroLayoutAttr = heroNews.layout === 'large' ? `data-layout="large"` : '';
+            
+            let heroHtml = `
+            <article class="hero-news-card">
+              <div class="hero-news-image">
+                <img src="${heroNews.image}" alt="Aperçu grande image" loading="lazy">
+              </div>
+              <div class="hero-news-content">
+                <div class="news-meta">
+                  <span class="news-date">${heroNews.date}</span>
+                  <span class="news-tag">${heroNews.tag}</span>
+                </div>
+                <h2>${heroNews.title}</h2>
+                <p>${heroNews.subtitle}</p>
+                
+                <button class="news-button open-modal" 
+                   data-title="${heroNews.title}" 
+                   data-date="${heroNews.modalDate || heroNews.date}"
+                   data-img="${heroNews.image}"
+                   ${heroLayoutAttr}
+                   data-full-text="${heroNews.fullText}">
+                   ${heroNews.buttonText}
+                </button>
+              </div>
+            </article>`;
+            
+            heroContainer.innerHTML = heroHtml;
 
-            newsData.forEach(news => {
-                // Gestion du layout large optionnel pour la modale
+            // --- B. Génération des autres actus (en plus petit) ---
+            let restHtml = '';
+
+            for (let i = 1; i < newsData.length; i++) {
+                const news = newsData[i];
                 const layoutAttr = news.layout === 'large' ? `data-layout="large"` : '';
 
-                htmlContent += `
+                restHtml += `
                 <article class="news-card">
                   <div class="news-image">
                     <img src="${news.image}" alt="Aperçu grande image" loading="lazy">
@@ -55,16 +88,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     </button>
                   </div>
                 </article>`;
-            });
+            }
 
-            // Injection des actualités dans le DOM
-            newsContainer.innerHTML = htmlContent;
+            newsContainer.innerHTML = restHtml;
 
-            // Une fois le HTML généré, on initialise les animations et la modale
+            // Initialisation des animations et modales
             initNewsFeatures();
 
         } else {
-            console.error("Variable newsData introuvable.");
+            console.error("Variable newsData introuvable ou vide.");
             newsContainer.innerHTML = `<p style="text-align:center; color:var(--nexus-cyan); width:100%;">Erreur : Le fichier actus.js est introuvable ou mal configuré.</p>`;
         }
     }
@@ -76,9 +108,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function initNewsFeatures() {
         
         /* --- SCROLL REVEAL ANIMATION --- */
-        const revealElements = document.querySelectorAll('.reveal, .news-card'); // On cible aussi les cartes générées
+        // On cible également la nouvelle classe de la grande carte
+        const revealElements = document.querySelectorAll('.reveal, .news-card, .hero-news-card'); 
         
-        // On s'assure d'initialiser les classes correctement
         revealElements.forEach(el => {
             if(!el.classList.contains('reveal')) {
                 el.classList.add('reveal');
@@ -98,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         window.addEventListener('scroll', revealOnScroll);
-        revealOnScroll(); // Déclencher une fois au chargement pour les premiers éléments
+        revealOnScroll();
 
         /* --- GESTION DE LA MODALE --- */
         const modalOverlay = document.getElementById('article-modal');
